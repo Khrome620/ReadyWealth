@@ -1,0 +1,52 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+/* Dashboard 3-column grid */
+.rw-dashboard {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .rw-dashboard {
+    grid-template-columns: 300px 1fr;
+  }
+  .rw-advice-panel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rw-dashboard {
+    grid-template-columns: 280px 1fr 300px;
+  }
+  .rw-advice-panel {
+    grid-column: auto;
+  }
+}
+
+/* Page wrapper */
+.rw-page {
+  padding: 1.5rem;
+}
+
+/* Utility */
+.rw-price-up { color: #16a34a; }
+.rw-price-down { color: #dc2626; }
+
+.rw-flex-gap {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
