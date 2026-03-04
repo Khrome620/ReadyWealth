@@ -1,35 +1,47 @@
 <template>
-  <SprCard title="PSE Market Feed" tone="plain" :show-footer="false">
-    <template #header>
-      <div class="mfp-header rw-flex-gap">
-        <SprStatus :state="market.marketOpen ? 'success' : 'danger'" size="sm" />
-        <span class="mfp-status-label">{{ market.marketOpen ? 'Market Open' : 'Market Closed' }}</span>
-        <span v-if="market.lastUpdated" class="mfp-last-updated">
-          · Updated {{ formatTime(market.lastUpdated) }}
-        </span>
+  <div class="mfp-dark-card">
+    <!-- Header -->
+    <div class="mfp-header">
+      <div class="mfp-header-left">
+        <span class="mfp-header-icon"><SprIcon icon="ph:chart-line-up" /></span>
+        <span class="mfp-title">PSE Market Feed</span>
+        <div class="mfp-status-pill" :class="market.marketOpen ? 'mfp-open' : 'mfp-closed'">
+          <span class="mfp-status-dot"></span>
+          {{ market.marketOpen ? 'Live' : 'Closed' }}
+        </div>
       </div>
-    </template>
+      <span v-if="market.lastUpdated" class="mfp-updated">
+        Updated {{ formatTime(market.lastUpdated) }}
+      </span>
+    </div>
 
-    <template #content>
-      <div v-if="market.error" class="mfp-error">
-        Failed to load market data.
-        {{ market.lastUpdated ? `Last updated: ${formatTime(market.lastUpdated)}` : '' }}
-      </div>
+    <!-- Delayed notice -->
+    <div class="mfp-notice">
+      <SprIcon icon="ph:info" class="mfp-notice-icon" />
+      Prices delayed ~15 min. Not real-time data.
+    </div>
 
-      <SprBanner>
-        Prices delayed ~15 minutes. Not real-time data.
-      </SprBanner>
+    <!-- Tabs -->
+    <div class="mfp-tabs">
+      <button
+        v-for="tab in tabs"
+        :key="tab"
+        class="mfp-tab"
+        :class="{ 'mfp-tab-active': activeTab === tab }"
+        @click="activeTab = tab"
+      >
+        {{ tab }}
+      </button>
+    </div>
 
-      <SprTabs
-        :list="tabs"
-        :active-tab="activeTab"
-        :underlined="true"
-        @tab-index="onTabChange"
-      />
+    <!-- Table -->
+    <MarketFeedTable :stocks="currentStocks" :loading="market.loading" :market-open="market.marketOpen" />
 
-      <MarketFeedTable :stocks="currentStocks" :loading="market.loading" />
-    </template>
-  </SprCard>
+    <!-- Error -->
+    <div v-if="market.error" class="mfp-error">
+      <SprIcon icon="ph:warning" /> Failed to load market data.
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -43,10 +55,6 @@ const watchlist = useWatchlistStore()
 
 const tabs = ['Top Gainers', 'Top Losers', 'Most Active', 'Watchlist']
 const activeTab = ref('Top Gainers')
-
-function onTabChange(index: number) {
-  activeTab.value = tabs[index]
-}
 
 const currentStocks = computed(() => {
   switch (activeTab.value) {
@@ -64,20 +72,144 @@ function formatTime(date: Date): string {
 </script>
 
 <style scoped>
+.mfp-dark-card {
+  background: #0f172a;
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
 .mfp-header {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid #1e293b;
 }
-.mfp-status-label {
-  font-weight: 600;
-  font-size: 0.875rem;
+
+.mfp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.mfp-last-updated {
+
+.mfp-header-icon {
+  color: #38bdf8;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.mfp-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+}
+
+.mfp-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.mfp-open {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.mfp-closed {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.mfp-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.mfp-open .mfp-status-dot {
+  animation: mfp-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes mfp-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.mfp-updated {
+  font-size: 0.7rem;
+  color: #475569;
+}
+
+/* ── Notice ── */
+.mfp-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  color: #475569;
+  padding: 0.45rem 1.25rem;
+  background: #0a1120;
+  border-bottom: 1px solid #1e293b;
+}
+
+.mfp-notice-icon {
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* ── Tabs ── */
+.mfp-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 1.25rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.mfp-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.6rem 0.9rem;
   font-size: 0.75rem;
+  font-weight: 600;
   color: #64748b;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  margin-bottom: -1px;
 }
+
+.mfp-tab:hover {
+  color: #94a3b8;
+}
+
+.mfp-tab-active {
+  color: #38bdf8;
+  border-bottom-color: #38bdf8;
+}
+
+/* ── Error ── */
 .mfp-error {
-  color: #dc2626;
-  padding: 0.5rem 0;
-  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #f87171;
+  padding: 0.75rem 1.25rem;
 }
 </style>

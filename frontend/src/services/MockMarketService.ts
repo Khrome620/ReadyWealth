@@ -26,12 +26,16 @@ const PSE_STOCKS: Stock[] = [
 
 export class MockMarketService implements IMarketService {
   async getStocks(): Promise<Stock[]> {
-    // Simulate slight random price fluctuations on each refresh
+    // When market is closed return yesterday's closing prices unchanged.
+    // When open, simulate slight intraday price fluctuations on each refresh.
+    if (!this.isMarketOpen()) {
+      return PSE_STOCKS.map(stock => ({ ...stock }))
+    }
     return PSE_STOCKS.map(stock => {
       const fluctuation = (Math.random() - 0.5) * stock.price * 0.002
       const newPrice = parseFloat((stock.price + fluctuation).toFixed(2))
-      const newChange = parseFloat((newPrice - (stock.price - stock.change)).toFixed(2))
       const basePrice = stock.price - stock.change
+      const newChange = parseFloat((newPrice - basePrice).toFixed(2))
       const newChangePct = parseFloat(((newChange / basePrice) * 100).toFixed(2))
       return { ...stock, price: newPrice, change: newChange, changePct: newChangePct }
     })
