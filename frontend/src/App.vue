@@ -54,9 +54,9 @@ const navLinks = computed(() => ({
   top: [
     {
       parentLinks: [
-        { title: 'Dashboard',    icon: 'ph:house',        link: '/',             menuLinks: [] },
-        { title: 'Portfolio',    icon: 'ph:chart-pie',    link: '/portfolio',    menuLinks: [] },
-        { title: 'Transactions', icon: 'ph:list-bullets', link: '/transactions', menuLinks: [] },
+        { title: 'Dashboard',    icon: 'ph:house',        redirect: { openInNewTab: false, isAbsoluteURL: false, link: '/' },             menuLinks: [] },
+        { title: 'Portfolio',    icon: 'ph:chart-pie',    redirect: { openInNewTab: false, isAbsoluteURL: false, link: '/portfolio' },    menuLinks: [] },
+        { title: 'Transactions', icon: 'ph:list-bullets', redirect: { openInNewTab: false, isAbsoluteURL: false, link: '/transactions' }, menuLinks: [] },
       ],
     },
   ],
@@ -71,8 +71,9 @@ const activeNav = computed(() => ({
   submenu: '',
 }))
 
-function handleNav(item: { link?: string }) {
-  if (item.link) router.push(item.link)
+function handleNav(item: { link?: string; redirect?: { link: string } }) {
+  const path = item.redirect?.link ?? item.link
+  if (path) router.push(path)
 }
 </script>
 

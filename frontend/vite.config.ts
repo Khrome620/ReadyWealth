@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
+    allowedHosts: true,
     proxy: {
       // Proxy /api/* to the backend in dev; avoids CORS for the Vite dev server.
       '/api': {

@@ -53,7 +53,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="p in positions.positionsWithCurrentValue" :key="p.id" class="pt-row">
+          <tr v-for="p in paged" :key="p.id" class="pt-row">
             <td class="pt-ticker">{{ p.ticker }}</td>
             <td>
               <span class="pt-badge" :class="p.type === 'long' ? 'pt-long' : 'pt-short'">
@@ -79,14 +79,25 @@
         </tbody>
       </table>
     </div>
+
+    <SprTablePagination
+      v-if="positions.positionsWithCurrentValue.length"
+      :total-items="positions.positionsWithCurrentValue.length"
+      :current-page="page"
+      :selected-row-count="pageSize"
+      :dropdown-selection="pageSizeOptions"
+      :bordered="false"
+      @update:current-page="page = $event"
+      @update:selected-row-count="onPageSizeChange"
+      @previous="page = Math.max(1, page - 1)"
+      @next="page = Math.min(totalPages, page + 1)"
+    />
   </div>
 
   <ClosePositionModal
-    v-if="closeTarget"
     v-model="showCloseModal"
-    :position-id="closeTarget.id"
-    :ticker="closeTarget.ticker"
-    @closed="closeTarget = null"
+    :position-id="closeTarget?.id ?? ''"
+    :ticker="closeTarget?.ticker ?? ''"
   />
 </template>
 
@@ -96,6 +107,25 @@ import ClosePositionModal from './ClosePositionModal.vue'
 import { usePositionsStore } from '../../stores/positions'
 
 const positions = usePositionsStore()
+
+const page = ref(1)
+const pageSize = ref(10)
+const pageSizeOptions = [
+  { text: '10', value: '10' },
+  { text: '20', value: '20' },
+  { text: '50', value: '50' },
+]
+
+const totalPages = computed(() => Math.ceil(positions.positionsWithCurrentValue.length / pageSize.value) || 1)
+const paged = computed(() => {
+  const start = (page.value - 1) * pageSize.value
+  return positions.positionsWithCurrentValue.slice(start, start + pageSize.value)
+})
+
+function onPageSizeChange(val: number) {
+  pageSize.value = val
+  page.value = 1
+}
 
 const summary = computed(() => {
   const all = positions.positionsWithCurrentValue

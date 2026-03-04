@@ -89,7 +89,7 @@ export const usePositionsStore = defineStore('positions', () => {
 
   /** Close a position: calls API if available; credits wallet with returned value. */
   async function closePosition(positionId: string): Promise<number> {
-    const { showSuccess, showDanger } = useSnack()
+    const { showSuccess } = useSnack()
     try {
       const res = await fetch(`/api/v1/positions/${positionId}/close`, { method: 'POST' })
       if (res.ok) {
@@ -101,9 +101,14 @@ export const usePositionsStore = defineStore('positions', () => {
 
         // Update wallet balance from server response
         const walletStore = useWalletStore()
-        walletStore.credit(data.realizedPnl) // realizedPnl credited on top of wallet state
+        walletStore.credit(data.realizedPnl)
 
-        showSuccess(`Position closed. P&L: ₱${data.realizedPnl.toLocaleString('en-PH', { minimumFractionDigits: 2 })}`)
+        // Mark the matching transaction as closed
+        const txStore = useTransactionsStore()
+        const tx = txStore.transactions.find(t => t.id === positionId)
+        if (tx) { tx.status = 'closed'; tx.realizedPnl = data.realizedPnl; tx.closedAt = new Date().toISOString() }
+
+        try { showSuccess(`Position closed. P&L: ₱${data.realizedPnl.toLocaleString('en-PH', { minimumFractionDigits: 2 })}`) } catch { /* snackbar unavailable */ }
         return data.realizedPnl
       }
     } catch {
@@ -129,9 +134,9 @@ export const usePositionsStore = defineStore('positions', () => {
     // Mark the matching transaction as closed and record realized P&L
     const txStore = useTransactionsStore()
     const tx = txStore.transactions.find(t => t.id === positionId)
-    if (tx) { tx.status = 'closed'; tx.realizedPnl = pnl }
+    if (tx) { tx.status = 'closed'; tx.realizedPnl = pnl; tx.closedAt = new Date().toISOString() }
 
-    showSuccess(`Position closed. P&L: ${pnl >= 0 ? '+' : ''}₱${pnl.toLocaleString('en-PH', { minimumFractionDigits: 2 })}`)
+    try { showSuccess(`Position closed. P&L: ${pnl >= 0 ? '+' : ''}₱${pnl.toLocaleString('en-PH', { minimumFractionDigits: 2 })}`) } catch { /* snackbar unavailable */ }
     return pnl
   }
 

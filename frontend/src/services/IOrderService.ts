@@ -1,4 +1,4 @@
-import type { Order, Transaction, OrderType } from '../types'
+import type { Order, Transaction } from '../types'
 
 export interface PlaceOrderResult {
   transaction: Transaction
