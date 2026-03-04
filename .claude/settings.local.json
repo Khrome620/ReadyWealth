@@ -21,7 +21,10 @@
       "Bash(taskkill:*)",
       "mcp__mcp-design-system-next__list_assets",
       "mcp__mcp-design-system-next__search_components",
-      "mcp__mcp-design-system-next__get_component_source"
+      "mcp__mcp-design-system-next__get_component_source",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(netstat:*)"
     ]
   }
 }
