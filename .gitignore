@@ -1,1 +1,41 @@
+# Visual Studio / JetBrains
 .vs/
+.idea/
+*.user
+*.suo
+
+# .NET build outputs
+bin/
+obj/
+*.dll
+*.pdb
+*.nupkg
+packages/
+project.lock.json
+
+# EF Core local database
+*.db
+*.db-shm
+*.db-wal
+
+# Node / frontend
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Test coverage
+coverage/
+*.coverage
+lcov.info

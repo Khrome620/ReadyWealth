@@ -1,0 +1,3040 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0.9887" branch-rate="0.7306999999999999" version="1.9" timestamp="1772503751" lines-covered="964" lines-valid="975" branches-covered="57" branches-valid="78">
+  <sources>
+    <source>C:\Source\repos\PrometheusHackathon\ReadyWealth\backend\ReadyWealth.Api\</source>
+  </sources>
+  <packages>
+    <package name="ReadyWealth.Api" line-rate="0.9887" branch-rate="0.7306999999999999" complexity="226">
+      <classes>
+        <class name="Program" filename="Program.cs" line-rate="1" branch-rate="0.75" complexity="4">
+          <methods>
+            <method name="&lt;Main&gt;$" signature="(System.String[])" line-rate="1" branch-rate="0.75" complexity="4">
+              <lines>
+                <line number="6" hits="25" branch="False" />
+                <line number="9" hits="25" branch="False" />
+                <line number="10" hits="108" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="23" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="11" hits="108" branch="False" />
+                <line number="14" hits="25" branch="False" />
+                <line number="15" hits="25" branch="False" />
+                <line number="16" hits="25" branch="False" />
+                <line number="17" hits="25" branch="False" />
+                <line number="20" hits="25" branch="False" />
+                <line number="21" hits="50" branch="False" />
+                <line number="22" hits="75" branch="False" />
+                <line number="23" hits="75" branch="False" />
+                <line number="24" hits="75" branch="False" />
+                <line number="27" hits="25" branch="False" />
+                <line number="28" hits="25" branch="False" />
+                <line number="30" hits="25" branch="False" />
+                <line number="33" hits="25" branch="False" />
+                <line number="35" hits="25" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="232" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="36" hits="25" branch="False" />
+                <line number="37" hits="25" branch="False" />
+                <line number="38" hits="25" branch="False" />
+                <line number="39" hits="25" branch="False" />
+                <line number="42" hits="25" branch="False" />
+                <line number="43" hits="25" branch="False" />
+                <line number="44" hits="25" branch="False" />
+                <line number="45" hits="25" branch="False" />
+                <line number="46" hits="25" branch="False" />
+                <line number="47" hits="25" branch="False" />
+                <line number="48" hits="25" branch="False" />
+                <line number="51" hits="25" branch="False" />
+                <line number="52" hits="25" branch="False" />
+                <line number="53" hits="25" branch="False" />
+                <line number="54" hits="25" branch="False" />
+                <line number="55" hits="25" branch="False" />
+                <line number="57" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="6" hits="25" branch="False" />
+            <line number="9" hits="25" branch="False" />
+            <line number="10" hits="108" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="23" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="11" hits="108" branch="False" />
+            <line number="14" hits="25" branch="False" />
+            <line number="15" hits="25" branch="False" />
+            <line number="16" hits="25" branch="False" />
+            <line number="17" hits="25" branch="False" />
+            <line number="20" hits="25" branch="False" />
+            <line number="21" hits="50" branch="False" />
+            <line number="22" hits="75" branch="False" />
+            <line number="23" hits="75" branch="False" />
+            <line number="24" hits="75" branch="False" />
+            <line number="27" hits="25" branch="False" />
+            <line number="28" hits="25" branch="False" />
+            <line number="30" hits="25" branch="False" />
+            <line number="33" hits="25" branch="False" />
+            <line number="35" hits="25" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="232" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="36" hits="25" branch="False" />
+            <line number="37" hits="25" branch="False" />
+            <line number="38" hits="25" branch="False" />
+            <line number="39" hits="25" branch="False" />
+            <line number="42" hits="25" branch="False" />
+            <line number="43" hits="25" branch="False" />
+            <line number="44" hits="25" branch="False" />
+            <line number="45" hits="25" branch="False" />
+            <line number="46" hits="25" branch="False" />
+            <line number="47" hits="25" branch="False" />
+            <line number="48" hits="25" branch="False" />
+            <line number="51" hits="25" branch="False" />
+            <line number="52" hits="25" branch="False" />
+            <line number="53" hits="25" branch="False" />
+            <line number="54" hits="25" branch="False" />
+            <line number="55" hits="25" branch="False" />
+            <line number="57" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.MockMarketDataService" filename="Services\MockMarketDataService.cs" line-rate="1" branch-rate="0.5" complexity="16">
+          <methods>
+            <method name="GetAllStocksAsync" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="39" hits="67" branch="False" />
+                <line number="40" hits="67" branch="False" />
+                <line number="41" hits="67" branch="False" />
+                <line number="42" hits="67" branch="False" />
+              </lines>
+            </method>
+            <method name="GetMarketStatusAsync" signature="()" line-rate="1" branch-rate="0.5" complexity="6">
+              <lines>
+                <line number="45" hits="10" branch="False" />
+                <line number="46" hits="10" branch="False" />
+                <line number="47" hits="10" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="29" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="48" hits="10" branch="False" />
+                <line number="49" hits="10" branch="False" />
+                <line number="50" hits="10" branch="False" />
+                <line number="51" hits="10" branch="True" condition-coverage="50% (2/4)">
+                  <conditions>
+                    <condition number="77" type="jump" coverage="50%" />
+                    <condition number="87" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="52" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetLastUpdatedAsync" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="55" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetGainersAsync" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="58" hits="5" branch="False" />
+                <line number="59" hits="180" branch="False" />
+              </lines>
+            </method>
+            <method name="GetLosersAsync" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="62" hits="4" branch="False" />
+                <line number="63" hits="110" branch="False" />
+              </lines>
+            </method>
+            <method name="GetMostActiveAsync" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="66" hits="4" branch="False" />
+                <line number="67" hits="84" branch="False" />
+              </lines>
+            </method>
+            <method name="Fluctuate" signature="()" line-rate="1" branch-rate="0.5" complexity="2">
+              <lines>
+                <line number="70" hits="67" branch="False" />
+                <line number="71" hits="67" branch="False" />
+                <line number="72" hits="1340" branch="False" />
+                <line number="73" hits="1340" branch="False" />
+                <line number="74" hits="1340" branch="False" />
+                <line number="75" hits="1340" branch="False" />
+                <line number="76" hits="1340" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="101" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="77" hits="1340" branch="False" />
+                <line number="78" hits="1407" branch="False" />
+                <line number="79" hits="67" branch="False" />
+                <line number="80" hits="67" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="35" hits="50" branch="False" />
+                <line number="36" hits="50" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="0.5" complexity="2">
+              <lines>
+                <line number="7" hits="1" branch="False" />
+                <line number="8" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="15" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="9" hits="1" branch="False" />
+                <line number="11" hits="1" branch="False" />
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+                <line number="14" hits="1" branch="False" />
+                <line number="15" hits="1" branch="False" />
+                <line number="16" hits="1" branch="False" />
+                <line number="17" hits="1" branch="False" />
+                <line number="18" hits="1" branch="False" />
+                <line number="19" hits="1" branch="False" />
+                <line number="20" hits="1" branch="False" />
+                <line number="21" hits="1" branch="False" />
+                <line number="22" hits="1" branch="False" />
+                <line number="23" hits="1" branch="False" />
+                <line number="24" hits="1" branch="False" />
+                <line number="25" hits="1" branch="False" />
+                <line number="26" hits="1" branch="False" />
+                <line number="27" hits="1" branch="False" />
+                <line number="28" hits="1" branch="False" />
+                <line number="29" hits="1" branch="False" />
+                <line number="30" hits="1" branch="False" />
+                <line number="31" hits="1" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="33" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="39" hits="67" branch="False" />
+            <line number="40" hits="67" branch="False" />
+            <line number="41" hits="67" branch="False" />
+            <line number="42" hits="67" branch="False" />
+            <line number="45" hits="10" branch="False" />
+            <line number="46" hits="10" branch="False" />
+            <line number="47" hits="10" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="29" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="48" hits="10" branch="False" />
+            <line number="49" hits="10" branch="False" />
+            <line number="50" hits="10" branch="False" />
+            <line number="51" hits="10" branch="True" condition-coverage="50% (2/4)">
+              <conditions>
+                <condition number="77" type="jump" coverage="50%" />
+                <condition number="87" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="52" hits="10" branch="False" />
+            <line number="55" hits="10" branch="False" />
+            <line number="58" hits="5" branch="False" />
+            <line number="59" hits="180" branch="False" />
+            <line number="62" hits="4" branch="False" />
+            <line number="63" hits="110" branch="False" />
+            <line number="66" hits="4" branch="False" />
+            <line number="67" hits="84" branch="False" />
+            <line number="70" hits="67" branch="False" />
+            <line number="71" hits="67" branch="False" />
+            <line number="72" hits="1340" branch="False" />
+            <line number="73" hits="1340" branch="False" />
+            <line number="74" hits="1340" branch="False" />
+            <line number="75" hits="1340" branch="False" />
+            <line number="76" hits="1340" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="101" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="77" hits="1340" branch="False" />
+            <line number="78" hits="1407" branch="False" />
+            <line number="79" hits="67" branch="False" />
+            <line number="80" hits="67" branch="False" />
+            <line number="35" hits="50" branch="False" />
+            <line number="36" hits="50" branch="False" />
+            <line number="7" hits="1" branch="False" />
+            <line number="8" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="15" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="9" hits="1" branch="False" />
+            <line number="11" hits="1" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+            <line number="15" hits="1" branch="False" />
+            <line number="16" hits="1" branch="False" />
+            <line number="17" hits="1" branch="False" />
+            <line number="18" hits="1" branch="False" />
+            <line number="19" hits="1" branch="False" />
+            <line number="20" hits="1" branch="False" />
+            <line number="21" hits="1" branch="False" />
+            <line number="22" hits="1" branch="False" />
+            <line number="23" hits="1" branch="False" />
+            <line number="24" hits="1" branch="False" />
+            <line number="25" hits="1" branch="False" />
+            <line number="26" hits="1" branch="False" />
+            <line number="27" hits="1" branch="False" />
+            <line number="28" hits="1" branch="False" />
+            <line number="29" hits="1" branch="False" />
+            <line number="30" hits="1" branch="False" />
+            <line number="31" hits="1" branch="False" />
+            <line number="32" hits="1" branch="False" />
+            <line number="33" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.PaperOrderService" filename="Services\PaperOrderService.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="GetOrdersAsync" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="92" hits="4" branch="False" />
+                <line number="96" hits="4" branch="False" />
+                <line number="97" hits="4" branch="False" />
+                <line number="98" hits="5" branch="False" />
+                <line number="99" hits="5" branch="False" />
+                <line number="100" hits="5" branch="False" />
+                <line number="101" hits="5" branch="False" />
+                <line number="102" hits="5" branch="False" />
+                <line number="103" hits="4" branch="False" />
+                <line number="104" hits="4" branch="False" />
+                <line number="105" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="ClosePositionAsync" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="108" hits="1" branch="False" />
+                <line number="110" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(ReadyWealth.Api.Persistence.AppDbContext,ReadyWealth.Api.Services.IMarketDataService)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="35" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="92" hits="4" branch="False" />
+            <line number="96" hits="4" branch="False" />
+            <line number="97" hits="4" branch="False" />
+            <line number="98" hits="5" branch="False" />
+            <line number="99" hits="5" branch="False" />
+            <line number="100" hits="5" branch="False" />
+            <line number="101" hits="5" branch="False" />
+            <line number="102" hits="5" branch="False" />
+            <line number="103" hits="4" branch="False" />
+            <line number="104" hits="4" branch="False" />
+            <line number="105" hits="4" branch="False" />
+            <line number="108" hits="1" branch="False" />
+            <line number="110" hits="1" branch="False" />
+            <line number="9" hits="35" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.PaperOrderService/&lt;&gt;c__DisplayClass4_0" filename="Services\PaperOrderService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="&lt;PlaceOrderAsync&gt;b__0" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="27" hits="111" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="27" hits="111" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.PaperOrderService/&lt;PlaceOrderAsync&gt;d__4" filename="Services\PaperOrderService.cs" line-rate="1" branch-rate="0.9444" complexity="18">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="0.9444" complexity="18">
+              <lines>
+                <line number="16" hits="33" branch="False" />
+                <line number="18" hits="33" branch="True" condition-coverage="100% (6/6)">
+                  <conditions>
+                    <condition number="87" type="jump" coverage="100%" />
+                    <condition number="121" type="jump" coverage="100%" />
+                    <condition number="168" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="19" hits="33" branch="False" />
+                <line number="20" hits="33" branch="False" />
+                <line number="21" hits="2" branch="False" />
+                <line number="22" hits="2" branch="False" />
+                <line number="26" hits="31" branch="False" />
+                <line number="28" hits="31" branch="False" />
+                <line number="31" hits="29" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="432" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="32" hits="1" branch="False" />
+                <line number="35" hits="28" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="501" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="36" hits="1" branch="False" />
+                <line number="39" hits="27" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="665" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="40" hits="27" branch="False" />
+                <line number="42" hits="27" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="727" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="43" hits="2" branch="False" />
+                <line number="46" hits="25" branch="False" />
+                <line number="47" hits="25" branch="False" />
+                <line number="48" hits="25" branch="False" />
+                <line number="49" hits="25" branch="False" />
+                <line number="50" hits="25" branch="False" />
+                <line number="51" hits="25" branch="False" />
+                <line number="52" hits="25" branch="False" />
+                <line number="53" hits="25" branch="False" />
+                <line number="54" hits="25" branch="False" />
+                <line number="55" hits="25" branch="False" />
+                <line number="56" hits="25" branch="False" />
+                <line number="57" hits="25" branch="False" />
+                <line number="58" hits="25" branch="False" />
+                <line number="60" hits="25" branch="False" />
+                <line number="61" hits="25" branch="False" />
+                <line number="62" hits="25" branch="False" />
+                <line number="63" hits="25" branch="False" />
+                <line number="64" hits="25" branch="False" />
+                <line number="65" hits="25" branch="False" />
+                <line number="66" hits="25" branch="False" />
+                <line number="67" hits="25" branch="False" />
+                <line number="68" hits="25" branch="False" />
+                <line number="69" hits="25" branch="False" />
+                <line number="70" hits="25" branch="False" />
+                <line number="72" hits="25" branch="False" />
+                <line number="73" hits="25" branch="False" />
+                <line number="75" hits="25" branch="False" />
+                <line number="76" hits="25" branch="False" />
+                <line number="77" hits="25" branch="False" />
+                <line number="80" hits="25" branch="False" />
+                <line number="81" hits="25" branch="False" />
+                <line number="82" hits="25" branch="False" />
+                <line number="83" hits="25" branch="False" />
+                <line number="85" hits="25" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="1460" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="86" hits="13" branch="False" />
+                <line number="88" hits="25" branch="False" />
+                <line number="89" hits="27" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="33" branch="False" />
+            <line number="18" hits="33" branch="True" condition-coverage="100% (6/6)">
+              <conditions>
+                <condition number="87" type="jump" coverage="100%" />
+                <condition number="121" type="jump" coverage="100%" />
+                <condition number="168" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="19" hits="33" branch="False" />
+            <line number="20" hits="33" branch="False" />
+            <line number="21" hits="2" branch="False" />
+            <line number="22" hits="2" branch="False" />
+            <line number="26" hits="31" branch="False" />
+            <line number="28" hits="31" branch="False" />
+            <line number="31" hits="29" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="432" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="32" hits="1" branch="False" />
+            <line number="35" hits="28" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="501" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="36" hits="1" branch="False" />
+            <line number="39" hits="27" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="665" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="40" hits="27" branch="False" />
+            <line number="42" hits="27" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="727" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="43" hits="2" branch="False" />
+            <line number="46" hits="25" branch="False" />
+            <line number="47" hits="25" branch="False" />
+            <line number="48" hits="25" branch="False" />
+            <line number="49" hits="25" branch="False" />
+            <line number="50" hits="25" branch="False" />
+            <line number="51" hits="25" branch="False" />
+            <line number="52" hits="25" branch="False" />
+            <line number="53" hits="25" branch="False" />
+            <line number="54" hits="25" branch="False" />
+            <line number="55" hits="25" branch="False" />
+            <line number="56" hits="25" branch="False" />
+            <line number="57" hits="25" branch="False" />
+            <line number="58" hits="25" branch="False" />
+            <line number="60" hits="25" branch="False" />
+            <line number="61" hits="25" branch="False" />
+            <line number="62" hits="25" branch="False" />
+            <line number="63" hits="25" branch="False" />
+            <line number="64" hits="25" branch="False" />
+            <line number="65" hits="25" branch="False" />
+            <line number="66" hits="25" branch="False" />
+            <line number="67" hits="25" branch="False" />
+            <line number="68" hits="25" branch="False" />
+            <line number="69" hits="25" branch="False" />
+            <line number="70" hits="25" branch="False" />
+            <line number="72" hits="25" branch="False" />
+            <line number="73" hits="25" branch="False" />
+            <line number="75" hits="25" branch="False" />
+            <line number="76" hits="25" branch="False" />
+            <line number="77" hits="25" branch="False" />
+            <line number="80" hits="25" branch="False" />
+            <line number="81" hits="25" branch="False" />
+            <line number="82" hits="25" branch="False" />
+            <line number="83" hits="25" branch="False" />
+            <line number="85" hits="25" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="1460" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="86" hits="13" branch="False" />
+            <line number="88" hits="25" branch="False" />
+            <line number="89" hits="27" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.RecommendationService" filename="Services\RecommendationService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(ReadyWealth.Api.Services.IMarketDataService)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="19" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="19" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.RecommendationService/&lt;&gt;c" filename="Services\RecommendationService.cs" line-rate="1" branch-rate="1" complexity="9">
+          <methods>
+            <method name="&lt;GetRecommendationsAsync&gt;b__2_0" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="183" branch="False" />
+              </lines>
+            </method>
+            <method name="&lt;GetRecommendationsAsync&gt;b__2_1" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="92" branch="False" />
+              </lines>
+            </method>
+            <method name="&lt;GetRecommendationsAsync&gt;b__2_2" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="16" hits="45" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="40" type="jump" coverage="100%" />
+                    <condition number="58" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="17" hits="45" branch="False" />
+                <line number="18" hits="45" branch="False" />
+                <line number="19" hits="45" branch="False" />
+              </lines>
+            </method>
+            <method name="&lt;GetRecommendationsAsync&gt;b__2_3" signature="(ReadyWealth.Api.Dtos.RecommendationDto)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="23" hits="64" branch="False" />
+              </lines>
+            </method>
+            <method name="&lt;GetRecommendationsAsync&gt;b__2_5" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="27" hits="138" branch="False" />
+              </lines>
+            </method>
+            <method name="&lt;GetRecommendationsAsync&gt;b__2_6" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="29" hits="32" branch="False" />
+                <line number="30" hits="32" branch="False" />
+                <line number="31" hits="32" branch="False" />
+                <line number="32" hits="32" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="183" branch="False" />
+            <line number="14" hits="92" branch="False" />
+            <line number="16" hits="45" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="40" type="jump" coverage="100%" />
+                <condition number="58" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="17" hits="45" branch="False" />
+            <line number="18" hits="45" branch="False" />
+            <line number="19" hits="45" branch="False" />
+            <line number="23" hits="64" branch="False" />
+            <line number="27" hits="138" branch="False" />
+            <line number="29" hits="32" branch="False" />
+            <line number="30" hits="32" branch="False" />
+            <line number="31" hits="32" branch="False" />
+            <line number="32" hits="32" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.RecommendationService/&lt;&gt;c__DisplayClass2_0" filename="Services\RecommendationService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="&lt;GetRecommendationsAsync&gt;b__4" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="26" hits="183" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="26" hits="183" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.RecommendationService/&lt;GetRecommendationsAsync&gt;d__2" filename="Services\RecommendationService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="19" branch="False" />
+                <line number="9" hits="19" branch="False" />
+                <line number="12" hits="19" branch="False" />
+                <line number="15" hits="19" branch="False" />
+                <line number="20" hits="19" branch="False" />
+                <line number="25" hits="19" branch="False" />
+                <line number="28" hits="19" branch="False" />
+                <line number="33" hits="19" branch="False" />
+                <line number="35" hits="19" branch="False" />
+                <line number="36" hits="19" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="19" branch="False" />
+            <line number="9" hits="19" branch="False" />
+            <line number="12" hits="19" branch="False" />
+            <line number="15" hits="19" branch="False" />
+            <line number="20" hits="19" branch="False" />
+            <line number="25" hits="19" branch="False" />
+            <line number="28" hits="19" branch="False" />
+            <line number="33" hits="19" branch="False" />
+            <line number="35" hits="19" branch="False" />
+            <line number="36" hits="19" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.WatchlistService" filename="Services\WatchlistService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(ReadyWealth.Api.Persistence.AppDbContext,ReadyWealth.Api.Services.IMarketDataService)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="16" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="16" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.WatchlistService/&lt;&gt;c" filename="Services\WatchlistService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="&lt;GetAllAsync&gt;b__3_1" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="105" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="105" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.WatchlistService/&lt;&gt;c__DisplayClass3_0" filename="Services\WatchlistService.cs" line-rate="1" branch-rate="0.5" complexity="12">
+          <methods>
+            <method name="&lt;GetAllAsync&gt;b__0" signature="(ReadyWealth.Api.Domain.WatchlistEntry)" line-rate="1" branch-rate="0.5" complexity="12">
+              <lines>
+                <line number="17" hits="2" branch="False" />
+                <line number="18" hits="2" branch="False" />
+                <line number="19" hits="2" branch="True" condition-coverage="50% (6/12)">
+                  <conditions>
+                    <condition number="28" type="jump" coverage="50%" />
+                    <condition number="40" type="jump" coverage="50%" />
+                    <condition number="50" type="jump" coverage="50%" />
+                    <condition number="66" type="jump" coverage="50%" />
+                    <condition number="82" type="jump" coverage="50%" />
+                    <condition number="98" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="20" hits="2" branch="False" />
+                <line number="21" hits="2" branch="False" />
+                <line number="22" hits="2" branch="False" />
+                <line number="23" hits="2" branch="False" />
+                <line number="24" hits="2" branch="False" />
+                <line number="25" hits="2" branch="False" />
+                <line number="26" hits="2" branch="False" />
+                <line number="27" hits="2" branch="False" />
+                <line number="28" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="2" branch="False" />
+            <line number="18" hits="2" branch="False" />
+            <line number="19" hits="2" branch="True" condition-coverage="50% (6/12)">
+              <conditions>
+                <condition number="28" type="jump" coverage="50%" />
+                <condition number="40" type="jump" coverage="50%" />
+                <condition number="50" type="jump" coverage="50%" />
+                <condition number="66" type="jump" coverage="50%" />
+                <condition number="82" type="jump" coverage="50%" />
+                <condition number="98" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="20" hits="2" branch="False" />
+            <line number="21" hits="2" branch="False" />
+            <line number="22" hits="2" branch="False" />
+            <line number="23" hits="2" branch="False" />
+            <line number="24" hits="2" branch="False" />
+            <line number="25" hits="2" branch="False" />
+            <line number="26" hits="2" branch="False" />
+            <line number="27" hits="2" branch="False" />
+            <line number="28" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.WatchlistService/&lt;&gt;c__DisplayClass4_0" filename="Services\WatchlistService.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="&lt;AddAsync&gt;b__0" signature="(ReadyWealth.Api.Domain.Stock)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="37" hits="35" branch="False" />
+              </lines>
+            </method>
+            <method name="&lt;AddAsync&gt;b__1" signature="(ReadyWealth.Api.Domain.WatchlistEntry)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="42" hits="8" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="37" hits="35" branch="False" />
+            <line number="42" hits="8" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.WatchlistService/&lt;&gt;c__DisplayClass5_0" filename="Services\WatchlistService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="&lt;RemoveAsync&gt;b__0" signature="(ReadyWealth.Api.Domain.WatchlistEntry)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="64" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="64" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.WatchlistService/&lt;AddAsync&gt;d__4" filename="Services\WatchlistService.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="33" hits="8" branch="False" />
+                <line number="35" hits="8" branch="False" />
+                <line number="36" hits="8" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="219" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="38" hits="8" branch="False" />
+                <line number="41" hits="7" branch="False" />
+                <line number="43" hits="7" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="316" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="44" hits="1" branch="False" />
+                <line number="46" hits="6" branch="False" />
+                <line number="47" hits="6" branch="False" />
+                <line number="48" hits="6" branch="False" />
+                <line number="49" hits="6" branch="False" />
+                <line number="50" hits="6" branch="False" />
+                <line number="51" hits="6" branch="False" />
+                <line number="52" hits="6" branch="False" />
+                <line number="53" hits="6" branch="False" />
+                <line number="54" hits="6" branch="False" />
+                <line number="56" hits="6" branch="False" />
+                <line number="57" hits="6" branch="False" />
+                <line number="58" hits="6" branch="False" />
+                <line number="59" hits="6" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="33" hits="8" branch="False" />
+            <line number="35" hits="8" branch="False" />
+            <line number="36" hits="8" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="219" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="38" hits="8" branch="False" />
+            <line number="41" hits="7" branch="False" />
+            <line number="43" hits="7" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="316" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="44" hits="1" branch="False" />
+            <line number="46" hits="6" branch="False" />
+            <line number="47" hits="6" branch="False" />
+            <line number="48" hits="6" branch="False" />
+            <line number="49" hits="6" branch="False" />
+            <line number="50" hits="6" branch="False" />
+            <line number="51" hits="6" branch="False" />
+            <line number="52" hits="6" branch="False" />
+            <line number="53" hits="6" branch="False" />
+            <line number="54" hits="6" branch="False" />
+            <line number="56" hits="6" branch="False" />
+            <line number="57" hits="6" branch="False" />
+            <line number="58" hits="6" branch="False" />
+            <line number="59" hits="6" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.WatchlistService/&lt;GetAllAsync&gt;d__3" filename="Services\WatchlistService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="5" branch="False" />
+                <line number="11" hits="5" branch="False" />
+                <line number="14" hits="5" branch="False" />
+                <line number="15" hits="5" branch="False" />
+                <line number="16" hits="5" branch="False" />
+                <line number="29" hits="5" branch="False" />
+                <line number="30" hits="5" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="5" branch="False" />
+            <line number="11" hits="5" branch="False" />
+            <line number="14" hits="5" branch="False" />
+            <line number="15" hits="5" branch="False" />
+            <line number="16" hits="5" branch="False" />
+            <line number="29" hits="5" branch="False" />
+            <line number="30" hits="5" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Services.WatchlistService/&lt;RemoveAsync&gt;d__5" filename="Services\WatchlistService.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="62" hits="3" branch="False" />
+                <line number="63" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="91" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="65" hits="3" branch="False" />
+                <line number="67" hits="2" branch="False" />
+                <line number="68" hits="2" branch="False" />
+                <line number="69" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="62" hits="3" branch="False" />
+            <line number="63" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="91" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="65" hits="3" branch="False" />
+            <line number="67" hits="2" branch="False" />
+            <line number="68" hits="2" branch="False" />
+            <line number="69" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Persistence.AppDbContext" filename="Persistence\AppDbContext.cs" line-rate="1" branch-rate="1" complexity="7">
+          <methods>
+            <method name="get_Wallets" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="36" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Orders" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="41" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Transactions" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="38" branch="False" />
+              </lines>
+            </method>
+            <method name="get_WatchlistEntries" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="23" branch="False" />
+              </lines>
+            </method>
+            <method name="OnModelCreating" signature="(Microsoft.EntityFrameworkCore.ModelBuilder)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="17" hits="2" branch="False" />
+                <line number="19" hits="2" branch="False" />
+                <line number="20" hits="2" branch="False" />
+                <line number="21" hits="2" branch="False" />
+                <line number="22" hits="2" branch="False" />
+                <line number="23" hits="2" branch="False" />
+                <line number="24" hits="2" branch="False" />
+                <line number="25" hits="2" branch="False" />
+                <line number="26" hits="2" branch="False" />
+                <line number="27" hits="2" branch="False" />
+                <line number="28" hits="4" branch="False" />
+                <line number="30" hits="2" branch="False" />
+                <line number="31" hits="2" branch="False" />
+                <line number="32" hits="2" branch="False" />
+                <line number="33" hits="2" branch="False" />
+                <line number="34" hits="2" branch="False" />
+                <line number="35" hits="4" branch="False" />
+                <line number="37" hits="2" branch="False" />
+                <line number="38" hits="2" branch="False" />
+                <line number="39" hits="2" branch="False" />
+                <line number="40" hits="2" branch="False" />
+                <line number="41" hits="2" branch="False" />
+                <line number="42" hits="4" branch="False" />
+                <line number="43" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(Microsoft.EntityFrameworkCore.DbContextOptions`1&lt;ReadyWealth.Api.Persistence.AppDbContext&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="98" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="36" branch="False" />
+            <line number="12" hits="41" branch="False" />
+            <line number="13" hits="38" branch="False" />
+            <line number="14" hits="23" branch="False" />
+            <line number="17" hits="2" branch="False" />
+            <line number="19" hits="2" branch="False" />
+            <line number="20" hits="2" branch="False" />
+            <line number="21" hits="2" branch="False" />
+            <line number="22" hits="2" branch="False" />
+            <line number="23" hits="2" branch="False" />
+            <line number="24" hits="2" branch="False" />
+            <line number="25" hits="2" branch="False" />
+            <line number="26" hits="2" branch="False" />
+            <line number="27" hits="2" branch="False" />
+            <line number="28" hits="4" branch="False" />
+            <line number="30" hits="2" branch="False" />
+            <line number="31" hits="2" branch="False" />
+            <line number="32" hits="2" branch="False" />
+            <line number="33" hits="2" branch="False" />
+            <line number="34" hits="2" branch="False" />
+            <line number="35" hits="4" branch="False" />
+            <line number="37" hits="2" branch="False" />
+            <line number="38" hits="2" branch="False" />
+            <line number="39" hits="2" branch="False" />
+            <line number="40" hits="2" branch="False" />
+            <line number="41" hits="2" branch="False" />
+            <line number="42" hits="4" branch="False" />
+            <line number="43" hits="2" branch="False" />
+            <line number="6" hits="98" branch="False" />
+            <line number="9" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Migrations.InitialCreate" filename="Migrations\20260302181122_InitialCreate.cs" line-rate="0.8734000000000001" branch-rate="1" complexity="2">
+          <methods>
+            <method name="Up" signature="(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="23" branch="False" />
+                <line number="14" hits="23" branch="False" />
+                <line number="15" hits="23" branch="False" />
+                <line number="16" hits="23" branch="False" />
+                <line number="17" hits="23" branch="False" />
+                <line number="18" hits="23" branch="False" />
+                <line number="19" hits="23" branch="False" />
+                <line number="20" hits="23" branch="False" />
+                <line number="21" hits="23" branch="False" />
+                <line number="22" hits="23" branch="False" />
+                <line number="23" hits="23" branch="False" />
+                <line number="24" hits="23" branch="False" />
+                <line number="25" hits="23" branch="False" />
+                <line number="26" hits="23" branch="False" />
+                <line number="27" hits="23" branch="False" />
+                <line number="28" hits="23" branch="False" />
+                <line number="29" hits="23" branch="False" />
+                <line number="30" hits="23" branch="False" />
+                <line number="31" hits="23" branch="False" />
+                <line number="32" hits="46" branch="False" />
+                <line number="34" hits="23" branch="False" />
+                <line number="35" hits="23" branch="False" />
+                <line number="36" hits="23" branch="False" />
+                <line number="37" hits="23" branch="False" />
+                <line number="38" hits="23" branch="False" />
+                <line number="39" hits="23" branch="False" />
+                <line number="40" hits="23" branch="False" />
+                <line number="41" hits="23" branch="False" />
+                <line number="42" hits="23" branch="False" />
+                <line number="43" hits="23" branch="False" />
+                <line number="44" hits="23" branch="False" />
+                <line number="45" hits="23" branch="False" />
+                <line number="46" hits="23" branch="False" />
+                <line number="47" hits="23" branch="False" />
+                <line number="48" hits="23" branch="False" />
+                <line number="49" hits="23" branch="False" />
+                <line number="50" hits="23" branch="False" />
+                <line number="51" hits="23" branch="False" />
+                <line number="52" hits="46" branch="False" />
+                <line number="54" hits="23" branch="False" />
+                <line number="55" hits="23" branch="False" />
+                <line number="56" hits="23" branch="False" />
+                <line number="57" hits="23" branch="False" />
+                <line number="58" hits="23" branch="False" />
+                <line number="59" hits="23" branch="False" />
+                <line number="60" hits="23" branch="False" />
+                <line number="61" hits="23" branch="False" />
+                <line number="62" hits="23" branch="False" />
+                <line number="63" hits="23" branch="False" />
+                <line number="64" hits="23" branch="False" />
+                <line number="65" hits="46" branch="False" />
+                <line number="67" hits="23" branch="False" />
+                <line number="68" hits="23" branch="False" />
+                <line number="69" hits="23" branch="False" />
+                <line number="70" hits="23" branch="False" />
+                <line number="71" hits="23" branch="False" />
+                <line number="72" hits="23" branch="False" />
+                <line number="73" hits="23" branch="False" />
+                <line number="74" hits="23" branch="False" />
+                <line number="75" hits="23" branch="False" />
+                <line number="76" hits="23" branch="False" />
+                <line number="77" hits="23" branch="False" />
+                <line number="78" hits="23" branch="False" />
+                <line number="79" hits="46" branch="False" />
+                <line number="81" hits="23" branch="False" />
+                <line number="82" hits="23" branch="False" />
+                <line number="83" hits="23" branch="False" />
+                <line number="84" hits="23" branch="False" />
+                <line number="85" hits="23" branch="False" />
+              </lines>
+            </method>
+            <method name="Down" signature="(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="89" hits="0" branch="False" />
+                <line number="90" hits="0" branch="False" />
+                <line number="91" hits="0" branch="False" />
+                <line number="93" hits="0" branch="False" />
+                <line number="94" hits="0" branch="False" />
+                <line number="96" hits="0" branch="False" />
+                <line number="97" hits="0" branch="False" />
+                <line number="99" hits="0" branch="False" />
+                <line number="100" hits="0" branch="False" />
+                <line number="101" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="23" branch="False" />
+            <line number="14" hits="23" branch="False" />
+            <line number="15" hits="23" branch="False" />
+            <line number="16" hits="23" branch="False" />
+            <line number="17" hits="23" branch="False" />
+            <line number="18" hits="23" branch="False" />
+            <line number="19" hits="23" branch="False" />
+            <line number="20" hits="23" branch="False" />
+            <line number="21" hits="23" branch="False" />
+            <line number="22" hits="23" branch="False" />
+            <line number="23" hits="23" branch="False" />
+            <line number="24" hits="23" branch="False" />
+            <line number="25" hits="23" branch="False" />
+            <line number="26" hits="23" branch="False" />
+            <line number="27" hits="23" branch="False" />
+            <line number="28" hits="23" branch="False" />
+            <line number="29" hits="23" branch="False" />
+            <line number="30" hits="23" branch="False" />
+            <line number="31" hits="23" branch="False" />
+            <line number="32" hits="46" branch="False" />
+            <line number="34" hits="23" branch="False" />
+            <line number="35" hits="23" branch="False" />
+            <line number="36" hits="23" branch="False" />
+            <line number="37" hits="23" branch="False" />
+            <line number="38" hits="23" branch="False" />
+            <line number="39" hits="23" branch="False" />
+            <line number="40" hits="23" branch="False" />
+            <line number="41" hits="23" branch="False" />
+            <line number="42" hits="23" branch="False" />
+            <line number="43" hits="23" branch="False" />
+            <line number="44" hits="23" branch="False" />
+            <line number="45" hits="23" branch="False" />
+            <line number="46" hits="23" branch="False" />
+            <line number="47" hits="23" branch="False" />
+            <line number="48" hits="23" branch="False" />
+            <line number="49" hits="23" branch="False" />
+            <line number="50" hits="23" branch="False" />
+            <line number="51" hits="23" branch="False" />
+            <line number="52" hits="46" branch="False" />
+            <line number="54" hits="23" branch="False" />
+            <line number="55" hits="23" branch="False" />
+            <line number="56" hits="23" branch="False" />
+            <line number="57" hits="23" branch="False" />
+            <line number="58" hits="23" branch="False" />
+            <line number="59" hits="23" branch="False" />
+            <line number="60" hits="23" branch="False" />
+            <line number="61" hits="23" branch="False" />
+            <line number="62" hits="23" branch="False" />
+            <line number="63" hits="23" branch="False" />
+            <line number="64" hits="23" branch="False" />
+            <line number="65" hits="46" branch="False" />
+            <line number="67" hits="23" branch="False" />
+            <line number="68" hits="23" branch="False" />
+            <line number="69" hits="23" branch="False" />
+            <line number="70" hits="23" branch="False" />
+            <line number="71" hits="23" branch="False" />
+            <line number="72" hits="23" branch="False" />
+            <line number="73" hits="23" branch="False" />
+            <line number="74" hits="23" branch="False" />
+            <line number="75" hits="23" branch="False" />
+            <line number="76" hits="23" branch="False" />
+            <line number="77" hits="23" branch="False" />
+            <line number="78" hits="23" branch="False" />
+            <line number="79" hits="46" branch="False" />
+            <line number="81" hits="23" branch="False" />
+            <line number="82" hits="23" branch="False" />
+            <line number="83" hits="23" branch="False" />
+            <line number="84" hits="23" branch="False" />
+            <line number="85" hits="23" branch="False" />
+            <line number="89" hits="0" branch="False" />
+            <line number="90" hits="0" branch="False" />
+            <line number="91" hits="0" branch="False" />
+            <line number="93" hits="0" branch="False" />
+            <line number="94" hits="0" branch="False" />
+            <line number="96" hits="0" branch="False" />
+            <line number="97" hits="0" branch="False" />
+            <line number="99" hits="0" branch="False" />
+            <line number="100" hits="0" branch="False" />
+            <line number="101" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Migrations.InitialCreate" filename="Migrations\20260302181122_InitialCreate.Designer.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="BuildTargetModel" signature="(Microsoft.EntityFrameworkCore.ModelBuilder)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="19" hits="23" branch="False" />
+                <line number="21" hits="23" branch="False" />
+                <line number="23" hits="23" branch="False" />
+                <line number="24" hits="23" branch="False" />
+                <line number="25" hits="23" branch="False" />
+                <line number="26" hits="23" branch="False" />
+                <line number="27" hits="23" branch="False" />
+                <line number="28" hits="23" branch="False" />
+                <line number="29" hits="23" branch="False" />
+                <line number="30" hits="23" branch="False" />
+                <line number="31" hits="23" branch="False" />
+                <line number="32" hits="23" branch="False" />
+                <line number="33" hits="23" branch="False" />
+                <line number="34" hits="23" branch="False" />
+                <line number="35" hits="23" branch="False" />
+                <line number="36" hits="23" branch="False" />
+                <line number="37" hits="23" branch="False" />
+                <line number="38" hits="23" branch="False" />
+                <line number="39" hits="23" branch="False" />
+                <line number="40" hits="23" branch="False" />
+                <line number="41" hits="23" branch="False" />
+                <line number="42" hits="23" branch="False" />
+                <line number="43" hits="23" branch="False" />
+                <line number="44" hits="23" branch="False" />
+                <line number="45" hits="23" branch="False" />
+                <line number="46" hits="23" branch="False" />
+                <line number="47" hits="23" branch="False" />
+                <line number="48" hits="23" branch="False" />
+                <line number="49" hits="23" branch="False" />
+                <line number="50" hits="23" branch="False" />
+                <line number="51" hits="23" branch="False" />
+                <line number="52" hits="23" branch="False" />
+                <line number="53" hits="23" branch="False" />
+                <line number="54" hits="23" branch="False" />
+                <line number="55" hits="23" branch="False" />
+                <line number="56" hits="23" branch="False" />
+                <line number="57" hits="23" branch="False" />
+                <line number="58" hits="23" branch="False" />
+                <line number="59" hits="23" branch="False" />
+                <line number="60" hits="23" branch="False" />
+                <line number="61" hits="23" branch="False" />
+                <line number="62" hits="23" branch="False" />
+                <line number="63" hits="46" branch="False" />
+                <line number="65" hits="23" branch="False" />
+                <line number="66" hits="23" branch="False" />
+                <line number="67" hits="23" branch="False" />
+                <line number="68" hits="23" branch="False" />
+                <line number="69" hits="23" branch="False" />
+                <line number="70" hits="23" branch="False" />
+                <line number="71" hits="23" branch="False" />
+                <line number="72" hits="23" branch="False" />
+                <line number="73" hits="23" branch="False" />
+                <line number="74" hits="23" branch="False" />
+                <line number="75" hits="23" branch="False" />
+                <line number="76" hits="23" branch="False" />
+                <line number="77" hits="23" branch="False" />
+                <line number="78" hits="23" branch="False" />
+                <line number="79" hits="23" branch="False" />
+                <line number="80" hits="23" branch="False" />
+                <line number="81" hits="23" branch="False" />
+                <line number="82" hits="23" branch="False" />
+                <line number="83" hits="23" branch="False" />
+                <line number="84" hits="23" branch="False" />
+                <line number="85" hits="23" branch="False" />
+                <line number="86" hits="23" branch="False" />
+                <line number="87" hits="23" branch="False" />
+                <line number="88" hits="23" branch="False" />
+                <line number="89" hits="23" branch="False" />
+                <line number="90" hits="23" branch="False" />
+                <line number="91" hits="23" branch="False" />
+                <line number="92" hits="23" branch="False" />
+                <line number="93" hits="23" branch="False" />
+                <line number="94" hits="23" branch="False" />
+                <line number="95" hits="23" branch="False" />
+                <line number="96" hits="23" branch="False" />
+                <line number="97" hits="23" branch="False" />
+                <line number="98" hits="23" branch="False" />
+                <line number="99" hits="23" branch="False" />
+                <line number="100" hits="23" branch="False" />
+                <line number="101" hits="23" branch="False" />
+                <line number="102" hits="23" branch="False" />
+                <line number="103" hits="23" branch="False" />
+                <line number="104" hits="23" branch="False" />
+                <line number="105" hits="46" branch="False" />
+                <line number="107" hits="23" branch="False" />
+                <line number="108" hits="23" branch="False" />
+                <line number="109" hits="23" branch="False" />
+                <line number="110" hits="23" branch="False" />
+                <line number="111" hits="23" branch="False" />
+                <line number="112" hits="23" branch="False" />
+                <line number="113" hits="23" branch="False" />
+                <line number="114" hits="23" branch="False" />
+                <line number="115" hits="23" branch="False" />
+                <line number="116" hits="23" branch="False" />
+                <line number="117" hits="23" branch="False" />
+                <line number="118" hits="23" branch="False" />
+                <line number="119" hits="23" branch="False" />
+                <line number="120" hits="23" branch="False" />
+                <line number="121" hits="23" branch="False" />
+                <line number="122" hits="23" branch="False" />
+                <line number="123" hits="23" branch="False" />
+                <line number="124" hits="23" branch="False" />
+                <line number="125" hits="23" branch="False" />
+                <line number="126" hits="23" branch="False" />
+                <line number="127" hits="23" branch="False" />
+                <line number="128" hits="23" branch="False" />
+                <line number="129" hits="23" branch="False" />
+                <line number="130" hits="23" branch="False" />
+                <line number="131" hits="46" branch="False" />
+                <line number="133" hits="23" branch="False" />
+                <line number="134" hits="23" branch="False" />
+                <line number="135" hits="23" branch="False" />
+                <line number="136" hits="23" branch="False" />
+                <line number="137" hits="23" branch="False" />
+                <line number="138" hits="23" branch="False" />
+                <line number="139" hits="23" branch="False" />
+                <line number="140" hits="23" branch="False" />
+                <line number="141" hits="23" branch="False" />
+                <line number="142" hits="23" branch="False" />
+                <line number="143" hits="23" branch="False" />
+                <line number="144" hits="23" branch="False" />
+                <line number="145" hits="23" branch="False" />
+                <line number="146" hits="23" branch="False" />
+                <line number="147" hits="23" branch="False" />
+                <line number="148" hits="23" branch="False" />
+                <line number="149" hits="23" branch="False" />
+                <line number="150" hits="23" branch="False" />
+                <line number="151" hits="23" branch="False" />
+                <line number="152" hits="46" branch="False" />
+                <line number="154" hits="23" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="23" branch="False" />
+            <line number="21" hits="23" branch="False" />
+            <line number="23" hits="23" branch="False" />
+            <line number="24" hits="23" branch="False" />
+            <line number="25" hits="23" branch="False" />
+            <line number="26" hits="23" branch="False" />
+            <line number="27" hits="23" branch="False" />
+            <line number="28" hits="23" branch="False" />
+            <line number="29" hits="23" branch="False" />
+            <line number="30" hits="23" branch="False" />
+            <line number="31" hits="23" branch="False" />
+            <line number="32" hits="23" branch="False" />
+            <line number="33" hits="23" branch="False" />
+            <line number="34" hits="23" branch="False" />
+            <line number="35" hits="23" branch="False" />
+            <line number="36" hits="23" branch="False" />
+            <line number="37" hits="23" branch="False" />
+            <line number="38" hits="23" branch="False" />
+            <line number="39" hits="23" branch="False" />
+            <line number="40" hits="23" branch="False" />
+            <line number="41" hits="23" branch="False" />
+            <line number="42" hits="23" branch="False" />
+            <line number="43" hits="23" branch="False" />
+            <line number="44" hits="23" branch="False" />
+            <line number="45" hits="23" branch="False" />
+            <line number="46" hits="23" branch="False" />
+            <line number="47" hits="23" branch="False" />
+            <line number="48" hits="23" branch="False" />
+            <line number="49" hits="23" branch="False" />
+            <line number="50" hits="23" branch="False" />
+            <line number="51" hits="23" branch="False" />
+            <line number="52" hits="23" branch="False" />
+            <line number="53" hits="23" branch="False" />
+            <line number="54" hits="23" branch="False" />
+            <line number="55" hits="23" branch="False" />
+            <line number="56" hits="23" branch="False" />
+            <line number="57" hits="23" branch="False" />
+            <line number="58" hits="23" branch="False" />
+            <line number="59" hits="23" branch="False" />
+            <line number="60" hits="23" branch="False" />
+            <line number="61" hits="23" branch="False" />
+            <line number="62" hits="23" branch="False" />
+            <line number="63" hits="46" branch="False" />
+            <line number="65" hits="23" branch="False" />
+            <line number="66" hits="23" branch="False" />
+            <line number="67" hits="23" branch="False" />
+            <line number="68" hits="23" branch="False" />
+            <line number="69" hits="23" branch="False" />
+            <line number="70" hits="23" branch="False" />
+            <line number="71" hits="23" branch="False" />
+            <line number="72" hits="23" branch="False" />
+            <line number="73" hits="23" branch="False" />
+            <line number="74" hits="23" branch="False" />
+            <line number="75" hits="23" branch="False" />
+            <line number="76" hits="23" branch="False" />
+            <line number="77" hits="23" branch="False" />
+            <line number="78" hits="23" branch="False" />
+            <line number="79" hits="23" branch="False" />
+            <line number="80" hits="23" branch="False" />
+            <line number="81" hits="23" branch="False" />
+            <line number="82" hits="23" branch="False" />
+            <line number="83" hits="23" branch="False" />
+            <line number="84" hits="23" branch="False" />
+            <line number="85" hits="23" branch="False" />
+            <line number="86" hits="23" branch="False" />
+            <line number="87" hits="23" branch="False" />
+            <line number="88" hits="23" branch="False" />
+            <line number="89" hits="23" branch="False" />
+            <line number="90" hits="23" branch="False" />
+            <line number="91" hits="23" branch="False" />
+            <line number="92" hits="23" branch="False" />
+            <line number="93" hits="23" branch="False" />
+            <line number="94" hits="23" branch="False" />
+            <line number="95" hits="23" branch="False" />
+            <line number="96" hits="23" branch="False" />
+            <line number="97" hits="23" branch="False" />
+            <line number="98" hits="23" branch="False" />
+            <line number="99" hits="23" branch="False" />
+            <line number="100" hits="23" branch="False" />
+            <line number="101" hits="23" branch="False" />
+            <line number="102" hits="23" branch="False" />
+            <line number="103" hits="23" branch="False" />
+            <line number="104" hits="23" branch="False" />
+            <line number="105" hits="46" branch="False" />
+            <line number="107" hits="23" branch="False" />
+            <line number="108" hits="23" branch="False" />
+            <line number="109" hits="23" branch="False" />
+            <line number="110" hits="23" branch="False" />
+            <line number="111" hits="23" branch="False" />
+            <line number="112" hits="23" branch="False" />
+            <line number="113" hits="23" branch="False" />
+            <line number="114" hits="23" branch="False" />
+            <line number="115" hits="23" branch="False" />
+            <line number="116" hits="23" branch="False" />
+            <line number="117" hits="23" branch="False" />
+            <line number="118" hits="23" branch="False" />
+            <line number="119" hits="23" branch="False" />
+            <line number="120" hits="23" branch="False" />
+            <line number="121" hits="23" branch="False" />
+            <line number="122" hits="23" branch="False" />
+            <line number="123" hits="23" branch="False" />
+            <line number="124" hits="23" branch="False" />
+            <line number="125" hits="23" branch="False" />
+            <line number="126" hits="23" branch="False" />
+            <line number="127" hits="23" branch="False" />
+            <line number="128" hits="23" branch="False" />
+            <line number="129" hits="23" branch="False" />
+            <line number="130" hits="23" branch="False" />
+            <line number="131" hits="46" branch="False" />
+            <line number="133" hits="23" branch="False" />
+            <line number="134" hits="23" branch="False" />
+            <line number="135" hits="23" branch="False" />
+            <line number="136" hits="23" branch="False" />
+            <line number="137" hits="23" branch="False" />
+            <line number="138" hits="23" branch="False" />
+            <line number="139" hits="23" branch="False" />
+            <line number="140" hits="23" branch="False" />
+            <line number="141" hits="23" branch="False" />
+            <line number="142" hits="23" branch="False" />
+            <line number="143" hits="23" branch="False" />
+            <line number="144" hits="23" branch="False" />
+            <line number="145" hits="23" branch="False" />
+            <line number="146" hits="23" branch="False" />
+            <line number="147" hits="23" branch="False" />
+            <line number="148" hits="23" branch="False" />
+            <line number="149" hits="23" branch="False" />
+            <line number="150" hits="23" branch="False" />
+            <line number="151" hits="23" branch="False" />
+            <line number="152" hits="46" branch="False" />
+            <line number="154" hits="23" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Migrations.AppDbContextModelSnapshot" filename="Migrations\AppDbContextModelSnapshot.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="BuildModel" signature="(Microsoft.EntityFrameworkCore.ModelBuilder)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="25" branch="False" />
+                <line number="18" hits="25" branch="False" />
+                <line number="20" hits="25" branch="False" />
+                <line number="21" hits="25" branch="False" />
+                <line number="22" hits="25" branch="False" />
+                <line number="23" hits="25" branch="False" />
+                <line number="24" hits="25" branch="False" />
+                <line number="25" hits="25" branch="False" />
+                <line number="26" hits="25" branch="False" />
+                <line number="27" hits="25" branch="False" />
+                <line number="28" hits="25" branch="False" />
+                <line number="29" hits="25" branch="False" />
+                <line number="30" hits="25" branch="False" />
+                <line number="31" hits="25" branch="False" />
+                <line number="32" hits="25" branch="False" />
+                <line number="33" hits="25" branch="False" />
+                <line number="34" hits="25" branch="False" />
+                <line number="35" hits="25" branch="False" />
+                <line number="36" hits="25" branch="False" />
+                <line number="37" hits="25" branch="False" />
+                <line number="38" hits="25" branch="False" />
+                <line number="39" hits="25" branch="False" />
+                <line number="40" hits="25" branch="False" />
+                <line number="41" hits="25" branch="False" />
+                <line number="42" hits="25" branch="False" />
+                <line number="43" hits="25" branch="False" />
+                <line number="44" hits="25" branch="False" />
+                <line number="45" hits="25" branch="False" />
+                <line number="46" hits="25" branch="False" />
+                <line number="47" hits="25" branch="False" />
+                <line number="48" hits="25" branch="False" />
+                <line number="49" hits="25" branch="False" />
+                <line number="50" hits="25" branch="False" />
+                <line number="51" hits="25" branch="False" />
+                <line number="52" hits="25" branch="False" />
+                <line number="53" hits="25" branch="False" />
+                <line number="54" hits="25" branch="False" />
+                <line number="55" hits="25" branch="False" />
+                <line number="56" hits="25" branch="False" />
+                <line number="57" hits="25" branch="False" />
+                <line number="58" hits="25" branch="False" />
+                <line number="59" hits="25" branch="False" />
+                <line number="60" hits="50" branch="False" />
+                <line number="62" hits="25" branch="False" />
+                <line number="63" hits="25" branch="False" />
+                <line number="64" hits="25" branch="False" />
+                <line number="65" hits="25" branch="False" />
+                <line number="66" hits="25" branch="False" />
+                <line number="67" hits="25" branch="False" />
+                <line number="68" hits="25" branch="False" />
+                <line number="69" hits="25" branch="False" />
+                <line number="70" hits="25" branch="False" />
+                <line number="71" hits="25" branch="False" />
+                <line number="72" hits="25" branch="False" />
+                <line number="73" hits="25" branch="False" />
+                <line number="74" hits="25" branch="False" />
+                <line number="75" hits="25" branch="False" />
+                <line number="76" hits="25" branch="False" />
+                <line number="77" hits="25" branch="False" />
+                <line number="78" hits="25" branch="False" />
+                <line number="79" hits="25" branch="False" />
+                <line number="80" hits="25" branch="False" />
+                <line number="81" hits="25" branch="False" />
+                <line number="82" hits="25" branch="False" />
+                <line number="83" hits="25" branch="False" />
+                <line number="84" hits="25" branch="False" />
+                <line number="85" hits="25" branch="False" />
+                <line number="86" hits="25" branch="False" />
+                <line number="87" hits="25" branch="False" />
+                <line number="88" hits="25" branch="False" />
+                <line number="89" hits="25" branch="False" />
+                <line number="90" hits="25" branch="False" />
+                <line number="91" hits="25" branch="False" />
+                <line number="92" hits="25" branch="False" />
+                <line number="93" hits="25" branch="False" />
+                <line number="94" hits="25" branch="False" />
+                <line number="95" hits="25" branch="False" />
+                <line number="96" hits="25" branch="False" />
+                <line number="97" hits="25" branch="False" />
+                <line number="98" hits="25" branch="False" />
+                <line number="99" hits="25" branch="False" />
+                <line number="100" hits="25" branch="False" />
+                <line number="101" hits="25" branch="False" />
+                <line number="102" hits="50" branch="False" />
+                <line number="104" hits="25" branch="False" />
+                <line number="105" hits="25" branch="False" />
+                <line number="106" hits="25" branch="False" />
+                <line number="107" hits="25" branch="False" />
+                <line number="108" hits="25" branch="False" />
+                <line number="109" hits="25" branch="False" />
+                <line number="110" hits="25" branch="False" />
+                <line number="111" hits="25" branch="False" />
+                <line number="112" hits="25" branch="False" />
+                <line number="113" hits="25" branch="False" />
+                <line number="114" hits="25" branch="False" />
+                <line number="115" hits="25" branch="False" />
+                <line number="116" hits="25" branch="False" />
+                <line number="117" hits="25" branch="False" />
+                <line number="118" hits="25" branch="False" />
+                <line number="119" hits="25" branch="False" />
+                <line number="120" hits="25" branch="False" />
+                <line number="121" hits="25" branch="False" />
+                <line number="122" hits="25" branch="False" />
+                <line number="123" hits="25" branch="False" />
+                <line number="124" hits="25" branch="False" />
+                <line number="125" hits="25" branch="False" />
+                <line number="126" hits="25" branch="False" />
+                <line number="127" hits="25" branch="False" />
+                <line number="128" hits="50" branch="False" />
+                <line number="130" hits="25" branch="False" />
+                <line number="131" hits="25" branch="False" />
+                <line number="132" hits="25" branch="False" />
+                <line number="133" hits="25" branch="False" />
+                <line number="134" hits="25" branch="False" />
+                <line number="135" hits="25" branch="False" />
+                <line number="136" hits="25" branch="False" />
+                <line number="137" hits="25" branch="False" />
+                <line number="138" hits="25" branch="False" />
+                <line number="139" hits="25" branch="False" />
+                <line number="140" hits="25" branch="False" />
+                <line number="141" hits="25" branch="False" />
+                <line number="142" hits="25" branch="False" />
+                <line number="143" hits="25" branch="False" />
+                <line number="144" hits="25" branch="False" />
+                <line number="145" hits="25" branch="False" />
+                <line number="146" hits="25" branch="False" />
+                <line number="147" hits="25" branch="False" />
+                <line number="148" hits="25" branch="False" />
+                <line number="149" hits="50" branch="False" />
+                <line number="151" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="25" branch="False" />
+            <line number="18" hits="25" branch="False" />
+            <line number="20" hits="25" branch="False" />
+            <line number="21" hits="25" branch="False" />
+            <line number="22" hits="25" branch="False" />
+            <line number="23" hits="25" branch="False" />
+            <line number="24" hits="25" branch="False" />
+            <line number="25" hits="25" branch="False" />
+            <line number="26" hits="25" branch="False" />
+            <line number="27" hits="25" branch="False" />
+            <line number="28" hits="25" branch="False" />
+            <line number="29" hits="25" branch="False" />
+            <line number="30" hits="25" branch="False" />
+            <line number="31" hits="25" branch="False" />
+            <line number="32" hits="25" branch="False" />
+            <line number="33" hits="25" branch="False" />
+            <line number="34" hits="25" branch="False" />
+            <line number="35" hits="25" branch="False" />
+            <line number="36" hits="25" branch="False" />
+            <line number="37" hits="25" branch="False" />
+            <line number="38" hits="25" branch="False" />
+            <line number="39" hits="25" branch="False" />
+            <line number="40" hits="25" branch="False" />
+            <line number="41" hits="25" branch="False" />
+            <line number="42" hits="25" branch="False" />
+            <line number="43" hits="25" branch="False" />
+            <line number="44" hits="25" branch="False" />
+            <line number="45" hits="25" branch="False" />
+            <line number="46" hits="25" branch="False" />
+            <line number="47" hits="25" branch="False" />
+            <line number="48" hits="25" branch="False" />
+            <line number="49" hits="25" branch="False" />
+            <line number="50" hits="25" branch="False" />
+            <line number="51" hits="25" branch="False" />
+            <line number="52" hits="25" branch="False" />
+            <line number="53" hits="25" branch="False" />
+            <line number="54" hits="25" branch="False" />
+            <line number="55" hits="25" branch="False" />
+            <line number="56" hits="25" branch="False" />
+            <line number="57" hits="25" branch="False" />
+            <line number="58" hits="25" branch="False" />
+            <line number="59" hits="25" branch="False" />
+            <line number="60" hits="50" branch="False" />
+            <line number="62" hits="25" branch="False" />
+            <line number="63" hits="25" branch="False" />
+            <line number="64" hits="25" branch="False" />
+            <line number="65" hits="25" branch="False" />
+            <line number="66" hits="25" branch="False" />
+            <line number="67" hits="25" branch="False" />
+            <line number="68" hits="25" branch="False" />
+            <line number="69" hits="25" branch="False" />
+            <line number="70" hits="25" branch="False" />
+            <line number="71" hits="25" branch="False" />
+            <line number="72" hits="25" branch="False" />
+            <line number="73" hits="25" branch="False" />
+            <line number="74" hits="25" branch="False" />
+            <line number="75" hits="25" branch="False" />
+            <line number="76" hits="25" branch="False" />
+            <line number="77" hits="25" branch="False" />
+            <line number="78" hits="25" branch="False" />
+            <line number="79" hits="25" branch="False" />
+            <line number="80" hits="25" branch="False" />
+            <line number="81" hits="25" branch="False" />
+            <line number="82" hits="25" branch="False" />
+            <line number="83" hits="25" branch="False" />
+            <line number="84" hits="25" branch="False" />
+            <line number="85" hits="25" branch="False" />
+            <line number="86" hits="25" branch="False" />
+            <line number="87" hits="25" branch="False" />
+            <line number="88" hits="25" branch="False" />
+            <line number="89" hits="25" branch="False" />
+            <line number="90" hits="25" branch="False" />
+            <line number="91" hits="25" branch="False" />
+            <line number="92" hits="25" branch="False" />
+            <line number="93" hits="25" branch="False" />
+            <line number="94" hits="25" branch="False" />
+            <line number="95" hits="25" branch="False" />
+            <line number="96" hits="25" branch="False" />
+            <line number="97" hits="25" branch="False" />
+            <line number="98" hits="25" branch="False" />
+            <line number="99" hits="25" branch="False" />
+            <line number="100" hits="25" branch="False" />
+            <line number="101" hits="25" branch="False" />
+            <line number="102" hits="50" branch="False" />
+            <line number="104" hits="25" branch="False" />
+            <line number="105" hits="25" branch="False" />
+            <line number="106" hits="25" branch="False" />
+            <line number="107" hits="25" branch="False" />
+            <line number="108" hits="25" branch="False" />
+            <line number="109" hits="25" branch="False" />
+            <line number="110" hits="25" branch="False" />
+            <line number="111" hits="25" branch="False" />
+            <line number="112" hits="25" branch="False" />
+            <line number="113" hits="25" branch="False" />
+            <line number="114" hits="25" branch="False" />
+            <line number="115" hits="25" branch="False" />
+            <line number="116" hits="25" branch="False" />
+            <line number="117" hits="25" branch="False" />
+            <line number="118" hits="25" branch="False" />
+            <line number="119" hits="25" branch="False" />
+            <line number="120" hits="25" branch="False" />
+            <line number="121" hits="25" branch="False" />
+            <line number="122" hits="25" branch="False" />
+            <line number="123" hits="25" branch="False" />
+            <line number="124" hits="25" branch="False" />
+            <line number="125" hits="25" branch="False" />
+            <line number="126" hits="25" branch="False" />
+            <line number="127" hits="25" branch="False" />
+            <line number="128" hits="50" branch="False" />
+            <line number="130" hits="25" branch="False" />
+            <line number="131" hits="25" branch="False" />
+            <line number="132" hits="25" branch="False" />
+            <line number="133" hits="25" branch="False" />
+            <line number="134" hits="25" branch="False" />
+            <line number="135" hits="25" branch="False" />
+            <line number="136" hits="25" branch="False" />
+            <line number="137" hits="25" branch="False" />
+            <line number="138" hits="25" branch="False" />
+            <line number="139" hits="25" branch="False" />
+            <line number="140" hits="25" branch="False" />
+            <line number="141" hits="25" branch="False" />
+            <line number="142" hits="25" branch="False" />
+            <line number="143" hits="25" branch="False" />
+            <line number="144" hits="25" branch="False" />
+            <line number="145" hits="25" branch="False" />
+            <line number="146" hits="25" branch="False" />
+            <line number="147" hits="25" branch="False" />
+            <line number="148" hits="25" branch="False" />
+            <line number="149" hits="50" branch="False" />
+            <line number="151" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.OrderEndpoints" filename="Endpoints\OrderEndpoints.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MapOrderEndpoints" signature="(Microsoft.AspNetCore.Builder.WebApplication)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="25" branch="False" />
+                <line number="10" hits="25" branch="False" />
+                <line number="11" hits="18" branch="False" />
+                <line number="12" hits="25" branch="False" />
+                <line number="13" hits="18" branch="False" />
+                <line number="14" hits="18" branch="False" />
+                <line number="15" hits="16" branch="False" />
+                <line number="16" hits="25" branch="False" />
+                <line number="17" hits="1" branch="False" />
+                <line number="18" hits="1" branch="False" />
+                <line number="19" hits="1" branch="False" />
+                <line number="20" hits="25" branch="False" />
+                <line number="21" hits="1" branch="False" />
+                <line number="22" hits="1" branch="False" />
+                <line number="23" hits="25" branch="False" />
+                <line number="24" hits="1" branch="False" />
+                <line number="25" hits="1" branch="False" />
+                <line number="26" hits="25" branch="False" />
+                <line number="27" hits="43" branch="False" />
+                <line number="29" hits="25" branch="False" />
+                <line number="30" hits="2" branch="False" />
+                <line number="31" hits="2" branch="False" />
+                <line number="32" hits="2" branch="False" />
+                <line number="33" hits="27" branch="False" />
+                <line number="34" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="25" branch="False" />
+            <line number="10" hits="25" branch="False" />
+            <line number="11" hits="18" branch="False" />
+            <line number="12" hits="25" branch="False" />
+            <line number="13" hits="18" branch="False" />
+            <line number="14" hits="18" branch="False" />
+            <line number="15" hits="16" branch="False" />
+            <line number="16" hits="25" branch="False" />
+            <line number="17" hits="1" branch="False" />
+            <line number="18" hits="1" branch="False" />
+            <line number="19" hits="1" branch="False" />
+            <line number="20" hits="25" branch="False" />
+            <line number="21" hits="1" branch="False" />
+            <line number="22" hits="1" branch="False" />
+            <line number="23" hits="25" branch="False" />
+            <line number="24" hits="1" branch="False" />
+            <line number="25" hits="1" branch="False" />
+            <line number="26" hits="25" branch="False" />
+            <line number="27" hits="43" branch="False" />
+            <line number="29" hits="25" branch="False" />
+            <line number="30" hits="2" branch="False" />
+            <line number="31" hits="2" branch="False" />
+            <line number="32" hits="2" branch="False" />
+            <line number="33" hits="27" branch="False" />
+            <line number="34" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.OrderEndpoints/&lt;&gt;c/&lt;&lt;MapOrderEndpoints&gt;b__0_0&gt;d" filename="Endpoints\OrderEndpoints.cs" line-rate="1" branch-rate="0.5" complexity="2">
+          <methods />
+          <lines />
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.PositionEndpoints" filename="Endpoints\PositionEndpoints.cs" line-rate="1" branch-rate="0.5" complexity="6">
+          <methods>
+            <method name="MapPositionEndpoints" signature="(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)" line-rate="1" branch-rate="0.5" complexity="6">
+              <lines>
+                <line number="12" hits="25" branch="False" />
+                <line number="14" hits="25" branch="False" />
+                <line number="15" hits="5" branch="False" />
+                <line number="16" hits="5" branch="False" />
+                <line number="17" hits="105" branch="False" />
+                <line number="18" hits="25" branch="False" />
+                <line number="19" hits="5" branch="False" />
+                <line number="20" hits="5" branch="False" />
+                <line number="21" hits="5" branch="False" />
+                <line number="22" hits="5" branch="False" />
+                <line number="23" hits="2" branch="False" />
+                <line number="24" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="20" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="25" hits="2" branch="False" />
+                <line number="26" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="62" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="27" hits="2" branch="False" />
+                <line number="28" hits="2" branch="False" />
+                <line number="29" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="107" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="30" hits="2" branch="False" />
+                <line number="31" hits="2" branch="False" />
+                <line number="32" hits="5" branch="False" />
+                <line number="33" hits="2" branch="False" />
+                <line number="34" hits="2" branch="False" />
+                <line number="35" hits="2" branch="False" />
+                <line number="36" hits="2" branch="False" />
+                <line number="37" hits="2" branch="False" />
+                <line number="38" hits="2" branch="False" />
+                <line number="39" hits="2" branch="False" />
+                <line number="40" hits="2" branch="False" />
+                <line number="41" hits="2" branch="False" />
+                <line number="42" hits="2" branch="False" />
+                <line number="43" hits="2" branch="False" />
+                <line number="44" hits="2" branch="False" />
+                <line number="45" hits="5" branch="False" />
+                <line number="46" hits="25" branch="False" />
+                <line number="47" hits="5" branch="False" />
+                <line number="48" hits="30" branch="False" />
+                <line number="51" hits="25" branch="False" />
+                <line number="52" hits="25" branch="False" />
+                <line number="53" hits="25" branch="False" />
+                <line number="54" hits="25" branch="False" />
+                <line number="55" hits="6" branch="False" />
+                <line number="56" hits="6" branch="False" />
+                <line number="57" hits="6" branch="False" />
+                <line number="58" hits="2" branch="False" />
+                <line number="59" hits="2" branch="False" />
+                <line number="60" hits="2" branch="False" />
+                <line number="61" hits="2" branch="False" />
+                <line number="62" hits="25" branch="False" />
+                <line number="63" hits="25" branch="False" />
+                <line number="64" hits="4" branch="False" />
+                <line number="65" hits="4" branch="False" />
+                <line number="66" hits="8" branch="False" />
+                <line number="67" hits="25" branch="False" />
+                <line number="68" hits="4" branch="False" />
+                <line number="69" hits="4" branch="False" />
+                <line number="70" hits="4" branch="False" />
+                <line number="71" hits="4" branch="False" />
+                <line number="72" hits="4" branch="False" />
+                <line number="73" hits="25" branch="False" />
+                <line number="74" hits="25" branch="False" />
+                <line number="75" hits="4" branch="False" />
+                <line number="76" hits="4" branch="False" />
+                <line number="77" hits="4" branch="False" />
+                <line number="78" hits="4" branch="False" />
+                <line number="79" hits="25" branch="False" />
+                <line number="80" hits="25" branch="False" />
+                <line number="81" hits="4" branch="False" />
+                <line number="82" hits="4" branch="False" />
+                <line number="83" hits="25" branch="False" />
+                <line number="84" hits="25" branch="False" />
+                <line number="85" hits="4" branch="False" />
+                <line number="86" hits="4" branch="False" />
+                <line number="87" hits="4" branch="False" />
+                <line number="88" hits="4" branch="False" />
+                <line number="89" hits="4" branch="False" />
+                <line number="90" hits="4" branch="False" />
+                <line number="91" hits="4" branch="False" />
+                <line number="92" hits="4" branch="False" />
+                <line number="93" hits="25" branch="False" />
+                <line number="94" hits="4" branch="False" />
+                <line number="95" hits="25" branch="False" />
+                <line number="96" hits="4" branch="False" />
+                <line number="97" hits="4" branch="False" />
+                <line number="98" hits="4" branch="False" />
+                <line number="99" hits="4" branch="False" />
+                <line number="100" hits="4" branch="False" />
+                <line number="101" hits="4" branch="False" />
+                <line number="102" hits="4" branch="False" />
+                <line number="103" hits="4" branch="False" />
+                <line number="104" hits="31" branch="False" />
+                <line number="106" hits="25" branch="False" />
+                <line number="107" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="25" branch="False" />
+            <line number="14" hits="25" branch="False" />
+            <line number="15" hits="5" branch="False" />
+            <line number="16" hits="5" branch="False" />
+            <line number="17" hits="105" branch="False" />
+            <line number="18" hits="25" branch="False" />
+            <line number="19" hits="5" branch="False" />
+            <line number="20" hits="5" branch="False" />
+            <line number="21" hits="5" branch="False" />
+            <line number="22" hits="5" branch="False" />
+            <line number="23" hits="2" branch="False" />
+            <line number="24" hits="2" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="20" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="25" hits="2" branch="False" />
+            <line number="26" hits="2" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="62" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="27" hits="2" branch="False" />
+            <line number="28" hits="2" branch="False" />
+            <line number="29" hits="2" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="107" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="30" hits="2" branch="False" />
+            <line number="31" hits="2" branch="False" />
+            <line number="32" hits="5" branch="False" />
+            <line number="33" hits="2" branch="False" />
+            <line number="34" hits="2" branch="False" />
+            <line number="35" hits="2" branch="False" />
+            <line number="36" hits="2" branch="False" />
+            <line number="37" hits="2" branch="False" />
+            <line number="38" hits="2" branch="False" />
+            <line number="39" hits="2" branch="False" />
+            <line number="40" hits="2" branch="False" />
+            <line number="41" hits="2" branch="False" />
+            <line number="42" hits="2" branch="False" />
+            <line number="43" hits="2" branch="False" />
+            <line number="44" hits="2" branch="False" />
+            <line number="45" hits="5" branch="False" />
+            <line number="46" hits="25" branch="False" />
+            <line number="47" hits="5" branch="False" />
+            <line number="48" hits="30" branch="False" />
+            <line number="51" hits="25" branch="False" />
+            <line number="52" hits="25" branch="False" />
+            <line number="53" hits="25" branch="False" />
+            <line number="54" hits="25" branch="False" />
+            <line number="55" hits="6" branch="False" />
+            <line number="56" hits="6" branch="False" />
+            <line number="57" hits="6" branch="False" />
+            <line number="58" hits="2" branch="False" />
+            <line number="59" hits="2" branch="False" />
+            <line number="60" hits="2" branch="False" />
+            <line number="61" hits="2" branch="False" />
+            <line number="62" hits="25" branch="False" />
+            <line number="63" hits="25" branch="False" />
+            <line number="64" hits="4" branch="False" />
+            <line number="65" hits="4" branch="False" />
+            <line number="66" hits="8" branch="False" />
+            <line number="67" hits="25" branch="False" />
+            <line number="68" hits="4" branch="False" />
+            <line number="69" hits="4" branch="False" />
+            <line number="70" hits="4" branch="False" />
+            <line number="71" hits="4" branch="False" />
+            <line number="72" hits="4" branch="False" />
+            <line number="73" hits="25" branch="False" />
+            <line number="74" hits="25" branch="False" />
+            <line number="75" hits="4" branch="False" />
+            <line number="76" hits="4" branch="False" />
+            <line number="77" hits="4" branch="False" />
+            <line number="78" hits="4" branch="False" />
+            <line number="79" hits="25" branch="False" />
+            <line number="80" hits="25" branch="False" />
+            <line number="81" hits="4" branch="False" />
+            <line number="82" hits="4" branch="False" />
+            <line number="83" hits="25" branch="False" />
+            <line number="84" hits="25" branch="False" />
+            <line number="85" hits="4" branch="False" />
+            <line number="86" hits="4" branch="False" />
+            <line number="87" hits="4" branch="False" />
+            <line number="88" hits="4" branch="False" />
+            <line number="89" hits="4" branch="False" />
+            <line number="90" hits="4" branch="False" />
+            <line number="91" hits="4" branch="False" />
+            <line number="92" hits="4" branch="False" />
+            <line number="93" hits="25" branch="False" />
+            <line number="94" hits="4" branch="False" />
+            <line number="95" hits="25" branch="False" />
+            <line number="96" hits="4" branch="False" />
+            <line number="97" hits="4" branch="False" />
+            <line number="98" hits="4" branch="False" />
+            <line number="99" hits="4" branch="False" />
+            <line number="100" hits="4" branch="False" />
+            <line number="101" hits="4" branch="False" />
+            <line number="102" hits="4" branch="False" />
+            <line number="103" hits="4" branch="False" />
+            <line number="104" hits="31" branch="False" />
+            <line number="106" hits="25" branch="False" />
+            <line number="107" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.PositionEndpoints/&lt;&gt;c/&lt;&lt;MapPositionEndpoints&gt;b__0_1&gt;d" filename="Endpoints\PositionEndpoints.cs" line-rate="1" branch-rate="0.75" complexity="12">
+          <methods />
+          <lines />
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.RecommendationsEndpoints" filename="Endpoints\RecommendationsEndpoints.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MapRecommendationsEndpoints" signature="(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="25" branch="False" />
+                <line number="9" hits="25" branch="False" />
+                <line number="10" hits="8" branch="False" />
+                <line number="11" hits="8" branch="False" />
+                <line number="12" hits="25" branch="False" />
+                <line number="13" hits="8" branch="False" />
+                <line number="14" hits="2" branch="False" />
+                <line number="15" hits="2" branch="False" />
+                <line number="16" hits="2" branch="False" />
+                <line number="17" hits="2" branch="False" />
+                <line number="18" hits="2" branch="False" />
+                <line number="19" hits="2" branch="False" />
+                <line number="20" hits="2" branch="False" />
+                <line number="21" hits="2" branch="False" />
+                <line number="22" hits="25" branch="False" />
+                <line number="23" hits="25" branch="False" />
+                <line number="24" hits="6" branch="False" />
+                <line number="25" hits="6" branch="False" />
+                <line number="26" hits="6" branch="False" />
+                <line number="27" hits="6" branch="False" />
+                <line number="28" hits="6" branch="False" />
+                <line number="29" hits="6" branch="False" />
+                <line number="30" hits="33" branch="False" />
+                <line number="32" hits="25" branch="False" />
+                <line number="33" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="25" branch="False" />
+            <line number="9" hits="25" branch="False" />
+            <line number="10" hits="8" branch="False" />
+            <line number="11" hits="8" branch="False" />
+            <line number="12" hits="25" branch="False" />
+            <line number="13" hits="8" branch="False" />
+            <line number="14" hits="2" branch="False" />
+            <line number="15" hits="2" branch="False" />
+            <line number="16" hits="2" branch="False" />
+            <line number="17" hits="2" branch="False" />
+            <line number="18" hits="2" branch="False" />
+            <line number="19" hits="2" branch="False" />
+            <line number="20" hits="2" branch="False" />
+            <line number="21" hits="2" branch="False" />
+            <line number="22" hits="25" branch="False" />
+            <line number="23" hits="25" branch="False" />
+            <line number="24" hits="6" branch="False" />
+            <line number="25" hits="6" branch="False" />
+            <line number="26" hits="6" branch="False" />
+            <line number="27" hits="6" branch="False" />
+            <line number="28" hits="6" branch="False" />
+            <line number="29" hits="6" branch="False" />
+            <line number="30" hits="33" branch="False" />
+            <line number="32" hits="25" branch="False" />
+            <line number="33" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.RecommendationsEndpoints/&lt;&gt;c/&lt;&lt;MapRecommendationsEndpoints&gt;b__0_0&gt;d" filename="Endpoints\RecommendationsEndpoints.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods />
+          <lines />
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.StocksEndpoints" filename="Endpoints\StocksEndpoints.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MapStocksEndpoints" signature="(Microsoft.AspNetCore.Builder.WebApplication)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="25" branch="False" />
+                <line number="9" hits="25" branch="False" />
+                <line number="10" hits="3" branch="False" />
+                <line number="11" hits="3" branch="False" />
+                <line number="12" hits="3" branch="False" />
+                <line number="13" hits="3" branch="False" />
+                <line number="14" hits="3" branch="False" />
+                <line number="15" hits="28" branch="False" />
+                <line number="17" hits="25" branch="False" />
+                <line number="18" hits="2" branch="False" />
+                <line number="19" hits="2" branch="False" />
+                <line number="20" hits="2" branch="False" />
+                <line number="21" hits="2" branch="False" />
+                <line number="22" hits="2" branch="False" />
+                <line number="23" hits="27" branch="False" />
+                <line number="25" hits="25" branch="False" />
+                <line number="26" hits="2" branch="False" />
+                <line number="27" hits="2" branch="False" />
+                <line number="28" hits="2" branch="False" />
+                <line number="29" hits="2" branch="False" />
+                <line number="30" hits="2" branch="False" />
+                <line number="31" hits="27" branch="False" />
+                <line number="33" hits="25" branch="False" />
+                <line number="34" hits="2" branch="False" />
+                <line number="35" hits="2" branch="False" />
+                <line number="36" hits="2" branch="False" />
+                <line number="37" hits="2" branch="False" />
+                <line number="38" hits="2" branch="False" />
+                <line number="39" hits="27" branch="False" />
+                <line number="40" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="25" branch="False" />
+            <line number="9" hits="25" branch="False" />
+            <line number="10" hits="3" branch="False" />
+            <line number="11" hits="3" branch="False" />
+            <line number="12" hits="3" branch="False" />
+            <line number="13" hits="3" branch="False" />
+            <line number="14" hits="3" branch="False" />
+            <line number="15" hits="28" branch="False" />
+            <line number="17" hits="25" branch="False" />
+            <line number="18" hits="2" branch="False" />
+            <line number="19" hits="2" branch="False" />
+            <line number="20" hits="2" branch="False" />
+            <line number="21" hits="2" branch="False" />
+            <line number="22" hits="2" branch="False" />
+            <line number="23" hits="27" branch="False" />
+            <line number="25" hits="25" branch="False" />
+            <line number="26" hits="2" branch="False" />
+            <line number="27" hits="2" branch="False" />
+            <line number="28" hits="2" branch="False" />
+            <line number="29" hits="2" branch="False" />
+            <line number="30" hits="2" branch="False" />
+            <line number="31" hits="27" branch="False" />
+            <line number="33" hits="25" branch="False" />
+            <line number="34" hits="2" branch="False" />
+            <line number="35" hits="2" branch="False" />
+            <line number="36" hits="2" branch="False" />
+            <line number="37" hits="2" branch="False" />
+            <line number="38" hits="2" branch="False" />
+            <line number="39" hits="27" branch="False" />
+            <line number="40" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.TransactionEndpoints" filename="Endpoints\TransactionEndpoints.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MapTransactionEndpoints" signature="(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="25" branch="False" />
+                <line number="10" hits="25" branch="False" />
+                <line number="11" hits="8" branch="False" />
+                <line number="12" hits="25" branch="False" />
+                <line number="13" hits="8" branch="False" />
+                <line number="14" hits="8" branch="False" />
+                <line number="15" hits="25" branch="False" />
+                <line number="16" hits="25" branch="False" />
+                <line number="17" hits="25" branch="False" />
+                <line number="18" hits="25" branch="False" />
+                <line number="19" hits="25" branch="False" />
+                <line number="20" hits="25" branch="False" />
+                <line number="21" hits="25" branch="False" />
+                <line number="22" hits="25" branch="False" />
+                <line number="23" hits="25" branch="False" />
+                <line number="24" hits="25" branch="False" />
+                <line number="25" hits="25" branch="False" />
+                <line number="26" hits="25" branch="False" />
+                <line number="27" hits="8" branch="False" />
+                <line number="28" hits="25" branch="False" />
+                <line number="29" hits="8" branch="False" />
+                <line number="30" hits="33" branch="False" />
+                <line number="32" hits="25" branch="False" />
+                <line number="33" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="25" branch="False" />
+            <line number="10" hits="25" branch="False" />
+            <line number="11" hits="8" branch="False" />
+            <line number="12" hits="25" branch="False" />
+            <line number="13" hits="8" branch="False" />
+            <line number="14" hits="8" branch="False" />
+            <line number="15" hits="25" branch="False" />
+            <line number="16" hits="25" branch="False" />
+            <line number="17" hits="25" branch="False" />
+            <line number="18" hits="25" branch="False" />
+            <line number="19" hits="25" branch="False" />
+            <line number="20" hits="25" branch="False" />
+            <line number="21" hits="25" branch="False" />
+            <line number="22" hits="25" branch="False" />
+            <line number="23" hits="25" branch="False" />
+            <line number="24" hits="25" branch="False" />
+            <line number="25" hits="25" branch="False" />
+            <line number="26" hits="25" branch="False" />
+            <line number="27" hits="8" branch="False" />
+            <line number="28" hits="25" branch="False" />
+            <line number="29" hits="8" branch="False" />
+            <line number="30" hits="33" branch="False" />
+            <line number="32" hits="25" branch="False" />
+            <line number="33" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.WalletEndpoints" filename="Endpoints\WalletEndpoints.cs" line-rate="0.9333" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MapWalletEndpoints" signature="(Microsoft.AspNetCore.Builder.WebApplication)" line-rate="0.9333" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="25" branch="False" />
+                <line number="10" hits="25" branch="False" />
+                <line number="11" hits="3" branch="False" />
+                <line number="12" hits="3" branch="False" />
+                <line number="13" hits="3" branch="False" />
+                <line number="14" hits="0" branch="False" />
+                <line number="15" hits="25" branch="False" />
+                <line number="16" hits="3" branch="False" />
+                <line number="17" hits="3" branch="False" />
+                <line number="18" hits="3" branch="False" />
+                <line number="19" hits="3" branch="False" />
+                <line number="20" hits="3" branch="False" />
+                <line number="21" hits="3" branch="False" />
+                <line number="22" hits="28" branch="False" />
+                <line number="23" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="25" branch="False" />
+            <line number="10" hits="25" branch="False" />
+            <line number="11" hits="3" branch="False" />
+            <line number="12" hits="3" branch="False" />
+            <line number="13" hits="3" branch="False" />
+            <line number="14" hits="0" branch="False" />
+            <line number="15" hits="25" branch="False" />
+            <line number="16" hits="3" branch="False" />
+            <line number="17" hits="3" branch="False" />
+            <line number="18" hits="3" branch="False" />
+            <line number="19" hits="3" branch="False" />
+            <line number="20" hits="3" branch="False" />
+            <line number="21" hits="3" branch="False" />
+            <line number="22" hits="28" branch="False" />
+            <line number="23" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.WalletEndpoints/&lt;&gt;c/&lt;&lt;MapWalletEndpoints&gt;b__0_0&gt;d" filename="Endpoints\WalletEndpoints.cs" line-rate="1" branch-rate="0.5" complexity="2">
+          <methods />
+          <lines />
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.WatchlistEndpoints" filename="Endpoints\WatchlistEndpoints.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MapWatchlistEndpoints" signature="(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="25" branch="False" />
+                <line number="10" hits="25" branch="False" />
+                <line number="11" hits="5" branch="False" />
+                <line number="12" hits="5" branch="False" />
+                <line number="13" hits="5" branch="False" />
+                <line number="14" hits="30" branch="False" />
+                <line number="17" hits="25" branch="False" />
+                <line number="18" hits="25" branch="False" />
+                <line number="19" hits="25" branch="False" />
+                <line number="20" hits="8" branch="False" />
+                <line number="21" hits="25" branch="False" />
+                <line number="22" hits="8" branch="False" />
+                <line number="23" hits="8" branch="False" />
+                <line number="24" hits="6" branch="False" />
+                <line number="25" hits="6" branch="False" />
+                <line number="26" hits="6" branch="False" />
+                <line number="27" hits="6" branch="False" />
+                <line number="28" hits="6" branch="False" />
+                <line number="29" hits="6" branch="False" />
+                <line number="30" hits="25" branch="False" />
+                <line number="31" hits="1" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="33" hits="1" branch="False" />
+                <line number="34" hits="25" branch="False" />
+                <line number="35" hits="1" branch="False" />
+                <line number="36" hits="1" branch="False" />
+                <line number="37" hits="1" branch="False" />
+                <line number="38" hits="25" branch="False" />
+                <line number="39" hits="33" branch="False" />
+                <line number="42" hits="25" branch="False" />
+                <line number="43" hits="3" branch="False" />
+                <line number="44" hits="25" branch="False" />
+                <line number="45" hits="3" branch="False" />
+                <line number="46" hits="3" branch="False" />
+                <line number="47" hits="2" branch="False" />
+                <line number="48" hits="25" branch="False" />
+                <line number="49" hits="1" branch="False" />
+                <line number="50" hits="1" branch="False" />
+                <line number="51" hits="1" branch="False" />
+                <line number="52" hits="25" branch="False" />
+                <line number="53" hits="28" branch="False" />
+                <line number="55" hits="25" branch="False" />
+                <line number="56" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="25" branch="False" />
+            <line number="10" hits="25" branch="False" />
+            <line number="11" hits="5" branch="False" />
+            <line number="12" hits="5" branch="False" />
+            <line number="13" hits="5" branch="False" />
+            <line number="14" hits="30" branch="False" />
+            <line number="17" hits="25" branch="False" />
+            <line number="18" hits="25" branch="False" />
+            <line number="19" hits="25" branch="False" />
+            <line number="20" hits="8" branch="False" />
+            <line number="21" hits="25" branch="False" />
+            <line number="22" hits="8" branch="False" />
+            <line number="23" hits="8" branch="False" />
+            <line number="24" hits="6" branch="False" />
+            <line number="25" hits="6" branch="False" />
+            <line number="26" hits="6" branch="False" />
+            <line number="27" hits="6" branch="False" />
+            <line number="28" hits="6" branch="False" />
+            <line number="29" hits="6" branch="False" />
+            <line number="30" hits="25" branch="False" />
+            <line number="31" hits="1" branch="False" />
+            <line number="32" hits="1" branch="False" />
+            <line number="33" hits="1" branch="False" />
+            <line number="34" hits="25" branch="False" />
+            <line number="35" hits="1" branch="False" />
+            <line number="36" hits="1" branch="False" />
+            <line number="37" hits="1" branch="False" />
+            <line number="38" hits="25" branch="False" />
+            <line number="39" hits="33" branch="False" />
+            <line number="42" hits="25" branch="False" />
+            <line number="43" hits="3" branch="False" />
+            <line number="44" hits="25" branch="False" />
+            <line number="45" hits="3" branch="False" />
+            <line number="46" hits="3" branch="False" />
+            <line number="47" hits="2" branch="False" />
+            <line number="48" hits="25" branch="False" />
+            <line number="49" hits="1" branch="False" />
+            <line number="50" hits="1" branch="False" />
+            <line number="51" hits="1" branch="False" />
+            <line number="52" hits="25" branch="False" />
+            <line number="53" hits="28" branch="False" />
+            <line number="55" hits="25" branch="False" />
+            <line number="56" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Endpoints.AddToWatchlistRequest" filename="Endpoints\WatchlistEndpoints.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="59" hits="16" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="59" hits="16" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Dtos.PlaceOrderRequest" filename="Dtos\Dtos.cs" line-rate="1" branch-rate="1" complexity="5">
+          <methods>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="4" hits="82" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="30" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Amount" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="155" branch="False" />
+              </lines>
+            </method>
+            <method name="get_IdempotencyKey" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="117" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String,System.String,System.Decimal,System.String)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="3" hits="33" branch="False" />
+                <line number="8" hits="33" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="4" hits="82" branch="False" />
+            <line number="5" hits="30" branch="False" />
+            <line number="6" hits="155" branch="False" />
+            <line number="7" hits="117" branch="False" />
+            <line number="3" hits="33" branch="False" />
+            <line number="8" hits="33" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Dtos.PlaceOrderResponse" filename="Dtos\Dtos.cs" line-rate="1" branch-rate="1" complexity="10">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="36" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="17" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="18" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Amount" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="17" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Shares" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="15" hits="18" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EntryPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="18" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Status" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="17" hits="17" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PlacedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="16" branch="False" />
+              </lines>
+            </method>
+            <method name="get_WalletBalance" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="19" hits="19" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Guid,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.String,System.DateTimeOffset,System.Decimal)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="25" branch="False" />
+                <line number="20" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="36" branch="False" />
+            <line number="12" hits="17" branch="False" />
+            <line number="13" hits="18" branch="False" />
+            <line number="14" hits="17" branch="False" />
+            <line number="15" hits="18" branch="False" />
+            <line number="16" hits="18" branch="False" />
+            <line number="17" hits="17" branch="False" />
+            <line number="18" hits="16" branch="False" />
+            <line number="19" hits="19" branch="False" />
+            <line number="10" hits="25" branch="False" />
+            <line number="20" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Dtos.OrderDto" filename="Dtos\Dtos.cs" line-rate="1" branch-rate="1" complexity="10">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="23" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="24" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="25" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Amount" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="26" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Shares" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="27" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EntryPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="28" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Status" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="29" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PlacedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="30" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ClosedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="31" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Guid,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.String,System.DateTimeOffset,System.Nullable`1&lt;System.DateTimeOffset&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="22" hits="5" branch="False" />
+                <line number="32" hits="5" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="23" hits="3" branch="False" />
+            <line number="24" hits="3" branch="False" />
+            <line number="25" hits="3" branch="False" />
+            <line number="26" hits="3" branch="False" />
+            <line number="27" hits="3" branch="False" />
+            <line number="28" hits="3" branch="False" />
+            <line number="29" hits="3" branch="False" />
+            <line number="30" hits="5" branch="False" />
+            <line number="31" hits="3" branch="False" />
+            <line number="22" hits="5" branch="False" />
+            <line number="32" hits="5" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Dtos.ClosePositionResponse" filename="Dtos\Dtos.cs" line-rate="1" branch-rate="1" complexity="8">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="35" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="36" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="37" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ClosingPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="38" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_RealizedPnl" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="39" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_WalletBalance" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="40" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ClosedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="41" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Guid,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.DateTimeOffset)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="34" hits="4" branch="False" />
+                <line number="42" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="35" hits="4" branch="False" />
+            <line number="36" hits="4" branch="False" />
+            <line number="37" hits="4" branch="False" />
+            <line number="38" hits="4" branch="False" />
+            <line number="39" hits="4" branch="False" />
+            <line number="40" hits="4" branch="False" />
+            <line number="41" hits="4" branch="False" />
+            <line number="34" hits="4" branch="False" />
+            <line number="42" hits="4" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Dtos.PositionDto" filename="Dtos\Dtos.cs" line-rate="1" branch-rate="1" complexity="11">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="45" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="46" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="47" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_InvestedAmount" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="48" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Shares" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="49" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EntryPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="50" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CurrentPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="51" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CurrentValue" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="52" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_UnrealizedPnl" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="53" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_UnrealizedPnlPct" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="54" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Guid,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="44" hits="2" branch="False" />
+                <line number="55" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="45" hits="2" branch="False" />
+            <line number="46" hits="2" branch="False" />
+            <line number="47" hits="2" branch="False" />
+            <line number="48" hits="2" branch="False" />
+            <line number="49" hits="2" branch="False" />
+            <line number="50" hits="2" branch="False" />
+            <line number="51" hits="2" branch="False" />
+            <line number="52" hits="2" branch="False" />
+            <line number="53" hits="2" branch="False" />
+            <line number="54" hits="2" branch="False" />
+            <line number="44" hits="2" branch="False" />
+            <line number="55" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Dtos.RecommendationDto" filename="Dtos\Dtos.cs" line-rate="1" branch-rate="1" complexity="6">
+          <methods>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="58" hits="108" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="59" hits="30" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CurrentPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="60" hits="30" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Reason" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="61" hits="61" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Confidence" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="62" hits="36" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String,System.String,System.Decimal,System.String,System.String)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="57" hits="77" branch="False" />
+                <line number="63" hits="77" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="58" hits="108" branch="False" />
+            <line number="59" hits="30" branch="False" />
+            <line number="60" hits="30" branch="False" />
+            <line number="61" hits="61" branch="False" />
+            <line number="62" hits="36" branch="False" />
+            <line number="57" hits="77" branch="False" />
+            <line number="63" hits="77" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Dtos.TransactionDto" filename="Dtos\Dtos.cs" line-rate="1" branch-rate="1" complexity="11">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="66" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="67" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="68" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="69" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Amount" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="70" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Status" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="71" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_RealizedPnl" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="72" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ClosingPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="73" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CreatedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="74" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_UpdatedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="75" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Guid,System.Guid,System.String,System.String,System.Decimal,System.String,System.Nullable`1&lt;System.Decimal&gt;,System.Nullable`1&lt;System.Decimal&gt;,System.DateTimeOffset,System.DateTimeOffset)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="65" hits="25" branch="False" />
+                <line number="76" hits="25" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="66" hits="25" branch="False" />
+            <line number="67" hits="25" branch="False" />
+            <line number="68" hits="25" branch="False" />
+            <line number="69" hits="25" branch="False" />
+            <line number="70" hits="25" branch="False" />
+            <line number="71" hits="25" branch="False" />
+            <line number="72" hits="25" branch="False" />
+            <line number="73" hits="25" branch="False" />
+            <line number="74" hits="25" branch="False" />
+            <line number="75" hits="25" branch="False" />
+            <line number="65" hits="25" branch="False" />
+            <line number="76" hits="25" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Dtos.WatchlistItemDto" filename="Dtos\Dtos.cs" line-rate="1" branch-rate="1" complexity="9">
+          <methods>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="79" hits="14" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="80" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Price" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="81" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Change" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="82" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ChangePct" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="83" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Volume" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="84" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_IsAutoAdded" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="85" hits="8" branch="False" />
+              </lines>
+            </method>
+            <method name="get_AddedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="86" hits="8" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Int64,System.Boolean,System.DateTimeOffset)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="78" hits="8" branch="False" />
+                <line number="87" hits="8" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="79" hits="14" branch="False" />
+            <line number="80" hits="2" branch="False" />
+            <line number="81" hits="2" branch="False" />
+            <line number="82" hits="2" branch="False" />
+            <line number="83" hits="2" branch="False" />
+            <line number="84" hits="2" branch="False" />
+            <line number="85" hits="8" branch="False" />
+            <line number="86" hits="8" branch="False" />
+            <line number="78" hits="8" branch="False" />
+            <line number="87" hits="8" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Domain.Order" filename="Domain\Order.cs" line-rate="1" branch-rate="1" complexity="10">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="125" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="103" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="67" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Amount" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="67" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Shares" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="63" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EntryPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="57" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Status" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="100" branch="False" />
+              </lines>
+            </method>
+            <method name="get_IdempotencyKey" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PlacedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="95" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ClosedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="13" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="125" branch="False" />
+            <line number="6" hits="103" branch="False" />
+            <line number="7" hits="67" branch="False" />
+            <line number="8" hits="67" branch="False" />
+            <line number="9" hits="63" branch="False" />
+            <line number="10" hits="57" branch="False" />
+            <line number="11" hits="100" branch="False" />
+            <line number="12" hits="25" branch="False" />
+            <line number="13" hits="95" branch="False" />
+            <line number="14" hits="13" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Domain.Stock" filename="Domain\Stock.cs" line-rate="1" branch-rate="1" complexity="8">
+          <methods>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="4" hits="771" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="221" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Price" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="6979" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Change" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="1464" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ChangePct" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="2161" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Volume" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="398" branch="False" />
+              </lines>
+            </method>
+            <method name="get_AsOf" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="1456" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Int64,System.DateTimeOffset)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="3" hits="34" branch="False" />
+                <line number="11" hits="34" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="4" hits="771" branch="False" />
+            <line number="5" hits="221" branch="False" />
+            <line number="6" hits="6979" branch="False" />
+            <line number="7" hits="1464" branch="False" />
+            <line number="8" hits="2161" branch="False" />
+            <line number="9" hits="398" branch="False" />
+            <line number="10" hits="1456" branch="False" />
+            <line number="3" hits="34" branch="False" />
+            <line number="11" hits="34" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Domain.Transaction" filename="Domain\Transaction.cs" line-rate="1" branch-rate="1" complexity="10">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="104" branch="False" />
+              </lines>
+            </method>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="50" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="104" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="50" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Amount" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="50" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Status" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="109" branch="False" />
+              </lines>
+            </method>
+            <method name="get_RealizedPnl" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="29" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ClosingPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="29" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CreatedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="129" branch="False" />
+              </lines>
+            </method>
+            <method name="get_UpdatedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="108" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="104" branch="False" />
+            <line number="6" hits="50" branch="False" />
+            <line number="7" hits="104" branch="False" />
+            <line number="8" hits="50" branch="False" />
+            <line number="9" hits="50" branch="False" />
+            <line number="10" hits="109" branch="False" />
+            <line number="11" hits="29" branch="False" />
+            <line number="12" hits="29" branch="False" />
+            <line number="13" hits="129" branch="False" />
+            <line number="14" hits="108" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Domain.Wallet" filename="Domain\Wallet.cs" line-rate="1" branch-rate="1" complexity="3">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="40" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Balance" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="121" branch="False" />
+              </lines>
+            </method>
+            <method name="get_UpdatedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="69" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="40" branch="False" />
+            <line number="6" hits="121" branch="False" />
+            <line number="7" hits="69" branch="False" />
+          </lines>
+        </class>
+        <class name="ReadyWealth.Api.Domain.WatchlistEntry" filename="Domain\WatchlistEntry.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="17" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Ticker" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="30" branch="False" />
+              </lines>
+            </method>
+            <method name="get_AddedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="25" branch="False" />
+              </lines>
+            </method>
+            <method name="get_IsAutoAdded" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="14" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="17" branch="False" />
+            <line number="6" hits="30" branch="False" />
+            <line number="7" hits="25" branch="False" />
+            <line number="8" hits="14" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

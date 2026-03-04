@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell.exe:*)",
+      "Bash(npm run:*)",
+      "mcp__mcp-design-system-next__list_components",
+      "mcp__mcp-design-system-next__get_component",
+      "mcp__mcp-design-system-next__get_store",
+      "Bash(npm remove:*)",
+      "Bash(npm install:*)",
+      "Bash(npx vite:*)",
+      "Bash(node:*)",
+      "Bash(powershell:*)",
+      "Bash(dotnet:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm test:*)",
+      "Bash(python3:*)",
+      "Bash(npm outdated:*)",
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "Bash(taskkill:*)",
+      "mcp__mcp-design-system-next__list_assets",
+      "mcp__mcp-design-system-next__search_components",
+      "mcp__mcp-design-system-next__get_component_source"
+    ]
+  }
+}
