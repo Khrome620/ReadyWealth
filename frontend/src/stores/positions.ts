@@ -2,11 +2,21 @@ import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import { useMarketStore } from './market'
 import { useWalletStore } from './wallet'
+import { useTransactionsStore } from './transactions'
 import { useSnack } from '../composables/useSnack'
 import type { Order, OrderType, Position, Transaction } from '../types'
 
+const STORAGE_KEY = 'rw_positions'
+
 export const usePositionsStore = defineStore('positions', () => {
-  const openPositions = ref<Position[]>([])
+  // Hydrate from localStorage on first load
+  const stored = localStorage.getItem(STORAGE_KEY)
+  let initial: Position[] = []
+  try { if (stored) initial = JSON.parse(stored) } catch { /* corrupted — start fresh */ }
+  const openPositions = ref<Position[]>(initial)
+
+  // Persist whenever positions change
+  watch(openPositions, val => localStorage.setItem(STORAGE_KEY, JSON.stringify(val)), { deep: true })
 
   /** Enriches each position with current price and P&L from market data. */
   const positionsWithCurrentValue = computed(() => {
@@ -19,7 +29,8 @@ export const usePositionsStore = defineStore('positions', () => {
       const pnl = pos.type === 'long'
         ? currentValue - pos.investedAmount
         : pos.investedAmount - currentValue
-      return { ...pos, currentPrice, currentValue, pnl }
+      const pnlPct = pos.investedAmount > 0 ? (pnl / pos.investedAmount) * 100 : 0
+      return { ...pos, currentPrice, currentValue, pnl, pnlPct }
     })
   })
 
@@ -71,12 +82,10 @@ export const usePositionsStore = defineStore('positions', () => {
     }
   }
 
-  // T048a: re-sync from API whenever market stock feed refreshes (FR-012)
-  // positionsWithCurrentValue is already reactive, but the API may have newer data
+  // positionsWithCurrentValue is reactive — it recomputes whenever market.stocks updates.
+  // fetchPositions() is available for the API-connected path but we don't auto-call it
+  // on every stock refresh in mock mode (that would race with localStorage state).
   const market = useMarketStore()
-  watch(() => market.stocks, () => {
-    if (openPositions.value.length > 0) fetchPositions()
-  })
 
   /** Close a position: calls API if available; credits wallet with returned value. */
   async function closePosition(positionId: string): Promise<number> {
@@ -111,7 +120,18 @@ export const usePositionsStore = defineStore('positions', () => {
     const pnl = pos.type === 'long' ? currentValue - pos.investedAmount : pos.investedAmount - currentValue
     openPositions.value.splice(idx, 1)
 
-    showSuccess(`Position closed. P&L: ₱${pnl.toLocaleString('en-PH', { minimumFractionDigits: 2 })}`)
+    // Credit investedAmount + pnl back to wallet.
+    // Long:  investedAmount + (currentValue − investedAmount) = currentValue
+    // Short: investedAmount + (investedAmount − currentValue) = 2×invested − currentValue
+    const walletStore = useWalletStore()
+    walletStore.credit(pos.investedAmount + pnl)
+
+    // Mark the matching transaction as closed and record realized P&L
+    const txStore = useTransactionsStore()
+    const tx = txStore.transactions.find(t => t.id === positionId)
+    if (tx) { tx.status = 'closed'; tx.realizedPnl = pnl }
+
+    showSuccess(`Position closed. P&L: ${pnl >= 0 ? '+' : ''}₱${pnl.toLocaleString('en-PH', { minimumFractionDigits: 2 })}`)
     return pnl
   }
 
