@@ -1,5 +1,12 @@
 <template>
-  <SprCard title="My Wallet" tone="neutral" :show-footer="false">
+  <SprCard tone="neutral" header-icon="ph:wallet" :show-footer="false">
+    <template #header>
+      <div class="wp-header">
+        <span class="wp-brand">SproutPurse</span>
+        <span class="wp-separator">·</span>
+        <span class="wp-subtitle">My Wallet</span>
+      </div>
+    </template>
     <template #content>
       <div class="wp-balance-label">Available Balance</div>
       <div class="wp-balance">{{ formatPHP(wallet.balance) }}</div>
@@ -45,6 +52,22 @@ function formatPHP(n: number) {
 </script>
 
 <style scoped>
+.wp-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.wp-brand {
+  font-weight: 700;
+  color: #16a34a;
+}
+.wp-separator {
+  color: #94a3b8;
+}
+.wp-subtitle {
+  color: #64748b;
+  font-weight: 500;
+}
 .wp-balance-label {
   font-size: 0.75rem;
   text-transform: uppercase;
