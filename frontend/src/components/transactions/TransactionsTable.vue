@@ -31,9 +31,9 @@ const headers = [
 ]
 
 const statusTone: Record<string, string> = {
-  completed: 'success',
-  pending:   'pending',
-  failed:    'danger',
+  open:    'success',
+  closed:  'information',
+  pending: 'caution',
 }
 
 const tableData = computed(() =>

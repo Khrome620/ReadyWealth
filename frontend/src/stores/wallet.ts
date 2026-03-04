@@ -1,13 +1,28 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { paperOrderService } from '../services/PaperOrderService'
+import type { IOrderService } from '../services/IOrderService'
 import { useTransactionsStore } from './transactions'
 import { usePositionsStore } from './positions'
 import { useWatchlistStore } from './watchlist'
 import type { Order, Transaction } from '../types'
 
+// Module-level active service — defaults to mock for offline dev and tests.
+// Call setOrderService() from main.ts to swap in the API service.
+let _orderService: IOrderService = paperOrderService
+
+export function setOrderService(svc: IOrderService): void {
+  _orderService = svc
+}
+
 export const useWalletStore = defineStore('wallet', () => {
   const balance = ref(100_000) // Starting balance: PHP 100,000
+
+  /** Sync balance from the backend on app mount (no-op in mock mode). */
+  async function fetchBalance() {
+    const serverBalance = await _orderService.fetchBalance()
+    if (serverBalance !== null) balance.value = serverBalance
+  }
 
   function validateOrder(order: Order): string | null {
     if (!order.ticker) return 'Please select a stock.'
@@ -20,25 +35,31 @@ export const useWalletStore = defineStore('wallet', () => {
     const error = validateOrder(order)
     if (error) throw new Error(error)
 
-    const transaction = await paperOrderService.submitOrder(order, balance.value)
+    const result = await _orderService.placeOrder(order)
 
-    balance.value -= order.amount
+    // Use server-reported balance when available; fall back to local decrement
+    if (result.walletBalance !== null) {
+      balance.value = result.walletBalance
+    } else {
+      balance.value -= order.amount
+    }
 
     const transactionsStore = useTransactionsStore()
-    transactionsStore.add(transaction)
+    transactionsStore.add(result.transaction)
 
     const positionsStore = usePositionsStore()
-    positionsStore.open(order, transaction)
+    positionsStore.open(order, result.transaction)
 
+    // T031 — auto-add ticker to watchlist on every successful order (add() is idempotent)
     const watchlistStore = useWatchlistStore()
     watchlistStore.add(order.ticker)
 
-    return transaction
+    return result.transaction
   }
 
   function credit(amount: number) {
     balance.value += amount
   }
 
-  return { balance, validateOrder, submitOrder, credit }
+  return { balance, fetchBalance, validateOrder, submitOrder, credit }
 })

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ReadyWealth.Api/ReadyWealth.Api.csproj" />
+  <Project Path="ReadyWealth.Tests/ReadyWealth.Tests.csproj" />
+</Solution>

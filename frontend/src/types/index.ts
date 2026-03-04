@@ -35,7 +35,7 @@ export interface Transaction {
   type: OrderType
   amount: number
   date: string
-  status: 'pending' | 'completed' | 'failed'
+  status: 'pending' | 'open' | 'closed'
 }
 
 export interface Recommendation {

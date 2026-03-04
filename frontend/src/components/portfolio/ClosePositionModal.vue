@@ -27,8 +27,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { usePositionsStore } from '../../stores/positions'
-import { useWalletStore } from '../../stores/wallet'
-import { useSnack } from '../../composables/useSnack'
 
 const props = defineProps<{
   modelValue: boolean
@@ -42,17 +40,16 @@ const emit = defineEmits<{
 }>()
 
 const positions = usePositionsStore()
-const wallet = useWalletStore()
-const { showSuccess } = useSnack()
 const closing = ref(false)
 
-function handleConfirm() {
+async function handleConfirm() {
   closing.value = true
-  const credited = positions.closePosition(props.positionId)
-  wallet.credit(credited)
-  showSuccess(`Position closed. ₱${credited.toLocaleString('en-PH', { minimumFractionDigits: 2 })} credited to wallet.`)
-  emit('closed')
-  emit('update:modelValue', false)
-  closing.value = false
+  try {
+    await positions.closePosition(props.positionId)
+    emit('closed')
+    emit('update:modelValue', false)
+  } finally {
+    closing.value = false
+  }
 }
 </script>

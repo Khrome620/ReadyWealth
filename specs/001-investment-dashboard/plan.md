@@ -61,6 +61,7 @@ upgrade without restructuring business logic.
 |-----------|------------|-------------------------------------|
 | Vue 3 instead of React (Principle I, VI) | `design-system-next` v2.27.9 is a Vue 3-only library; all Sprout UI components are exported as Vue SFCs. A React wrapper does not exist. | Rebuilding the entire design system for React would take longer than the hackathon timeline and eliminate the primary design asset; the constitution amendment path is noted for post-hackathon alignment. |
 | Frontend implemented before API contract (Principle I) | Hackathon time constraint; frontend mock services (IMarketService/IOrderService) act as the contract proxy, enabling parallel work. | Waiting for backend design would block frontend progress; the interface-first approach in services preserves swap-ability. |
+| No authentication on API endpoints (Principle V) | Single-user hackathon demo; user is pre-authenticated before reaching the app (spec.md Assumptions §1). Closed environment removes unauthorized-access risk for this release. | Full auth (JWT + middleware) requires a user service and token infrastructure that exceed hackathon scope. A reserved extension point (auth middleware in Program.cs) is documented for v2 alongside real-brokerage integration. |
 
 ## Project Structure
 

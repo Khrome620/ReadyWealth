@@ -1,20 +1,27 @@
-import type { IOrderService } from './IOrderService'
+import type { IOrderService, PlaceOrderResult } from './IOrderService'
 import type { Order, Transaction } from '../types'
 
 export class PaperOrderService implements IOrderService {
-  async submitOrder(order: Order, availableBalance: number): Promise<Transaction> {
-    if (order.amount <= 0) throw new Error('Amount must be greater than zero.')
-    if (order.amount > availableBalance) throw new Error('Insufficient balance.')
-
+  async placeOrder(order: Order): Promise<PlaceOrderResult> {
     const transaction: Transaction = {
       id: crypto.randomUUID(),
       ticker: order.ticker,
       type: order.type,
       amount: order.amount,
       date: new Date().toISOString(),
-      status: 'completed',
+      status: 'open',
     }
-    return transaction
+    // walletBalance: null → caller (wallet store) handles balance deduction locally
+    return { transaction, walletBalance: null }
+  }
+
+  async fetchBalance(): Promise<number | null> {
+    // No backend in mock mode — caller keeps the in-memory default
+    return null
+  }
+
+  async getOrders(): Promise<Transaction[]> {
+    return []
   }
 }
 

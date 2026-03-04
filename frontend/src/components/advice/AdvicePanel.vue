@@ -1,5 +1,5 @@
 <template>
-  <SprCard title="Advice Corner" tone="information" :show-footer="false">
+  <SprCard title="Advice Corner" tone="information" header-icon="ph:lightbulb" :show-footer="false">
     <template #content>
       <SprBanner>
         Not financial advice — for informational purposes only.
