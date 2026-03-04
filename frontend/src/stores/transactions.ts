@@ -1,9 +1,16 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { Transaction, OrderType } from '../types'
 
+const STORAGE_KEY = 'rw_transactions'
+
 export const useTransactionsStore = defineStore('transactions', () => {
-  const transactions = ref<Transaction[]>([])
+  // Hydrate from localStorage on first load
+  const stored = localStorage.getItem(STORAGE_KEY)
+  const transactions = ref<Transaction[]>(stored ? JSON.parse(stored) : [])
+
+  // Persist whenever transactions change
+  watch(transactions, val => localStorage.setItem(STORAGE_KEY, JSON.stringify(val)), { deep: true })
 
   const isEmpty = computed(() => transactions.value.length === 0)
 

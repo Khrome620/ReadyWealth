@@ -10,8 +10,8 @@
           {{ market.marketOpen ? 'Live' : 'Closed' }}
         </div>
       </div>
-      <span v-if="market.lastUpdated" class="mfp-updated">
-        Updated {{ formatTime(market.lastUpdated) }}
+      <span v-if="market.lastUpdated" class="mfp-updated" :class="{ 'mfp-flash': flashing }">
+        ↻ {{ secondsAgo }}s ago
       </span>
     </div>
 
@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 import MarketFeedTable from './MarketFeedTable.vue'
 import { useMarketStore } from '../../stores/market'
 import { useWatchlistStore } from '../../stores/watchlist'
@@ -66,9 +66,26 @@ const currentStocks = computed(() => {
   }
 })
 
-function formatTime(date: Date): string {
-  return date.toLocaleTimeString('en-PH', { hour: '2-digit', minute: '2-digit' })
-}
+// Ticking "Xs ago" counter
+const secondsAgo = ref(0)
+const flashing = ref(false)
+let tickerId: ReturnType<typeof setInterval> | null = null
+
+watch(() => market.lastUpdated, () => {
+  secondsAgo.value = 0
+  flashing.value = true
+  setTimeout(() => { flashing.value = false }, 600)
+})
+
+tickerId = setInterval(() => {
+  if (market.lastUpdated) {
+    secondsAgo.value = Math.floor((Date.now() - market.lastUpdated.getTime()) / 1000)
+  }
+}, 1000)
+
+onUnmounted(() => {
+  if (tickerId !== null) clearInterval(tickerId)
+})
 </script>
 
 <style scoped>
@@ -153,6 +170,11 @@ function formatTime(date: Date): string {
 .mfp-updated {
   font-size: 0.7rem;
   color: #475569;
+  transition: color 0.3s;
+}
+
+.mfp-flash {
+  color: #4ade80;
 }
 
 /* ── Notice ── */

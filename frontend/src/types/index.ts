@@ -36,6 +36,7 @@ export interface Transaction {
   amount: number
   date: string
   status: 'pending' | 'open' | 'closed'
+  realizedPnl?: number
 }
 
 export interface Recommendation {

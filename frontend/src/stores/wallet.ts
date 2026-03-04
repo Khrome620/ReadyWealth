@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { paperOrderService } from '../services/PaperOrderService'
 import type { IOrderService } from '../services/IOrderService'
 import { useTransactionsStore } from './transactions'
@@ -15,8 +15,13 @@ export function setOrderService(svc: IOrderService): void {
   _orderService = svc
 }
 
+const WALLET_STORAGE_KEY = 'rw_wallet_balance'
+
 export const useWalletStore = defineStore('wallet', () => {
-  const balance = ref(100_000) // Starting balance: PHP 100,000
+  const savedBalance = localStorage.getItem(WALLET_STORAGE_KEY)
+  const balance = ref(savedBalance !== null ? parseFloat(savedBalance) : 100_000)
+
+  watch(balance, val => localStorage.setItem(WALLET_STORAGE_KEY, String(val)))
 
   /** Sync balance from the backend on app mount (no-op in mock mode). */
   async function fetchBalance() {
