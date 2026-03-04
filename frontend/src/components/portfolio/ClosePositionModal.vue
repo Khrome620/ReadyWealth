@@ -36,19 +36,18 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
-  closed: []
 }>()
 
 const positions = usePositionsStore()
 const closing = ref(false)
 
 async function handleConfirm() {
+  if (closing.value) return
   closing.value = true
   try {
     await positions.closePosition(props.positionId)
-    emit('closed')
-    emit('update:modelValue', false)
   } finally {
+    emit('update:modelValue', false)
     closing.value = false
   }
 }

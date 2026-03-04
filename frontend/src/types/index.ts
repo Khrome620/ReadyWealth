@@ -35,6 +35,7 @@ export interface Transaction {
   type: OrderType
   amount: number
   date: string
+  closedAt?: string
   status: 'pending' | 'open' | 'closed'
   realizedPnl?: number
 }

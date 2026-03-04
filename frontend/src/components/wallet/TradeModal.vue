@@ -43,13 +43,64 @@
       <SprButton
         :tone="orderType === 'long' ? 'success' : 'danger'"
         variant="primary"
-        :disabled="submitting"
-        @click="handleSubmit"
+        @click="openConfirm"
       >
-        {{ submitting ? 'Processing...' : 'Confirm Order' }}
+        Confirm Order
       </SprButton>
       <SprButton tone="neutral" variant="secondary" @click="handleClose">
         Cancel
+      </SprButton>
+    </template>
+  </SprModal>
+
+  <!-- Confirmation modal -->
+  <SprModal
+    v-model="showConfirm"
+    title="Confirm Order"
+    size="sm"
+    :static-backdrop="true"
+    @update:model-value="showConfirm = $event"
+  >
+    <template #default>
+      <div class="tm-confirm-body">
+        <div class="tm-confirm-icon" :class="orderType === 'long' ? 'tci-long' : 'tci-short'">
+          <SprIcon :icon="orderType === 'long' ? 'ph:trend-up' : 'ph:trend-down'" />
+        </div>
+        <p class="tm-confirm-line">
+          You are about to place a
+          <strong :class="orderType === 'long' ? 'tm-long' : 'tm-short'">
+            {{ orderType === 'long' ? 'LONG (BUY)' : 'SHORT (SELL)' }}
+          </strong>
+          order.
+        </p>
+        <div class="tm-confirm-details">
+          <div class="tm-confirm-row">
+            <span>Stock</span>
+            <strong>{{ selectedTicker }}</strong>
+          </div>
+          <div class="tm-confirm-row">
+            <span>Amount</span>
+            <strong>{{ formatPHP(amountNum) }}</strong>
+          </div>
+          <div class="tm-confirm-row">
+            <span>Balance after</span>
+            <strong>{{ formatPHP(wallet.balance - amountNum) }}</strong>
+          </div>
+        </div>
+        <p class="tm-confirm-warning">This action cannot be undone.</p>
+      </div>
+    </template>
+    <template #footer>
+      <SprButton
+        :tone="orderType === 'long' ? 'success' : 'danger'"
+        variant="primary"
+        :disabled="submitting"
+        @click="handleSubmit"
+      >
+        {{ submitting ? 'Processing...' : 'Yes, place order' }}
+      </SprButton>
+      <SprButton tone="neutral" variant="secondary" :disabled="submitting" @click="showConfirm = false">
+        Go back
       </SprButton>
     </template>
   </SprModal>
@@ -80,6 +131,7 @@ const selectedTicker = ref(props.prefillTicker ?? '')
 const amountStr = ref('')
 const amountNum = ref(0)
 const submitting = ref(false)
+const showConfirm = ref(false)
 const errors = ref<{ ticker?: string; amount?: string }>({})
 
 const stockOptions = computed(() =>
@@ -95,6 +147,7 @@ watch(() => props.modelValue, open => {
     amountNum.value = 0
     errors.value = {}
     submitting.value = false
+    showConfirm.value = false
   }
 })
 
@@ -110,22 +163,32 @@ function validate(): boolean {
   return Object.keys(errors.value).length === 0
 }
 
+function openConfirm() {
+  if (!validate()) return
+  showConfirm.value = true
+}
+
+function closeAll() {
+  showConfirm.value = false
+  emit('update:modelValue', false)
+}
+
 async function handleSubmit() {
-  if (!validate() || submitting.value) return
+  if (submitting.value) return
   submitting.value = true
   try {
     await wallet.submitOrder({ ticker: selectedTicker.value, type: props.orderType, amount: amountNum.value })
+    closeAll()
     showSuccess(`Order placed: ${props.orderType.toUpperCase()} ${selectedTicker.value} ₱${amountNum.value.toLocaleString()}`)
-    emit('update:modelValue', false)
   } catch (e) {
     showDanger(e instanceof Error ? e.message : 'Order failed.')
   } finally {
-    setTimeout(() => { submitting.value = false }, 3000)
+    submitting.value = false
   }
 }
 
 function handleClose() {
-  emit('update:modelValue', false)
+  closeAll()
 }
 
 function formatPHP(n: number) {
@@ -146,5 +209,64 @@ function formatPHP(n: number) {
 .tm-error {
   font-size: 0.8rem;
   color: #dc2626;
+}
+
+/* ── Confirmation modal ── */
+.tm-confirm-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.tm-confirm-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.tci-long  { background: #dcfce7; color: #16a34a; }
+.tci-short { background: #fee2e2; color: #dc2626; }
+
+.tm-confirm-line {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.tm-long  { color: #16a34a; }
+.tm-short { color: #dc2626; }
+
+.tm-confirm-details {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tm-confirm-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.tm-confirm-row strong {
+  color: #0f172a;
+}
+
+.tm-confirm-warning {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
 }
 </style>

@@ -24,11 +24,15 @@
 
   <!-- Portfolio list — outside the card so it is never clipped -->
   <div v-if="positions.openPositions.length" class="wp-portfolio">
-    <div class="wp-portfolio-title">Open Positions</div>
+    <div class="wp-portfolio-header">
+      <div class="wp-portfolio-title">Open Positions</div>
+      <button class="wp-portfolio-link" @click="router.push('/portfolio')">View all →</button>
+    </div>
     <div
       v-for="p in positions.positionsWithCurrentValue"
       :key="p.id"
       class="wp-position-row"
+      @click="router.push('/portfolio')"
     >
       <div class="wp-pos-left">
         <span class="wp-pos-ticker">{{ p.ticker }}</span>
@@ -56,10 +60,13 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import TradeModal from './TradeModal.vue'
 import { useWalletStore } from '../../stores/wallet'
 import { usePositionsStore } from '../../stores/positions'
 import type { OrderType } from '../../types'
+
+const router = useRouter()
 
 const props = defineProps<{ prefillTicker?: string }>()
 
@@ -127,21 +134,48 @@ function formatPHP(n: number) {
   padding-top: 1rem;
 }
 
+.wp-portfolio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
 .wp-portfolio-title {
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #94a3b8;
-  margin-bottom: 0.6rem;
+}
+
+.wp-portfolio-link {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #16a34a;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.wp-portfolio-link:hover {
+  text-decoration: underline;
 }
 
 .wp-position-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.45rem 0;
+  padding: 0.45rem 0.25rem;
   border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+
+.wp-position-row:hover {
+  background: #f1f5f9;
 }
 
 .wp-position-row:last-child {

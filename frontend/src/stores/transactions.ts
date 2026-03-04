@@ -46,5 +46,9 @@ export const useTransactionsStore = defineStore('transactions', () => {
     }
   }
 
-  return { transactions, isEmpty, add, fetchTransactions }
+  function clear() {
+    transactions.value = []
+  }
+
+  return { transactions, isEmpty, add, clear, fetchTransactions }
 })
