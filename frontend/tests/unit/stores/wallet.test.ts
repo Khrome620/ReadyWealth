@@ -32,6 +32,10 @@ describe('useWalletStore', () => {
 
   beforeEach(() => {
     setActivePinia(createPinia())
+    // Seed wallet balance so tests that submit orders or check balance work correctly.
+    // The store reads from localStorage on init; default is 0 since T046 removed the seed.
+    localStorage.clear()
+    localStorage.setItem('rw_wallet_balance', '100000')
     mockService = makeMockService()
     setOrderService(mockService)
   })

@@ -11,7 +11,7 @@ public static class WatchlistEndpoints
         {
             var items = await svc.GetAllAsync();
             return Results.Ok(new { watchlist = items });
-        });
+        }).RequireAuthorization();
 
         // POST /api/v1/watchlist
         app.MapPost("/api/v1/watchlist", async (
@@ -36,7 +36,7 @@ public static class WatchlistEndpoints
             {
                 return Results.Json(new { error = ex.Message }, statusCode: 409);
             }
-        });
+        }).RequireAuthorization();
 
         // DELETE /api/v1/watchlist/{ticker}
         app.MapDelete("/api/v1/watchlist/{ticker}", async (string ticker, IWatchlistService svc) =>
@@ -50,7 +50,7 @@ public static class WatchlistEndpoints
             {
                 return Results.Json(new { error = ex.Message }, statusCode: 404);
             }
-        });
+        }).RequireAuthorization();
 
         return app;
     }

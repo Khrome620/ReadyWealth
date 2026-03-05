@@ -9,6 +9,7 @@
       </div>
     </template>
     <template #content>
+      <div class="wp-greeting">Hello, <span class="wp-name">{{ displayName }}</span></div>
       <div class="wp-balance-label">Available Balance</div>
       <div class="wp-balance">{{ formatPHP(wallet.balance) }}</div>
       <div class="wp-actions">
@@ -59,11 +60,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import TradeModal from './TradeModal.vue'
 import { useWalletStore } from '../../stores/wallet'
 import { usePositionsStore } from '../../stores/positions'
+import { useAuthStore } from '../../stores/auth'
 import type { OrderType } from '../../types'
 
 const router = useRouter()
@@ -72,6 +74,12 @@ const props = defineProps<{ prefillTicker?: string }>()
 
 const wallet = useWalletStore()
 const positions = usePositionsStore()
+const auth = useAuthStore()
+const displayName = computed(() => {
+  const u = auth.user
+  if (!u) return 'there'
+  return u.firstName ? `${u.firstName} ${u.lastName}`.trim() : u.username
+})
 const showModal = ref(false)
 const orderType = ref<OrderType>('long')
 const prefillTicker = ref(props.prefillTicker ?? '')
@@ -91,6 +99,7 @@ function formatPHP(n: number) {
   display: flex;
   flex-direction: column;
   gap: 0;
+  height: 100%;
 }
 .wp-header {
   display: flex;
@@ -107,6 +116,16 @@ function formatPHP(n: number) {
 .wp-subtitle {
   color: #64748b;
   font-weight: 500;
+}
+.wp-greeting {
+  font-size: 1.05rem;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+}
+.wp-name {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 1.1rem;
 }
 .wp-balance-label {
   font-size: 0.75rem;

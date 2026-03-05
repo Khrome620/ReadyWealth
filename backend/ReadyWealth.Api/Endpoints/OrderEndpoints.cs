@@ -24,12 +24,12 @@ public static class OrderEndpoints
                 var status = ex.Message.Contains("Insufficient") ? 400 : 409;
                 return Results.Json(new { error = ex.Message }, statusCode: status);
             }
-        });
+        }).RequireAuthorization();
 
         app.MapGet("/api/v1/orders", async (IPaperOrderService svc) =>
         {
             var orders = await svc.GetOrdersAsync();
             return Results.Ok(orders);
-        });
+        }).RequireAuthorization();
     }
 }

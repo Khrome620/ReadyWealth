@@ -5,7 +5,6 @@ import { useMarketStore } from '../../../src/stores/market'
 import MarketFeedPanel from '../../../src/components/market/MarketFeedPanel.vue'
 import type { Stock } from '../../../src/types'
 
-// Control marketOpen via service mock (it's a computed, not a ref)
 vi.mock('../../../src/services/MockMarketService', () => ({
   mockMarketService: {
     getStocks: vi.fn().mockResolvedValue([]),
@@ -16,7 +15,7 @@ vi.mock('../../../src/services/MockMarketService', () => ({
 import { mockMarketService } from '../../../src/services/MockMarketService'
 
 const SAMPLE_STOCKS: Stock[] = [
-  { ticker: 'SM',  name: 'SM Corp',    price: 912, change: 12,  changePct: 1.33,  volume: 1_000_000 },
+  { ticker: 'SM',  name: 'SM Corp',    price: 912, change: 12,   changePct: 1.33,  volume: 1_000_000 },
   { ticker: 'ALI', name: 'Ayala Land', price: 28,  change: -0.4, changePct: -1.38, volume: 3_000_000 },
 ]
 
@@ -38,35 +37,9 @@ function createWrapper(storeOverrides: Record<string, unknown> = {}) {
         }),
       ],
       stubs: {
-        // Override global stubs to render named slots and allow tab interaction
-        SprCard: {
-          template: '<div class="spr-card"><slot name="header" /><slot name="content" /></div>',
-          props: ['title', 'tone', 'showFooter'],
-        },
-        SprBanner: {
-          template: '<div class="spr-banner"><slot /></div>',
-        },
-        SprStatus: {
-          template: '<span class="spr-status" :data-state="state" />',
-          props: ['state', 'size'],
-        },
-        SprTabs: {
-          template: `
-            <div class="spr-tabs">
-              <button
-                v-for="(tab, i) in list"
-                :key="i"
-                :data-tab="tab"
-                :class="{ active: tab === activeTab }"
-                @click="$emit('tab-index', i)"
-              >{{ tab }}</button>
-            </div>`,
-          props: ['list', 'activeTab', 'underlined'],
-          emits: ['tab-index'],
-        },
         MarketFeedTable: {
-          template: '<div class="market-feed-table" :data-ticker-count="stocks.length" />',
-          props: ['stocks', 'loading'],
+          template: '<div class="market-feed-table" :data-ticker-count="stocks ? stocks.length : 0" />',
+          props: ['stocks', 'loading', 'marketOpen'],
         },
       },
     },
@@ -83,28 +56,28 @@ describe('MarketFeedPanel', () => {
     expect(wrapper.text()).toContain('delayed')
   })
 
-  it('shows "Market Open" label when marketOpen is true', () => {
+  it('shows "Live" label when market is open', () => {
     vi.mocked(mockMarketService.isMarketOpen).mockReturnValue(true)
-    const wrapper = createWrapper()
-    expect(wrapper.find('.mfp-status-label').text()).toBe('Market Open')
+    const wrapper = createWrapper({ marketOpen: true })
+    expect(wrapper.find('.mfp-status-pill').text()).toContain('Live')
   })
 
-  it('shows "Market Closed" label when marketOpen is false', () => {
+  it('shows "Closed" label when market is closed', () => {
     vi.mocked(mockMarketService.isMarketOpen).mockReturnValue(false)
-    const wrapper = createWrapper()
-    expect(wrapper.find('.mfp-status-label').text()).toBe('Market Closed')
+    const wrapper = createWrapper({ marketOpen: false })
+    expect(wrapper.find('.mfp-status-pill').text()).toContain('Closed')
   })
 
-  it('SprStatus receives success state when market is open', () => {
+  it('status pill has mfp-open class when market is open', () => {
     vi.mocked(mockMarketService.isMarketOpen).mockReturnValue(true)
-    const wrapper = createWrapper()
-    expect(wrapper.find('.spr-status').attributes('data-state')).toBe('success')
+    const wrapper = createWrapper({ marketOpen: true })
+    expect(wrapper.find('.mfp-status-pill').classes()).toContain('mfp-open')
   })
 
-  it('SprStatus receives danger state when market is closed', () => {
+  it('status pill has mfp-closed class when market is closed', () => {
     vi.mocked(mockMarketService.isMarketOpen).mockReturnValue(false)
-    const wrapper = createWrapper()
-    expect(wrapper.find('.spr-status').attributes('data-state')).toBe('danger')
+    const wrapper = createWrapper({ marketOpen: false })
+    expect(wrapper.find('.mfp-status-pill').classes()).toContain('mfp-closed')
   })
 
   it('shows error message when store has error', () => {
@@ -118,40 +91,38 @@ describe('MarketFeedPanel', () => {
     expect(wrapper.find('.mfp-error').exists()).toBe(false)
   })
 
-  it('shows lastUpdated timestamp in error block when available', () => {
+  it('shows last-updated indicator in header when lastUpdated is available', () => {
     const ts = new Date('2026-03-03T09:30:00')
     const wrapper = createWrapper({ error: 'timeout', lastUpdated: ts })
-    expect(wrapper.find('.mfp-error').text()).toContain('Last updated')
+    // lastUpdated timestamp appears in header as "↻ Xs ago" via .mfp-updated
+    expect(wrapper.find('.mfp-updated').exists()).toBe(true)
   })
 
   it('renders 4 tabs', () => {
     const wrapper = createWrapper()
-    const tabs = wrapper.findAll('.spr-tabs button')
-    expect(tabs).toHaveLength(4)
+    expect(wrapper.findAll('.mfp-tab')).toHaveLength(4)
   })
 
   it('defaults to "Top Gainers" as the active tab', () => {
     const wrapper = createWrapper()
-    const activeButton = wrapper.find('.spr-tabs button.active')
-    expect(activeButton.text()).toBe('Top Gainers')
+    const activeTab = wrapper.find('.mfp-tab.mfp-tab-active')
+    expect(activeTab.text()).toBe('Top Gainers')
   })
 
-  it('switches active tab when SprTabs emits tab-index', async () => {
+  it('switches active tab when a tab button is clicked', async () => {
     const wrapper = createWrapper()
-    const tabButtons = wrapper.findAll('.spr-tabs button')
+    const tabButtons = wrapper.findAll('.mfp-tab')
 
     await tabButtons[1].trigger('click') // Top Losers
 
-    const activeButton = wrapper.find('.spr-tabs button.active')
-    expect(activeButton.text()).toBe('Top Losers')
+    const activeTab = wrapper.find('.mfp-tab.mfp-tab-active')
+    expect(activeTab.text()).toBe('Top Losers')
   })
 
   it('passes topGainers stocks to MarketFeedTable on Gainers tab', async () => {
     const wrapper = createWrapper({ stocks: SAMPLE_STOCKS })
     const market = useMarketStore()
-    // Gainers tab is default — market.topGainers should only include positive stocks
     const table = wrapper.find('.market-feed-table')
-    // SM (changePct=1.33) is a gainer, ALI (-1.38) is not
     expect(Number(table.attributes('data-ticker-count'))).toBe(market.topGainers.length)
   })
 
@@ -159,7 +130,7 @@ describe('MarketFeedPanel', () => {
     const wrapper = createWrapper({ stocks: SAMPLE_STOCKS })
     const market = useMarketStore()
 
-    const tabButtons = wrapper.findAll('.spr-tabs button')
+    const tabButtons = wrapper.findAll('.mfp-tab')
     await tabButtons[1].trigger('click') // Top Losers
 
     const table = wrapper.find('.market-feed-table')

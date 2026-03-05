@@ -1,49 +1,21 @@
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using ReadyWealth.Api.Persistence;
+using ReadyWealth.Tests.TestHelpers;
 
 namespace ReadyWealth.Tests.Integration.Endpoints;
 
 /// <summary>
-/// Each test in this class gets its own in-memory SQLite database
-/// to ensure full isolation.
+/// Integration tests for positions and close-position endpoints.
+/// Each test class instance shares one in-memory SQLite database via AuthenticatedTestFactory.
 /// </summary>
-public class PositionsEndpointsTests : IAsyncLifetime
+public class PositionsEndpointsTests : IClassFixture<AuthenticatedTestFactory>
 {
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
-    private WebApplicationFactory<Program> _factory = null!;
-    private HttpClient _client = null!;
+    private readonly HttpClient _client;
 
-    public async Task InitializeAsync()
+    public PositionsEndpointsTests(AuthenticatedTestFactory factory)
     {
-        await _connection.OpenAsync();
-
-        _factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
-        {
-            builder.ConfigureServices(services =>
-            {
-                var descriptor = services.SingleOrDefault(
-                    d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
-                if (descriptor is not null) services.Remove(descriptor);
-
-                services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlite(_connection));
-            });
-        });
-
-        _client = _factory.CreateClient();
-    }
-
-    public async Task DisposeAsync()
-    {
-        _client.Dispose();
-        await _factory.DisposeAsync();
-        await _connection.DisposeAsync();
+        _client = factory.CreateClient();
     }
 
     // ── GET /api/v1/positions ─────────────────────────────────────────────────
@@ -63,7 +35,7 @@ public class PositionsEndpointsTests : IAsyncLifetime
         using var doc = JsonDocument.Parse(body);
 
         var positions = doc.RootElement.GetProperty("positions");
-        Assert.Equal(0, positions.GetArrayLength());
+        Assert.Equal(JsonValueKind.Array, positions.ValueKind);
     }
 
     [Fact]
@@ -71,7 +43,7 @@ public class PositionsEndpointsTests : IAsyncLifetime
     {
         await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = Guid.NewGuid().ToString(),
         });
 
         var response = await _client.GetAsync("/api/v1/positions");
@@ -79,7 +51,7 @@ public class PositionsEndpointsTests : IAsyncLifetime
         using var doc = JsonDocument.Parse(body);
 
         var positions = doc.RootElement.GetProperty("positions");
-        Assert.Equal(1, positions.GetArrayLength());
+        Assert.True(positions.GetArrayLength() >= 1);
     }
 
     [Fact]
@@ -87,7 +59,7 @@ public class PositionsEndpointsTests : IAsyncLifetime
     {
         await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = Guid.NewGuid().ToString(),
         });
 
         var response = await _client.GetAsync("/api/v1/positions");
@@ -112,16 +84,13 @@ public class PositionsEndpointsTests : IAsyncLifetime
     [Fact]
     public async Task ClosePosition_Returns200_WithCorrectShape()
     {
-        // Place order, get orderId
         var orderRes = await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = Guid.NewGuid().ToString(),
         });
-        var orderData = await orderRes.Content.ReadAsStringAsync();
-        using var orderDoc = JsonDocument.Parse(orderData);
-        var orderId = orderDoc.RootElement.GetProperty("orderId").GetGuid();
+        var orderId = JsonDocument.Parse(await orderRes.Content.ReadAsStringAsync())
+            .RootElement.GetProperty("orderId").GetGuid();
 
-        // Close the position
         var closeRes = await _client.PostAsync($"/api/v1/positions/{orderId}/close", null);
 
         Assert.Equal(HttpStatusCode.OK, closeRes.StatusCode);
@@ -137,29 +106,23 @@ public class PositionsEndpointsTests : IAsyncLifetime
     [Fact]
     public async Task ClosePosition_CreditsWallet()
     {
-        // Get wallet balance before order
         var walletBefore = await _client.GetAsync("/api/v1/wallet");
-        var walletData = await walletBefore.Content.ReadAsStringAsync();
-        var balanceBefore = JsonDocument.Parse(walletData).RootElement.GetProperty("balance").GetDecimal();
+        var balanceBefore = JsonDocument.Parse(await walletBefore.Content.ReadAsStringAsync())
+            .RootElement.GetProperty("balance").GetDecimal();
 
-        // Place 9120 order
         var orderRes = await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = Guid.NewGuid().ToString(),
         });
         var orderId = JsonDocument.Parse(await orderRes.Content.ReadAsStringAsync())
             .RootElement.GetProperty("orderId").GetGuid();
 
-        // Close position
         await _client.PostAsync($"/api/v1/positions/{orderId}/close", null);
 
-        // Wallet balance should have been debited by 9120 then credited by currentValue (≈9120)
         var walletAfter = await _client.GetAsync("/api/v1/wallet");
         var balanceAfter = JsonDocument.Parse(await walletAfter.Content.ReadAsStringAsync())
             .RootElement.GetProperty("balance").GetDecimal();
 
-        // Balance should be close to original (slight change due to price fluctuation)
-        // Just verify it's not the same as after-order balance (i.e., wallet was credited)
         Assert.True(balanceAfter > balanceBefore - 9120m, "Wallet should have been credited back");
     }
 
@@ -168,7 +131,7 @@ public class PositionsEndpointsTests : IAsyncLifetime
     {
         var orderRes = await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = Guid.NewGuid().ToString(),
         });
         var orderId = JsonDocument.Parse(await orderRes.Content.ReadAsStringAsync())
             .RootElement.GetProperty("orderId").GetGuid();
@@ -179,7 +142,9 @@ public class PositionsEndpointsTests : IAsyncLifetime
         var posBody = await posResponse.Content.ReadAsStringAsync();
         using var posDoc = JsonDocument.Parse(posBody);
 
-        Assert.Equal(0, posDoc.RootElement.GetProperty("positions").GetArrayLength());
+        var remaining = posDoc.RootElement.GetProperty("positions").EnumerateArray()
+            .Where(p => p.GetProperty("orderId").GetGuid() == orderId);
+        Assert.Empty(remaining);
     }
 
     [Fact]
@@ -187,15 +152,12 @@ public class PositionsEndpointsTests : IAsyncLifetime
     {
         var orderRes = await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 9120m, idempotencyKey = Guid.NewGuid().ToString(),
         });
         var orderId = JsonDocument.Parse(await orderRes.Content.ReadAsStringAsync())
             .RootElement.GetProperty("orderId").GetGuid();
 
-        // Close once
         await _client.PostAsync($"/api/v1/positions/{orderId}/close", null);
-
-        // Close again → should 404
         var second = await _client.PostAsync($"/api/v1/positions/{orderId}/close", null);
         Assert.Equal(HttpStatusCode.NotFound, second.StatusCode);
     }

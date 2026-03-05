@@ -1,32 +1,18 @@
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using ReadyWealth.Api.Persistence;
+using ReadyWealth.Tests.TestHelpers;
 
 namespace ReadyWealth.Tests.Integration.Endpoints;
 
-public class TransactionsEndpointsTests : IClassFixture<TransactionsEndpointsTests.TestFactory>
+public class TransactionsEndpointsTests : IClassFixture<AuthenticatedTestFactory>
 {
     private readonly HttpClient _client;
 
-    public TransactionsEndpointsTests(TestFactory factory)
+    public TransactionsEndpointsTests(AuthenticatedTestFactory factory)
     {
         _client = factory.CreateClient();
     }
-
-    // ── Helper ────────────────────────────────────────────────────────────────
-
-    private static readonly object _orderBody = new
-    {
-        ticker = "SM",
-        type = "long",
-        amount = 5000m,
-        idempotencyKey = (string?)null,
-    };
 
     // ── Tests ─────────────────────────────────────────────────────────────────
 
@@ -51,7 +37,6 @@ public class TransactionsEndpointsTests : IClassFixture<TransactionsEndpointsTes
     [Fact]
     public async Task GetTransactions_AfterOrder_CountIncreasesBy1()
     {
-        // Capture count before placing the order
         int countBefore;
         {
             var before = await _client.GetAsync("/api/v1/transactions");
@@ -62,7 +47,7 @@ public class TransactionsEndpointsTests : IClassFixture<TransactionsEndpointsTes
 
         await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 5000m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 5000m, idempotencyKey = Guid.NewGuid().ToString(),
         });
 
         var response = await _client.GetAsync("/api/v1/transactions");
@@ -78,7 +63,7 @@ public class TransactionsEndpointsTests : IClassFixture<TransactionsEndpointsTes
     {
         await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 5000m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 5000m, idempotencyKey = Guid.NewGuid().ToString(),
         });
 
         var response = await _client.GetAsync("/api/v1/transactions");
@@ -103,7 +88,7 @@ public class TransactionsEndpointsTests : IClassFixture<TransactionsEndpointsTes
     {
         await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 5000m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 5000m, idempotencyKey = Guid.NewGuid().ToString(),
         });
 
         var response = await _client.GetAsync("/api/v1/transactions");
@@ -120,7 +105,7 @@ public class TransactionsEndpointsTests : IClassFixture<TransactionsEndpointsTes
     {
         await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "ALI", type = "short", amount = 3000m, idempotencyKey = (string?)null,
+            ticker = "ALI", type = "short", amount = 3000m, idempotencyKey = Guid.NewGuid().ToString(),
         });
 
         var response = await _client.GetAsync("/api/v1/transactions");
@@ -136,15 +121,14 @@ public class TransactionsEndpointsTests : IClassFixture<TransactionsEndpointsTes
     [Fact]
     public async Task GetTransactions_ReverseChronologicalOrder()
     {
-        // Place two orders and verify newest appears first
         await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "SM", type = "long", amount = 1000m, idempotencyKey = (string?)null,
+            ticker = "SM", type = "long", amount = 1000m, idempotencyKey = Guid.NewGuid().ToString(),
         });
-        await Task.Delay(10); // ensure different timestamps
+        await Task.Delay(10);
         await _client.PostAsJsonAsync("/api/v1/orders", new
         {
-            ticker = "ALI", type = "long", amount = 2000m, idempotencyKey = (string?)null,
+            ticker = "ALI", type = "long", amount = 2000m, idempotencyKey = Guid.NewGuid().ToString(),
         });
 
         var response = await _client.GetAsync("/api/v1/transactions");
@@ -156,37 +140,5 @@ public class TransactionsEndpointsTests : IClassFixture<TransactionsEndpointsTes
         var first = txArray[0].GetProperty("createdAt").GetDateTimeOffset();
         var second = txArray[1].GetProperty("createdAt").GetDateTimeOffset();
         Assert.True(first >= second, "Expected newest transaction first");
-    }
-
-    // ── Test factory ─────────────────────────────────────────────────────────
-
-    public class TestFactory : WebApplicationFactory<Program>, IAsyncLifetime
-    {
-        private readonly SqliteConnection _connection =
-            new SqliteConnection("Data Source=:memory:");
-
-        public async Task InitializeAsync()
-        {
-            await _connection.OpenAsync();
-        }
-
-        public new async Task DisposeAsync()
-        {
-            await _connection.DisposeAsync();
-            await base.DisposeAsync();
-        }
-
-        protected override void ConfigureWebHost(Microsoft.AspNetCore.Hosting.IWebHostBuilder builder)
-        {
-            builder.ConfigureServices(services =>
-            {
-                var descriptor = services.SingleOrDefault(
-                    d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
-                if (descriptor != null) services.Remove(descriptor);
-
-                services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlite(_connection));
-            });
-        }
     }
 }

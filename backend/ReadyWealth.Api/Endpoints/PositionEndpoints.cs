@@ -16,6 +16,7 @@ public static class PositionEndpoints
             var stocks = (await market.GetAllStocksAsync())
                 .ToDictionary(s => s.Ticker, StringComparer.OrdinalIgnoreCase);
 
+            // Global Query Filter automatically scopes to the authenticated user's orders
             var positions = db.Orders
                 .Where(o => o.Status == OrderStatus.Open)
                 .AsEnumerable()
@@ -45,19 +46,39 @@ public static class PositionEndpoints
                 .ToList();
 
             return Results.Ok(new { positions });
-        });
+        }).RequireAuthorization();
 
         // ── POST /api/v1/positions/{orderId}/close ────────────────────────────
         app.MapPost("/api/v1/positions/{orderId:guid}/close", async (
             Guid orderId,
             AppDbContext db,
-            IMarketDataService market) =>
+            IMarketDataService market,
+            ICurrentUserService currentUser) =>
         {
-            var order = await db.Orders.FindAsync(orderId);
-            if (order is null || order.Status != OrderStatus.Open)
+            // Bypass Global Query Filter to detect ownership vs. non-existence
+            var order = await db.Orders
+                .IgnoreQueryFilters()
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+
+            if (order is null)
             {
                 return Results.Json(
-                    new { error = "Position not found or already closed.", orderId },
+                    new { error = "Position not found.", orderId },
+                    statusCode: 404);
+            }
+
+            // Owner check — return 403 if the order belongs to a different user
+            if (order.UserId != currentUser.UserId)
+            {
+                return Results.Json(
+                    new { error = "Access denied.", orderId },
+                    statusCode: 403);
+            }
+
+            if (order.Status != OrderStatus.Open)
+            {
+                return Results.Json(
+                    new { error = "Position already closed.", orderId },
                     statusCode: 404);
             }
 
@@ -71,8 +92,8 @@ public static class PositionEndpoints
                 ? currentValue - order.Amount
                 : order.Amount - currentValue;
 
-            // Credit wallet
-            var wallet = await db.Wallets.FindAsync(AppDbContext.SeedWalletId)
+            // Credit wallet — Global Query Filter scopes to current user's wallet
+            var wallet = await db.Wallets.FirstOrDefaultAsync()
                 ?? throw new InvalidOperationException("Wallet not found.");
             wallet.Balance += currentValue;
             wallet.UpdatedAt = DateTimeOffset.UtcNow;
@@ -81,8 +102,10 @@ public static class PositionEndpoints
             order.Status = OrderStatus.Closed;
             order.ClosedAt = DateTimeOffset.UtcNow;
 
-            // Update transaction record
-            var transaction = await db.Transactions.FirstOrDefaultAsync(t => t.OrderId == order.Id);
+            // Update transaction record — bypassing filter since we know the OrderId
+            var transaction = await db.Transactions
+                .IgnoreQueryFilters()
+                .FirstOrDefaultAsync(t => t.OrderId == order.Id);
             if (transaction is not null)
             {
                 transaction.Status = TransactionStatus.Closed;
@@ -101,7 +124,7 @@ public static class PositionEndpoints
                 Math.Round(realizedPnl, 2),
                 wallet.Balance,
                 order.ClosedAt!.Value));
-        });
+        }).RequireAuthorization();
 
         return app;
     }

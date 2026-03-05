@@ -4,6 +4,9 @@ public class Order
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public string Ticker { get; set; } = string.Empty;
+
+    /// <summary>FK → User.Id. Scopes this order/position to its owner.</summary>
+    public string UserId { get; set; } = string.Empty;
     public OrderType Type { get; set; }
     public decimal Amount { get; set; }
     public decimal Shares { get; set; }

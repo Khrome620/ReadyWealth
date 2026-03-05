@@ -1,9 +1,9 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useMarketStore } from '../stores/market'
 
-// Refresh every 10 s when market is open; every 60 s when closed (prices are static).
-const OPEN_INTERVAL_MS  = 5_000
-const CLOSED_INTERVAL_MS = 60_000
+// Refresh every 7 seconds for live demo.
+const OPEN_INTERVAL_MS  = 7_000
+const CLOSED_INTERVAL_MS = 7_000
 
 export function useMarketFeed() {
   const market = useMarketStore()

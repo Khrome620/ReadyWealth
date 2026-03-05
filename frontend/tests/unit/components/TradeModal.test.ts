@@ -27,6 +27,14 @@ vi.mock('../../../src/services/MockMarketService', () => ({
   },
 }))
 
+vi.mock('../../../src/composables/useSnack', () => ({
+  useSnack: () => ({
+    showSuccess: vi.fn(),
+    showDanger: vi.fn(),
+    showInfo: vi.fn(),
+  }),
+}))
+
 const STOCKS: Stock[] = [
   { ticker: 'SM',  name: 'SM Investments', price: 912, change: 12,   changePct: 1.33,  volume: 1_000_000 },
   { ticker: 'ALI', name: 'Ayala Land',     price: 28,  change: -0.4, changePct: -1.38, volume: 3_000_000 },
@@ -155,11 +163,18 @@ describe('TradeModal', () => {
     await currencyComp.vm.$emit('getCurrencyValue', 5_000)
     await flushPromises()
 
-    const submitBtn = wrapper.findAll('.spr-btn')[0]
-    await submitBtn.trigger('click')
+    // Step 1: click "Confirm Order" to open the confirmation modal
+    const confirmOrderBtn = wrapper.findAll('.spr-btn')[0]
+    await confirmOrderBtn.trigger('click')
     await flushPromises()
 
-    expect((submitBtn.element as HTMLButtonElement).disabled).toBe(true)
+    // Step 2: click "Yes, place order" in the confirmation modal
+    const allBtns = wrapper.findAll('.spr-btn')
+    const placeOrderBtn = allBtns[allBtns.length - 2] // second-to-last: "Yes, place order"
+    await placeOrderBtn.trigger('click')
+    await flushPromises()
+
+    expect((placeOrderBtn.element as HTMLButtonElement).disabled).toBe(true)
   })
 
   it('rapid double-click does not call submitOrder twice', async () => {
@@ -174,9 +189,16 @@ describe('TradeModal', () => {
     await currencyComp.vm.$emit('getCurrencyValue', 5_000)
     await flushPromises()
 
-    const submitBtn = wrapper.findAll('.spr-btn')[0]
-    await submitBtn.trigger('click')
-    await submitBtn.trigger('click') // second rapid click
+    // Step 1: open confirmation modal
+    const confirmOrderBtn = wrapper.findAll('.spr-btn')[0]
+    await confirmOrderBtn.trigger('click')
+    await flushPromises()
+
+    // Step 2: click "Yes, place order" twice rapidly
+    const allBtns = wrapper.findAll('.spr-btn')
+    const placeOrderBtn = allBtns[allBtns.length - 2] // "Yes, place order"
+    await placeOrderBtn.trigger('click')
+    await placeOrderBtn.trigger('click') // second rapid click
     await flushPromises()
 
     expect(wallet.submitOrder).toHaveBeenCalledTimes(1)

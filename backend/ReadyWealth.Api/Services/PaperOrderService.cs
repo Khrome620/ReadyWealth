@@ -6,7 +6,7 @@ using ReadyWealth.Api.Persistence;
 
 namespace ReadyWealth.Api.Services;
 
-public class PaperOrderService(AppDbContext db, IMarketDataService market) : IPaperOrderService
+public class PaperOrderService(AppDbContext db, IMarketDataService market, ICurrentUserService currentUser) : IPaperOrderService
 {
     // Static so the idempotency window survives across Scoped instances within the same process
     private static readonly ConcurrentDictionary<string, (DateTime Timestamp, PlaceOrderResponse Response)>
@@ -35,19 +35,21 @@ public class PaperOrderService(AppDbContext db, IMarketDataService market) : IPa
         if (request.Amount <= 0)
             throw new ArgumentException("Amount must be greater than zero.");
 
-        // ── Wallet balance check ─────────────────────────────────────────────
-        var wallet = await db.Wallets.FindAsync(AppDbContext.SeedWalletId)
+        // ── Wallet balance check — Global Query Filter scopes to current user ─
+        var wallet = await db.Wallets.FirstOrDefaultAsync()
             ?? throw new InvalidOperationException("Wallet not found.");
 
         if (request.Amount > wallet.Balance)
             throw new InvalidOperationException("Insufficient funds.");
 
-        // ── Create Order + Transaction ───────────────────────────────────────
+        // ── Create Order + Transaction tagged to the authenticated user ───────
+        var userId = currentUser.UserId;
         var shares = Math.Round(request.Amount / stock.Price, 6);
         var order = new Order
         {
             Id = Guid.NewGuid(),
             Ticker = stock.Ticker,
+            UserId = userId,
             Type = orderType,
             Amount = request.Amount,
             Shares = shares,
@@ -62,6 +64,7 @@ public class PaperOrderService(AppDbContext db, IMarketDataService market) : IPa
             Id = Guid.NewGuid(),
             OrderId = order.Id,
             Ticker = stock.Ticker,
+            UserId = userId,
             Type = orderType,
             Amount = request.Amount,
             Status = TransactionStatus.Open,
@@ -93,6 +96,7 @@ public class PaperOrderService(AppDbContext db, IMarketDataService market) : IPa
         // AsEnumerable() materialises the query first so we can order by DateTimeOffset
         // on the client side — SQLite stores timestamps as TEXT and can't compare them
         // natively as DateTimeOffset via EF Core LINQ translation.
+        // Global Query Filter automatically scopes to the authenticated user's orders.
         var orders = db.Orders
             .AsEnumerable()
             .OrderByDescending(o => o.PlacedAt)

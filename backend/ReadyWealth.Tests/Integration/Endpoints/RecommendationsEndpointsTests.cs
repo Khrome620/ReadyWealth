@@ -1,22 +1,19 @@
 using System.Net;
 using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using ReadyWealth.Api.Domain;
-using ReadyWealth.Api.Persistence;
 using ReadyWealth.Api.Services;
+using ReadyWealth.Tests.TestHelpers;
 
 namespace ReadyWealth.Tests.Integration.Endpoints;
 
-public class RecommendationsEndpointsTests : IClassFixture<RecommendationsEndpointsTests.TestFactory>
+public class RecommendationsEndpointsTests : IClassFixture<AuthenticatedTestFactory>
 {
-    private readonly TestFactory _factory;
+    private readonly AuthenticatedTestFactory _factory;
     private readonly HttpClient _client;
 
-    public RecommendationsEndpointsTests(TestFactory factory)
+    public RecommendationsEndpointsTests(AuthenticatedTestFactory factory)
     {
         _factory = factory;
         _client = factory.CreateClient();
@@ -152,35 +149,4 @@ public class RecommendationsEndpointsTests : IClassFixture<RecommendationsEndpoi
         Assert.Contains("insufficient", error.GetString(), StringComparison.OrdinalIgnoreCase);
     }
 
-    // ── Test factory ─────────────────────────────────────────────────────────
-
-    public class TestFactory : WebApplicationFactory<Program>, IAsyncLifetime
-    {
-        private readonly SqliteConnection _connection =
-            new SqliteConnection("Data Source=:memory:");
-
-        public async Task InitializeAsync()
-        {
-            await _connection.OpenAsync();
-        }
-
-        public new async Task DisposeAsync()
-        {
-            await _connection.DisposeAsync();
-            await base.DisposeAsync();
-        }
-
-        protected override void ConfigureWebHost(Microsoft.AspNetCore.Hosting.IWebHostBuilder builder)
-        {
-            builder.ConfigureServices(services =>
-            {
-                var descriptor = services.SingleOrDefault(
-                    d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
-                if (descriptor != null) services.Remove(descriptor);
-
-                services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlite(_connection));
-            });
-        }
-    }
 }

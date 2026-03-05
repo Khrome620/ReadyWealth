@@ -4,6 +4,7 @@ using ReadyWealth.Api.Domain;
 using ReadyWealth.Api.Dtos;
 using ReadyWealth.Api.Persistence;
 using ReadyWealth.Api.Services;
+using ReadyWealth.Tests.TestHelpers;
 
 namespace ReadyWealth.Tests.Unit.Services;
 
@@ -17,20 +18,39 @@ public class PaperOrderServiceTests : IAsyncLifetime
     private AppDbContext _db = null!;
     private MockMarketDataService _market = null!;
     private PaperOrderService _svc = null!;
+    private FakeCurrentUserService _currentUser = null!;
+
+    private const string UserId = FakeCurrentUserService.DefaultUserId;
 
     public async Task InitializeAsync()
     {
         _connection = new SqliteConnection("Data Source=:memory:");
         await _connection.OpenAsync();
 
+        _currentUser = new FakeCurrentUserService(UserId);
+
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseSqlite(_connection)
             .Options;
-        _db = new AppDbContext(options);
+        _db = new AppDbContext(options, _currentUser);
         await _db.Database.EnsureCreatedAsync();
 
+        // Seed test user and wallet
+        _db.Users.Add(new User
+        {
+            Id = UserId, DomainName = "test", Username = "testuser",
+            FirstName = "Test", LastName = "User", ClientId = 1,
+            CreatedAt = DateTime.UtcNow, LastLoginAt = DateTime.UtcNow,
+        });
+        _db.Wallets.Add(new Wallet
+        {
+            Id = Guid.NewGuid(), UserId = UserId,
+            Balance = 100_000m, UpdatedAt = DateTimeOffset.UtcNow,
+        });
+        await _db.SaveChangesAsync();
+
         _market = new MockMarketDataService();
-        _svc = new PaperOrderService(_db, _market);
+        _svc = new PaperOrderService(_db, _market, _currentUser);
     }
 
     public async Task DisposeAsync()
@@ -78,7 +98,7 @@ public class PaperOrderServiceTests : IAsyncLifetime
     {
         await _svc.PlaceOrderAsync(ValidRequest("SM", "long", 10_000m));
 
-        var wallet = await _db.Wallets.FindAsync(AppDbContext.SeedWalletId);
+        var wallet = await _db.Wallets.FirstOrDefaultAsync();
         Assert.Equal(90_000m, wallet!.Balance);
     }
 
@@ -94,6 +114,16 @@ public class PaperOrderServiceTests : IAsyncLifetime
     }
 
     [Fact]
+    public async Task PlaceOrderAsync_TagsOrderWithUserId()
+    {
+        var response = await _svc.PlaceOrderAsync(ValidRequest("BDO", "long", 2000m));
+
+        var order = await _db.Orders.FindAsync(response.OrderId);
+        Assert.NotNull(order);
+        Assert.Equal(UserId, order.UserId);
+    }
+
+    [Fact]
     public async Task PlaceOrderAsync_CreatesTransactionRecord()
     {
         var response = await _svc.PlaceOrderAsync(ValidRequest("BPI", "short", 4000m));
@@ -101,6 +131,16 @@ public class PaperOrderServiceTests : IAsyncLifetime
         var tx = _db.Transactions.SingleOrDefault(t => t.OrderId == response.OrderId);
         Assert.NotNull(tx);
         Assert.Equal(TransactionStatus.Open, tx.Status);
+    }
+
+    [Fact]
+    public async Task PlaceOrderAsync_TagsTransactionWithUserId()
+    {
+        var response = await _svc.PlaceOrderAsync(ValidRequest("BPI", "short", 4000m));
+
+        var tx = _db.Transactions.SingleOrDefault(t => t.OrderId == response.OrderId);
+        Assert.NotNull(tx);
+        Assert.Equal(UserId, tx.UserId);
     }
 
     [Fact]
@@ -160,7 +200,7 @@ public class PaperOrderServiceTests : IAsyncLifetime
 
         Assert.Equal(first.OrderId, second.OrderId);
         // Balance deducted only once
-        var wallet = await _db.Wallets.FindAsync(AppDbContext.SeedWalletId);
+        var wallet = await _db.Wallets.FirstOrDefaultAsync();
         Assert.Equal(95_000m, wallet!.Balance);
     }
 

@@ -1,16 +1,10 @@
 import { defineStore } from 'pinia'
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import type { Transaction, OrderType } from '../types'
 
-const STORAGE_KEY = 'rw_transactions'
-
 export const useTransactionsStore = defineStore('transactions', () => {
-  // Hydrate from localStorage on first load
-  const stored = localStorage.getItem(STORAGE_KEY)
-  const transactions = ref<Transaction[]>(stored ? JSON.parse(stored) : [])
-
-  // Persist whenever transactions change
-  watch(transactions, val => localStorage.setItem(STORAGE_KEY, JSON.stringify(val)), { deep: true })
+  const transactions = ref<Transaction[]>([])
+  const initialized = ref(false)
 
   const isEmpty = computed(() => transactions.value.length === 0)
 
@@ -18,7 +12,7 @@ export const useTransactionsStore = defineStore('transactions', () => {
     transactions.value.unshift(transaction)
   }
 
-  /** Sync transaction history from the API (no-op in mock mode if endpoint unavailable). */
+  /** Sync transaction history from the API. */
   async function fetchTransactions(): Promise<void> {
     try {
       const res = await fetch('/api/v1/transactions')
@@ -41,6 +35,7 @@ export const useTransactionsStore = defineStore('transactions', () => {
         date: t.createdAt,
         status: t.status as Transaction['status'],
       }))
+      initialized.value = true
     } catch {
       // Network failure — keep existing in-memory state
     }
@@ -48,7 +43,8 @@ export const useTransactionsStore = defineStore('transactions', () => {
 
   function clear() {
     transactions.value = []
+    initialized.value = false
   }
 
-  return { transactions, isEmpty, add, clear, fetchTransactions }
+  return { transactions, isEmpty, initialized, add, clear, fetchTransactions }
 })

@@ -1,17 +1,13 @@
 using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using ReadyWealth.Api.Persistence;
+using ReadyWealth.Tests.TestHelpers;
 
 namespace ReadyWealth.Tests.Integration.Endpoints;
 
-public class StocksEndpointsTests : IClassFixture<StocksEndpointsTests.TestFactory>
+public class StocksEndpointsTests : IClassFixture<AuthenticatedTestFactory>
 {
     private readonly HttpClient _client;
 
-    public StocksEndpointsTests(TestFactory factory)
+    public StocksEndpointsTests(AuthenticatedTestFactory factory)
     {
         _client = factory.CreateClient();
     }
@@ -145,36 +141,4 @@ public class StocksEndpointsTests : IClassFixture<StocksEndpointsTests.TestFacto
         }
     }
 
-    // ── Test factory ────────────────────────────────────────────────────────────
-
-    public class TestFactory : WebApplicationFactory<Program>, IAsyncLifetime
-    {
-        private readonly SqliteConnection _connection = new("Data Source=:memory:");
-
-        public async Task InitializeAsync()
-        {
-            // Keep connection open so the in-memory database persists for the test lifetime
-            await _connection.OpenAsync();
-        }
-
-        public new async Task DisposeAsync()
-        {
-            await _connection.DisposeAsync();
-            await base.DisposeAsync();
-        }
-
-        protected override void ConfigureWebHost(Microsoft.AspNetCore.Hosting.IWebHostBuilder builder)
-        {
-            builder.ConfigureServices(services =>
-            {
-                // Replace the real DbContext with an in-memory SQLite one
-                var descriptor = services.SingleOrDefault(
-                    d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
-                if (descriptor != null) services.Remove(descriptor);
-
-                services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlite(_connection));
-            });
-        }
-    }
 }

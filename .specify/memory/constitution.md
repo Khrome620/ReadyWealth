@@ -182,7 +182,7 @@ confidence needed to refactor and extend the codebase safely.
 
 | Layer | Technology |
 |-------|------------|
-| Frontend | React (TypeScript), component-based SPA |
+| Frontend | Vue 3 (TypeScript), component-based SPA (deviation from original React choice; ADR documented in `specs/001-investment-dashboard/plan.md` — `design-system-next` is Vue 3-only) |
 | Backend | .NET 10, ASP.NET Core Web API |
 | API Protocol | HTTP/REST, JSON payloads, OpenAPI/Swagger |
 | Frontend Testing | Vitest or Jest; 100% unit coverage required for non-trivial logic |
@@ -235,4 +235,4 @@ conventions. When in conflict, this document wins.
 section that explicitly verifies each of the seven Core Principles. Any deviation MUST
 be documented in the Complexity Tracking table with a clear justification.
 
-**Version**: 1.1.0 | **Ratified**: 2026-03-02 | **Last Amended**: 2026-03-02
+**Version**: 1.1.1 | **Ratified**: 2026-03-02 | **Last Amended**: 2026-03-04

@@ -1,20 +1,15 @@
 using System.Net;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using ReadyWealth.Api.Persistence;
+using ReadyWealth.Tests.TestHelpers;
 
 namespace ReadyWealth.Tests.Integration.Endpoints;
 
-public class WalletOrdersEndpointsTests : IClassFixture<WalletOrdersEndpointsTests.TestFactory>
+public class WalletOrdersEndpointsTests : IClassFixture<AuthenticatedTestFactory>
 {
     private readonly HttpClient _client;
 
-    public WalletOrdersEndpointsTests(TestFactory factory)
+    public WalletOrdersEndpointsTests(AuthenticatedTestFactory factory)
     {
         _client = factory.CreateClient();
     }
@@ -33,7 +28,7 @@ public class WalletOrdersEndpointsTests : IClassFixture<WalletOrdersEndpointsTes
         Assert.True(root.TryGetProperty("id", out _));
         Assert.True(root.TryGetProperty("balance", out var balance));
         Assert.True(root.TryGetProperty("updatedAt", out _));
-        Assert.Equal(100_000m, balance.GetDecimal());
+        Assert.Equal(AuthenticatedTestFactory.StartingBalance, balance.GetDecimal());
     }
 
     // ── POST /api/v1/orders ───────────────────────────────────────────────────
@@ -51,7 +46,7 @@ public class WalletOrdersEndpointsTests : IClassFixture<WalletOrdersEndpointsTes
 
         Assert.True(root.TryGetProperty("orderId", out _));
         Assert.True(root.TryGetProperty("walletBalance", out var bal));
-        Assert.Equal(95_000m, bal.GetDecimal());
+        Assert.Equal(AuthenticatedTestFactory.StartingBalance - 5000m, bal.GetDecimal());
         Assert.True(root.TryGetProperty("shares", out var shares));
         Assert.True(shares.GetDecimal() > 0);
     }
@@ -120,30 +115,5 @@ public class WalletOrdersEndpointsTests : IClassFixture<WalletOrdersEndpointsTes
         var orders = doc.RootElement.EnumerateArray().ToList();
         Assert.NotEmpty(orders);
         Assert.Equal("BDO", orders[0].GetProperty("ticker").GetString());
-    }
-
-    // ── Test factory ──────────────────────────────────────────────────────────
-
-    public class TestFactory : WebApplicationFactory<Program>, IAsyncLifetime
-    {
-        private readonly SqliteConnection _connection = new("Data Source=:memory:");
-
-        public async Task InitializeAsync() => await _connection.OpenAsync();
-
-        public new async Task DisposeAsync()
-        {
-            await _connection.DisposeAsync();
-            await base.DisposeAsync();
-        }
-
-        protected override void ConfigureWebHost(Microsoft.AspNetCore.Hosting.IWebHostBuilder builder)
-        {
-            builder.ConfigureServices(services =>
-            {
-                var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
-                if (descriptor != null) services.Remove(descriptor);
-                services.AddDbContext<AppDbContext>(o => o.UseSqlite(_connection));
-            });
-        }
     }
 }

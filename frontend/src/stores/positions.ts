@@ -1,22 +1,14 @@
 import { defineStore } from 'pinia'
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { useMarketStore } from './market'
 import { useWalletStore } from './wallet'
 import { useTransactionsStore } from './transactions'
 import { useSnack } from '../composables/useSnack'
 import type { Order, OrderType, Position, Transaction } from '../types'
 
-const STORAGE_KEY = 'rw_positions'
-
 export const usePositionsStore = defineStore('positions', () => {
-  // Hydrate from localStorage on first load
-  const stored = localStorage.getItem(STORAGE_KEY)
-  let initial: Position[] = []
-  try { if (stored) initial = JSON.parse(stored) } catch { /* corrupted — start fresh */ }
-  const openPositions = ref<Position[]>(initial)
-
-  // Persist whenever positions change
-  watch(openPositions, val => localStorage.setItem(STORAGE_KEY, JSON.stringify(val)), { deep: true })
+  const openPositions = ref<Position[]>([])
+  const initialized = ref(false)
 
   /** Enriches each position with current price and P&L from market data. */
   const positionsWithCurrentValue = computed(() => {
@@ -34,9 +26,8 @@ export const usePositionsStore = defineStore('positions', () => {
     })
   })
 
-  /** Adds a new position locally (used by wallet store after order placement). */
+  /** Adds a new position locally (optimistic update after order placement). */
   function open(order: Order, transaction: Transaction) {
-    // Use current market price as entry price in mock mode
     const market = useMarketStore()
     const stock = market.stocks.find(s => s.ticker === order.ticker)
     const entryPrice = stock?.price ?? 1
@@ -52,7 +43,7 @@ export const usePositionsStore = defineStore('positions', () => {
     })
   }
 
-  /** Sync open positions from API (no-op in mock mode). */
+  /** Sync open positions from API. */
   async function fetchPositions(): Promise<void> {
     try {
       const res = await fetch('/api/v1/positions')
@@ -77,14 +68,17 @@ export const usePositionsStore = defineStore('positions', () => {
         entryPrice: p.entryPrice,
         currentPrice: p.currentPrice,
       }))
+      initialized.value = true
     } catch {
       // Network failure — keep existing in-memory state
     }
   }
 
-  // positionsWithCurrentValue is reactive — it recomputes whenever market.stocks updates.
-  // fetchPositions() is available for the API-connected path but we don't auto-call it
-  // on every stock refresh in mock mode (that would race with localStorage state).
+  function reset() {
+    openPositions.value = []
+    initialized.value = false
+  }
+
   const market = useMarketStore()
 
   /** Close a position: calls API if available; credits wallet with returned value. */
@@ -99,11 +93,9 @@ export const usePositionsStore = defineStore('positions', () => {
         }
         openPositions.value = openPositions.value.filter(p => p.id !== positionId)
 
-        // Update wallet balance from server response
         const walletStore = useWalletStore()
         walletStore.credit(data.realizedPnl)
 
-        // Mark the matching transaction as closed
         const txStore = useTransactionsStore()
         const tx = txStore.transactions.find(t => t.id === positionId)
         if (tx) { tx.status = 'closed'; tx.realizedPnl = data.realizedPnl; tx.closedAt = new Date().toISOString() }
@@ -125,13 +117,9 @@ export const usePositionsStore = defineStore('positions', () => {
     const pnl = pos.type === 'long' ? currentValue - pos.investedAmount : pos.investedAmount - currentValue
     openPositions.value.splice(idx, 1)
 
-    // Credit investedAmount + pnl back to wallet.
-    // Long:  investedAmount + (currentValue − investedAmount) = currentValue
-    // Short: investedAmount + (investedAmount − currentValue) = 2×invested − currentValue
     const walletStore = useWalletStore()
     walletStore.credit(pos.investedAmount + pnl)
 
-    // Mark the matching transaction as closed and record realized P&L
     const txStore = useTransactionsStore()
     const tx = txStore.transactions.find(t => t.id === positionId)
     if (tx) { tx.status = 'closed'; tx.realizedPnl = pnl; tx.closedAt = new Date().toISOString() }
@@ -140,5 +128,5 @@ export const usePositionsStore = defineStore('positions', () => {
     return pnl
   }
 
-  return { openPositions, positionsWithCurrentValue, open, fetchPositions, closePosition }
+  return { openPositions, positionsWithCurrentValue, initialized, open, fetchPositions, reset, closePosition }
 })

@@ -21,6 +21,8 @@ config.global.stubs = {
   SprEmptyState: true,
   SprSidenav: true,
   SprSidenavItem: true,
+  SprIcon: true,
+  SprTablePagination: true,
 }
 
 // Reset Pinia state between every test to prevent state leakage.

@@ -9,7 +9,8 @@ public static class WalletEndpoints
     {
         app.MapGet("/api/v1/wallet", async (AppDbContext db) =>
         {
-            var wallet = await db.Wallets.FindAsync(AppDbContext.SeedWalletId);
+            // Global Query Filter automatically scopes to the authenticated user's wallet
+            var wallet = await db.Wallets.FirstOrDefaultAsync();
             if (wallet is null)
                 return Results.Problem("Wallet not found.", statusCode: 500);
 
@@ -19,6 +20,6 @@ public static class WalletEndpoints
                 balance = wallet.Balance,
                 updatedAt = wallet.UpdatedAt,
             });
-        });
+        }).RequireAuthorization();
     }
 }

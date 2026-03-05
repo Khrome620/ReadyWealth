@@ -24,7 +24,16 @@
       "mcp__mcp-design-system-next__get_component_source",
       "Bash(npx tsc:*)",
       "Bash(npx eslint:*)",
-      "Bash(netstat:*)"
+      "Bash(netstat:*)",
+      "Bash(xargs grep:*)",
+      "Bash(pwsh:*)",
+      "WebSearch",
+      "Bash(ls:*)",
+      "Bash(sqlite3:*)",
+      "Bash(npx vitest:*)",
+      "Bash(cmd:*)",
+      "Bash(xargs cat:*)",
+      "Bash(Stop-Process:*)"
     ]
   }
 }

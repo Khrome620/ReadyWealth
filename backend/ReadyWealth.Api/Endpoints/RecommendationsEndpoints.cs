@@ -27,7 +27,7 @@ public static class RecommendationsEndpoints
                 generatedAt = DateTimeOffset.UtcNow,
                 disclaimer = "Not financial advice — for informational purposes only.",
             });
-        });
+        }).RequireAuthorization();
 
         return app;
     }

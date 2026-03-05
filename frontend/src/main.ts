@@ -7,6 +7,9 @@ import App from './App.vue'
 import router from './router'
 import { setMarketService } from './stores/market'
 import { setOrderService } from './stores/wallet'
+import { setup401Interceptor } from './services/AuthService'
+import { useAuthStore } from './stores/auth'
+import { useSnack } from './composables/useSnack'
 
 // Swap in the live API services only when the backend is available.
 // Default is mock mode; set VITE_USE_API=true in .env.local to connect to the backend.
@@ -35,4 +38,18 @@ for (const [name, comp] of Object.entries(registered)) {
 }
 
 app.use(router)
+
+// Wire up the 401 interceptor: any 401 from the API clears auth and redirects to /login
+setup401Interceptor(() => {
+  const auth = useAuthStore()
+  // Only show toast + redirect if we were actually authenticated (not on initial /me check)
+  if (auth.isAuthenticated) {
+    try { useSnack().showDanger('Session expired. Please sign in again.') } catch { /* snackbar unavailable */ }
+    auth.clearUser()
+    router.push({ name: 'login', query: { redirect: router.currentRoute.value.fullPath } })
+  } else {
+    auth.clearUser()
+  }
+})
+
 app.mount('#app')

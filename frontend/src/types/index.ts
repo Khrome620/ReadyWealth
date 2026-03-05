@@ -46,4 +46,5 @@ export interface Recommendation {
   currentPrice: number
   reason: string
   confidence: 'high' | 'medium' | 'low'
+  description?: string
 }

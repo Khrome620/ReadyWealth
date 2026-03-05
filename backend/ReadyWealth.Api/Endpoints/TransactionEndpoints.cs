@@ -9,6 +9,7 @@ public static class TransactionEndpoints
     {
         app.MapGet("/api/v1/transactions", (AppDbContext db) =>
         {
+            // Global Query Filter automatically scopes to the authenticated user's transactions
             // AsEnumerable() pulls to client side so DateTimeOffset ordering works in SQLite
             var transactions = db.Transactions
                 .AsEnumerable()
@@ -27,7 +28,7 @@ public static class TransactionEndpoints
                 .ToList();
 
             return Results.Ok(new { transactions });
-        });
+        }).RequireAuthorization();
 
         return app;
     }
