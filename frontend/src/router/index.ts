@@ -31,7 +31,7 @@ router.beforeEach(async (to) => {
     const txStore = useTransactionsStore()
 
     // Fetch server data once per session (reset on logout resets initialized flags)
-    if (wallet.balance === 0) wallet.fetchBalance()
+    if (!wallet.initialized) wallet.fetchBalance()
     if (!positions.initialized) positions.fetchPositions()
     if (!txStore.initialized) txStore.fetchTransactions()
 

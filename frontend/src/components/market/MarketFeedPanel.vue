@@ -21,8 +21,8 @@
       Prices delayed ~15 min. Not real-time data.
     </div>
 
-    <!-- Tabs -->
-    <div class="mfp-tabs">
+    <!-- Tabs (hidden while chart is open) -->
+    <div v-if="!chartStock" class="mfp-tabs">
       <button
         v-for="tab in tabs"
         :key="tab"
@@ -34,8 +34,17 @@
       </button>
     </div>
 
-    <!-- Table -->
-    <MarketFeedTable :stocks="currentStocks" :loading="market.loading" :market-open="market.marketOpen" />
+    <!-- Market feed table -->
+    <MarketFeedTable
+      v-if="!chartStock"
+      :stocks="currentStocks"
+      :loading="market.loading"
+      :market-open="market.marketOpen"
+      @select-stock="openChart"
+    />
+
+    <!-- Inline stock chart (replaces table when a row is clicked) -->
+    <StockChartPanel v-else :stock="chartStock" @close="chartStock = null" />
 
     <!-- Error -->
     <div v-if="market.error" class="mfp-error">
@@ -47,11 +56,16 @@
 <script setup lang="ts">
 import { ref, computed, watch, onUnmounted } from 'vue'
 import MarketFeedTable from './MarketFeedTable.vue'
+import StockChartPanel from './StockChartPanel.vue'
 import { useMarketStore } from '../../stores/market'
 import { useWatchlistStore } from '../../stores/watchlist'
+import type { Stock } from '../../types'
 
 const market = useMarketStore()
 const watchlist = useWatchlistStore()
+
+const chartStock = ref<Stock | null>(null)
+function openChart(stock: Stock) { chartStock.value = stock }
 
 const tabs = ['Top Gainers', 'Top Losers', 'Most Active', 'Watchlist']
 const activeTab = ref('Top Gainers')
@@ -184,7 +198,7 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.35rem;
   font-size: 0.7rem;
-  color: #475569;
+  color: #94a3b8;
   padding: 0.45rem 1.25rem;
   background: #0a1120;
   border-bottom: 1px solid #1e293b;

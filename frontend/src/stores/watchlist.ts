@@ -55,5 +55,9 @@ export const useWatchlistStore = defineStore('watchlist', () => {
     else await add(ticker)
   }
 
-  return { watchlistTickers, watchlistStocks, add, remove, toggle, fetchWatchlist }
+  function reset() {
+    watchlistTickers.value = []
+  }
+
+  return { watchlistTickers, watchlistStocks, add, remove, toggle, reset, fetchWatchlist }
 })

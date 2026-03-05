@@ -15,6 +15,7 @@
         <div class="mft-sk mft-sk-sm"></div>
         <div class="mft-sk mft-sk-sm"></div>
         <div class="mft-sk mft-sk-md"></div>
+        <div class="mft-sk mft-sk-sm"></div>
       </div>
     </div>
 
@@ -28,6 +29,7 @@
     <table class="mft-table">
       <thead>
         <tr>
+          <th class="mft-th-watch"></th>
           <th>Ticker</th>
           <th>Stock</th>
           <th class="mft-num">Price (PHP)</th>
@@ -37,7 +39,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="s in pagedStocks" :key="s.ticker" class="mft-row">
+        <tr v-for="s in pagedStocks" :key="s.ticker"
+            class="mft-row mft-row-clickable"
+            @click="emit('select-stock', s)">
+          <td class="mft-watch-cell" @click.stop="watchlist.toggle(s.ticker)">
+            <button
+              class="mft-watch-btn"
+              :class="{ 'mft-watch-active': watchlist.watchlistTickers.includes(s.ticker) }"
+              :title="watchlist.watchlistTickers.includes(s.ticker) ? 'Remove from watchlist' : 'Add to watchlist'"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 1L8.545 5.09H13L9.545 7.582L10.91 12L7 9.273L3.09 12L4.455 7.582L1 5.09H5.455Z"
+                  :fill="watchlist.watchlistTickers.includes(s.ticker) ? '#f59e0b' : 'none'"
+                  :stroke="watchlist.watchlistTickers.includes(s.ticker) ? '#f59e0b' : '#475569'"
+                  stroke-width="1.2" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </td>
           <td class="mft-ticker">{{ s.ticker }}</td>
           <td class="mft-name">{{ s.name }}</td>
           <td class="mft-num mft-price">₱{{ s.price.toLocaleString('en-PH', { minimumFractionDigits: 2 }) }}</td>
@@ -76,12 +94,17 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import type { Stock } from '../../types'
+import { useWatchlistStore } from '../../stores/watchlist'
 
 const props = defineProps<{
   stocks: Stock[]
   loading?: boolean
   marketOpen?: boolean
 }>()
+
+const emit = defineEmits<{ 'select-stock': [stock: Stock] }>()
+
+const watchlist = useWatchlistStore()
 
 const PAGE_SIZE = 10
 const page = ref(1)
@@ -168,6 +191,11 @@ th.mft-num {
   text-align: right;
 }
 
+.mft-th-watch {
+  width: 36px;
+  padding: 0.55rem 0.25rem 0.55rem 1rem;
+}
+
 .mft-row {
   border-bottom: 1px solid #1a2235;
   transition: background 0.1s;
@@ -181,10 +209,42 @@ th.mft-num {
   background: #1a2235;
 }
 
+.mft-row-clickable {
+  cursor: pointer;
+}
+
 td {
   padding: 0.55rem 1rem;
   color: #cbd5e1;
   white-space: nowrap;
+}
+
+/* ── Watchlist star ── */
+.mft-watch-cell {
+  padding: 0.55rem 0.25rem 0.55rem 1rem;
+  width: 36px;
+}
+
+.mft-watch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  color: #475569;
+  transition: color 0.15s, background 0.15s;
+}
+
+.mft-watch-btn:hover {
+  background: #1e293b;
+  color: #f59e0b;
+}
+
+.mft-watch-active {
+  color: #f59e0b;
 }
 
 .mft-num {

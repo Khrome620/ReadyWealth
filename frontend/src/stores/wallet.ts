@@ -18,9 +18,9 @@ export function setOrderService(svc: IOrderService): void {
 const WALLET_STORAGE_KEY = 'rw_wallet_balance'
 
 export const useWalletStore = defineStore('wallet', () => {
-  // Default to 0 — real balance is always fetched from the API after login
   const savedBalance = localStorage.getItem(WALLET_STORAGE_KEY)
   const balance = ref(savedBalance !== null ? parseFloat(savedBalance) : 0)
+  const initialized = ref(savedBalance !== null)
 
   watch(balance, val => localStorage.setItem(WALLET_STORAGE_KEY, String(val)))
 
@@ -28,6 +28,13 @@ export const useWalletStore = defineStore('wallet', () => {
   async function fetchBalance() {
     const serverBalance = await _orderService.fetchBalance()
     if (serverBalance !== null) balance.value = serverBalance
+    initialized.value = true
+  }
+
+  function reset() {
+    balance.value = 0
+    initialized.value = false
+    localStorage.removeItem(WALLET_STORAGE_KEY)
   }
 
   function validateOrder(order: Order): string | null {
@@ -67,5 +74,5 @@ export const useWalletStore = defineStore('wallet', () => {
     balance.value += amount
   }
 
-  return { balance, fetchBalance, validateOrder, submitOrder, credit }
+  return { balance, initialized, fetchBalance, reset, validateOrder, submitOrder, credit }
 })

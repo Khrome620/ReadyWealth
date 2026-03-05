@@ -13,15 +13,15 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function clearUser() {
     user.value = null
-    // Clear all user-specific local storage
-    localStorage.removeItem('rw_wallet_balance')
-    localStorage.removeItem('rw_positions')
-    localStorage.removeItem('rw_transactions')
-    // Reset server-sourced stores so they re-fetch fresh on next login
+    // Reset all user-scoped stores — clears both in-memory state and localStorage
+    const { useWalletStore } = await import('../stores/wallet')
     const { usePositionsStore } = await import('../stores/positions')
     const { useTransactionsStore } = await import('../stores/transactions')
+    const { useWatchlistStore } = await import('../stores/watchlist')
+    useWalletStore().reset()
     usePositionsStore().reset()
     useTransactionsStore().clear()
+    useWatchlistStore().reset()
   }
 
   async function fetchMe(): Promise<boolean> {
@@ -34,7 +34,6 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function login(payload: LoginPayload): Promise<void> {
-    localStorage.removeItem('rw_wallet_balance')
     const u = await AuthService.login(payload)
     setUser(u)
   }

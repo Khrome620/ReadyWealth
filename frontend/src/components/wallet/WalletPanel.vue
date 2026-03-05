@@ -3,7 +3,7 @@
   <SprCard tone="neutral" header-icon="ph:wallet" :show-footer="false">
     <template #header>
       <div class="wp-header">
-        <span class="wp-brand">SproutPurse</span>
+        <span class="wp-brand">ReadyPurse</span>
         <span class="wp-separator">·</span>
         <span class="wp-subtitle">My Wallet</span>
       </div>

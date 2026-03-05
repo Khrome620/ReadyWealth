@@ -113,7 +113,7 @@ public static class AuthEndpoints
                 };
                 db.Users.Add(newUser);
 
-                var initialBalance = config.GetValue<decimal>("ReadyWealth:InitialWalletBalance", 300_000m);
+                var initialBalance = config.GetValue<decimal>("ReadyWealth:InitialWalletBalance", 500_000m);
                 db.Wallets.Add(new Wallet
                 {
                     Id        = Guid.NewGuid(),
@@ -126,6 +126,16 @@ public static class AuthEndpoints
             {
                 existingUser.LastLoginAt = DateTime.UtcNow;
                 existingUser.DomainName  = tokenResult.DomainName;
+
+                // Top-up existing users whose balance has reached zero
+                var wallet = await db.Wallets.IgnoreQueryFilters()
+                    .FirstOrDefaultAsync(w => w.UserId == tokenResult.EmployeeId);
+                var topUpAmount = config.GetValue<decimal>("ReadyWealth:InitialWalletBalance", 500_000m);
+                if (wallet is not null && wallet.Balance == 0)
+                {
+                    wallet.Balance   = topUpAmount;
+                    wallet.UpdatedAt = DateTimeOffset.UtcNow;
+                }
             }
 
             await db.SaveChangesAsync();
