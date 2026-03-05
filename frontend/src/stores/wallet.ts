@@ -70,9 +70,18 @@ export const useWalletStore = defineStore('wallet', () => {
     return result.transaction
   }
 
-  function credit(amount: number) {
-    balance.value += amount
+  async function deposit(amount: number) {
+    const serverBalance = await _orderService.deposit(amount)
+    if (serverBalance !== null) {
+      balance.value = serverBalance
+    } else {
+      // Mock / offline fallback
+      balance.value += amount
+    }
   }
 
-  return { balance, initialized, fetchBalance, reset, validateOrder, submitOrder, credit }
+  // Keep credit() as a local-only alias (used internally by tests)
+  function credit(amount: number) { balance.value += amount }
+
+  return { balance, initialized, fetchBalance, reset, validateOrder, submitOrder, deposit, credit }
 })

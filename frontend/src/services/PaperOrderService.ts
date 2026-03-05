@@ -16,7 +16,11 @@ export class PaperOrderService implements IOrderService {
   }
 
   async fetchBalance(): Promise<number | null> {
-    // No backend in mock mode — caller keeps the in-memory default
+    return null
+  }
+
+  async deposit(_amount: number): Promise<number | null> {
+    // No backend in mock mode — caller handles locally
     return null
   }
 
