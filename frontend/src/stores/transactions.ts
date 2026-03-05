@@ -24,7 +24,9 @@ export const useTransactionsStore = defineStore('transactions', () => {
           type: string
           amount: number
           status: string
+          realizedPnl: number | null
           createdAt: string
+          updatedAt: string
         }>
       }
       transactions.value = data.transactions.map(t => ({
@@ -34,6 +36,8 @@ export const useTransactionsStore = defineStore('transactions', () => {
         amount: t.amount,
         date: t.createdAt,
         status: t.status as Transaction['status'],
+        realizedPnl: t.realizedPnl ?? undefined,
+        closedAt: t.status === 'closed' ? t.updatedAt : undefined,
       }))
       initialized.value = true
     } catch {

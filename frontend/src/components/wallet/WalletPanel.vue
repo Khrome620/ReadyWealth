@@ -24,10 +24,13 @@
   </SprCard>
 
   <!-- Portfolio list — outside the card so it is never clipped -->
-  <div v-if="positions.openPositions.length" class="wp-portfolio">
+  <div class="wp-portfolio">
     <div class="wp-portfolio-header">
       <div class="wp-portfolio-title">Open Positions</div>
-      <button class="wp-portfolio-link" @click="router.push('/portfolio')">View all →</button>
+      <button v-if="positions.openPositions.length" class="wp-portfolio-link" @click="router.push('/portfolio')">View all →</button>
+    </div>
+    <div v-if="!positions.openPositions.length" class="wp-no-positions">
+      No open positions yet.
     </div>
     <div
       v-for="p in positions.positionsWithCurrentValue"
@@ -180,6 +183,12 @@ function formatPHP(n: number) {
 
 .wp-portfolio-link:hover {
   text-decoration: underline;
+}
+
+.wp-no-positions {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  padding: 0.5rem 0.25rem;
 }
 
 .wp-position-row {

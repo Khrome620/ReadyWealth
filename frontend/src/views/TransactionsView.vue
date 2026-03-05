@@ -6,7 +6,12 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import TransactionsTable from '../components/transactions/TransactionsTable.vue'
+import { useTransactionsStore } from '../stores/transactions'
+
+const txStore = useTransactionsStore()
+onMounted(() => txStore.fetchTransactions())
 </script>
 
 <style scoped>
